@@ -1,0 +1,19 @@
+# Xcode File Exclusion Patterns
+# These files should not be included in the app bundle
+
+*.gitkeep
+.gitkeep
+**/.gitkeep
+
+# Build artifacts
+build/
+.build/
+DerivedData/
+
+# IDE files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+.DS_Store
