@@ -143,13 +143,13 @@ private struct ButtonStyleModifier: ViewModifier {
     func body(content: Content) -> some View {
         switch style {
         case .primary:
-            content.primaryStyle()
+            content.buttonStyle(PrimaryButtonStyle())
         case .secondary:
-            content.secondaryStyle()
+            content.buttonStyle(SecondaryButtonStyle())
         case .destructive:
-            content.destructiveStyle()
+            content.buttonStyle(DestructiveButtonStyle())
         case .ghost:
-            content.ghostStyle()
+            content.buttonStyle(GhostButtonStyle())
         }
     }
 }

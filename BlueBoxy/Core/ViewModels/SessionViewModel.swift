@@ -220,12 +220,13 @@ final class SessionViewModel: ObservableObject {
         )
         
         do {
-            let env: AuthEnvelope = try await apiClient.request(
-                .PUT,
+            let endpoint = Endpoint(
                 path: "/api/auth/profile",
+                method: .PUT,
                 body: request,
                 requiresUser: true
             )
+            let env: AuthEnvelope = try await apiClient.request(endpoint)
             
             user = env.user
             status = "Profile updated successfully"
@@ -252,8 +253,26 @@ final class SessionViewModel: ObservableObject {
         error = nil
         status = "Updating preferences..."
         
-        // Convert to AnyEncodable
-        let encodablePreferences = preferences.mapValues { AnyEncodable($0) }
+        // Convert to AnyEncodable - handle common types
+        let encodablePreferences: [String: AnyEncodable] = preferences.compactMapValues { value in
+            if let encodable = value as? Encodable {
+                return AnyEncodable(encodable)
+            } else {
+                // Handle basic types that might not conform to Encodable
+                switch value {
+                case let string as String:
+                    return AnyEncodable(string)
+                case let int as Int:
+                    return AnyEncodable(int)
+                case let double as Double:
+                    return AnyEncodable(double)
+                case let bool as Bool:
+                    return AnyEncodable(bool)
+                default:
+                    return nil // Skip non-encodable values
+                }
+            }
+        }
         
         let request = UpdateProfileRequest(
             name: nil,
@@ -266,12 +285,13 @@ final class SessionViewModel: ObservableObject {
         )
         
         do {
-            let env: AuthEnvelope = try await apiClient.request(
-                .PUT,
+            let endpoint = Endpoint(
                 path: "/api/auth/profile",
+                method: .PUT,
                 body: request,
                 requiresUser: true
             )
+            let env: AuthEnvelope = try await apiClient.request(endpoint)
             
             user = env.user
             status = "Preferences updated successfully"

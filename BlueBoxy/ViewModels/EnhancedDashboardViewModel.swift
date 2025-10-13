@@ -228,7 +228,7 @@ class EnhancedDashboardViewModel: ObservableObject {
             }
         } else {
             await MainActor.run {
-                self[keyPath: keyPath] = .failed(ErrorMapper.map(error))
+                self[keyPath: keyPath] = Loadable<T>.failed(ErrorMapper.map(error))
             }
         }
     }
