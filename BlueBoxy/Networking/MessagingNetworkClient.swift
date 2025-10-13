@@ -51,10 +51,8 @@ final class MessagingNetworkClient: ObservableObject {
         self.cacheConfiguration = CacheConfiguration(
             strategy: .networkFirst,
             cache: FileResponseCache(),
-            policy: CachePolicy(
-                maxAge: 3600, // 1 hour for categories
-                staleWhileRevalidate: true
-            )
+            cacheKey: "messaging_cache",
+            policy: .default
         )
         
         setupNetworkMonitoring()
@@ -80,10 +78,17 @@ final class MessagingNetworkClient: ObservableObject {
                 response = try await messagingAPIService.fetchMessageCategories()
             } else {
                 // Use cached response with intelligent fallback
-                response = try await cachedAPIClient.getCached(
+                let result = await cachedAPIClient.getCached<MessageCategoriesResponse>(
                     Endpoint.messagesCategories(),
                     configuration: cacheConfiguration.with(cacheKey: "enhanced_message_categories")
                 )
+                
+                switch result {
+                case .success(let categories):
+                    response = categories
+                case .failure(let error):
+                    throw error
+                }
             }
             
             connectionState = .connected
@@ -103,7 +108,7 @@ final class MessagingNetworkClient: ObservableObject {
     
     /// Get categories with user-specific recommendations
     func fetchPersonalizedCategories(for user: DomainUser, forceRefresh: Bool = false) async throws -> [DetailedMessageCategory] {
-        let allCategories = try await fetchMessageCategories(forceRefresh: forceRefresh)
+        _ = try await fetchMessageCategories(forceRefresh: forceRefresh)
         
         // Apply personalization filtering
         return MessageCategorySelector.getContextualCategories(
@@ -213,13 +218,19 @@ final class MessagingNetworkClient: ObservableObject {
         
         do {
             if useCache {
-                return try await cachedAPIClient.getCached(
+                let result = await cachedAPIClient.getCached<MessageHistoryResponse>(
                     Endpoint.messagesHistory(limit: limit, offset: offset),
                     configuration: cacheConfiguration.with(
-                        cacheKey: "message_history_\(limit)_\(offset)",
-                        maxAge: 300 // 5 minutes for history
+                        cacheKey: "message_history_\(limit)_\(offset)"
                     )
                 )
+                
+                switch result {
+                case .success(let history):
+                    return history
+                case .failure(let error):
+                    throw error
+                }
             } else {
                 return try await messagingAPIService.fetchMessageHistory(limit: limit, offset: offset)
             }
@@ -280,8 +291,8 @@ final class MessagingNetworkClient: ObservableObject {
     
     /// Get smart category recommendations based on user behavior and time
     func getSmartCategoryRecommendations(for user: DomainUser) async throws -> [DetailedMessageCategory] {
-        let timeAppropriate = try await messagingAPIService.getTimeAppropriateCategories()
-        let userRecommended = try await messagingAPIService.getRecommendedCategories(for: user)
+        _ = try await messagingAPIService.getTimeAppropriateCategories()
+        _ = try await messagingAPIService.getRecommendedCategories(for: user)
         
         // Combine and rank recommendations
         return MessageCategorySelector.getContextualCategories(
@@ -395,14 +406,16 @@ final class MessagingNetworkClient: ObservableObject {
                 return .notFound
             case .badRequest(let message):
                 return .invalidRequest(message)
-            case .serverError(let message):
+            case .server(let message):
                 return .serverError(message)
-            case .networkUnavailable:
+            case .connectivity:
                 return .networkError(error)
-            case .timeout:
+            case .decoding(let details):
+                return .decodingError(details)
+            case .cancelled:
                 return .networkError(error)
-            case .decodingError(let decodingError):
-                return .decodingError(decodingError)
+            case .rateLimited:
+                return .networkError(error)
             case .unknown:
                 return .unknown
             }
@@ -429,10 +442,8 @@ final class MessagingNetworkClient: ObservableObject {
     
     private func invalidateHistoryCache() async {
         // Invalidate message history related caches
-        let keys = ["message_history_20_0", "message_history_50_0"]
-        for key in keys {
-            await cachedAPIClient.cache.remove(key: key)
-        }
+        // Note: Cache invalidation would need to be implemented through the CachedAPIClient interface
+        // For now, this is a placeholder for future cache management functionality
     }
 }
 
@@ -481,16 +492,12 @@ struct MessageGenerationOptions {
 // MARK: - Cache Configuration Extensions
 
 private extension CacheConfiguration {
-    func with(cacheKey: String, maxAge: TimeInterval? = nil) -> CacheConfiguration {
-        let newPolicy = maxAge.map { age in
-            CachePolicy(maxAge: age, staleWhileRevalidate: policy.staleWhileRevalidate)
-        } ?? policy
-        
+    func with(cacheKey: String) -> CacheConfiguration {
         return CacheConfiguration(
             strategy: strategy,
             cache: cache,
             cacheKey: cacheKey,
-            policy: newPolicy
+            policy: policy
         )
     }
 }
