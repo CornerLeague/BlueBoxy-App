@@ -538,6 +538,54 @@ struct PersonalityInsightDisplay: Codable, Identifiable {
     let description: String
     let relationshipAdvice: String?
     let confidenceScore: Double?
+    
+    // Explicit memberwise initializer
+    init(
+        loveLanguage: String,
+        loveLanguageDescription: String? = nil,
+        communicationStyle: String,
+        communicationAnalysis: String? = nil,
+        stressResponse: String,
+        stressAnalysis: String? = nil,
+        conflictResolution: String? = nil,
+        idealActivities: [String],
+        compatibilityTips: [String]? = nil,
+        growthAreas: [String]? = nil,
+        description: String,
+        relationshipAdvice: String? = nil,
+        confidenceScore: Double? = nil
+    ) {
+        self.loveLanguage = loveLanguage
+        self.loveLanguageDescription = loveLanguageDescription
+        self.communicationStyle = communicationStyle
+        self.communicationAnalysis = communicationAnalysis
+        self.stressResponse = stressResponse
+        self.stressAnalysis = stressAnalysis
+        self.conflictResolution = conflictResolution
+        self.idealActivities = idealActivities
+        self.compatibilityTips = compatibilityTips
+        self.growthAreas = growthAreas
+        self.description = description
+        self.relationshipAdvice = relationshipAdvice
+        self.confidenceScore = confidenceScore
+    }
+    
+    // Convenience initializer from PersonalityInsight
+    init(from insight: PersonalityInsight) {
+        self.loveLanguage = insight.loveLanguage
+        self.loveLanguageDescription = nil
+        self.communicationStyle = insight.communicationStyle
+        self.communicationAnalysis = nil
+        self.stressResponse = insight.stressResponse
+        self.stressAnalysis = nil
+        self.conflictResolution = nil
+        self.idealActivities = insight.idealActivities
+        self.compatibilityTips = nil
+        self.growthAreas = nil
+        self.description = insight.description
+        self.relationshipAdvice = nil
+        self.confidenceScore = nil
+    }
 }
 
 #Preview {

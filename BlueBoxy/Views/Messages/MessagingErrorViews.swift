@@ -139,9 +139,9 @@ struct MessagingErrorView: View {
             }
             
             // Retry button (conditional)
-            if let onRetry = onRetry, error.isRetryable {
+            if let retryAction = onRetry, error.isRetryable {
                 Button(action: {
-                    performRetry()
+                    performRetry(retryAction)
                 }) {
                     HStack(spacing: 6) {
                         if isRetrying {
@@ -159,12 +159,12 @@ struct MessagingErrorView: View {
     
     // MARK: - Actions
     
-    private func performRetry() {
+    private func performRetry(_ retryAction: @escaping () -> Void) {
         isRetrying = true
         
         // Add a small delay to show the retry animation
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            onRetry?()
+            retryAction()
             isRetrying = false
         }
     }
@@ -399,7 +399,7 @@ struct MessagingErrorView_Previews: PreviewProvider {
             
             // Server error
             MessagingErrorView(
-                error: .server("Service temporarily unavailable"),
+                error: .server(message: "Service temporarily unavailable"),
                 context: .messageGeneration,
                 onRetry: {},
                 onDismiss: {}

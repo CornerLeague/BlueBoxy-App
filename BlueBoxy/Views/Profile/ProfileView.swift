@@ -49,8 +49,10 @@ struct ProfileView: View {
             .alert("Sign Out", isPresented: $showingSignOutAlert) {
                 Button("Cancel", role: .cancel) { }
                 Button("Sign Out", role: .destructive) {
-                    authViewModel.logout()
-                    dismiss()
+                    Task {
+                        await authViewModel.logout()
+                        dismiss()
+                    }
                 }
             } message: {
                 Text("Are you sure you want to sign out?")
@@ -60,12 +62,12 @@ struct ProfileView: View {
 }
 
 struct ProfileHeaderView: View {
-    let user: User
+    let user: DomainUser
     
     var body: some View {
         VStack(spacing: 16) {
             // Profile Image
-            AsyncImage(url: URL(string: user.profileImageUrl ?? "https://via.placeholder.com/100")) { image in
+            AsyncImage(url: URL(string: "https://via.placeholder.com/100")) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -87,7 +89,7 @@ struct ProfileHeaderView: View {
             
             // User Info
             VStack(spacing: 6) {
-                Text(user.name)
+                Text(user.name ?? "Unknown")
                     .font(.title2)
                     .fontWeight(.semibold)
                 
@@ -120,7 +122,7 @@ struct ProfileHeaderView: View {
 }
 
 struct ProfileDetailsView: View {
-    let user: User
+    let user: DomainUser
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -176,7 +178,7 @@ struct ProfileDetailsView: View {
 // Using DetailRow from UIComponents.swift
 
 struct PreferencesOverview: View {
-    let user: User
+    let user: DomainUser
     let onEdit: () -> Void
     
     var body: some View {
@@ -257,7 +259,7 @@ struct PreferenceChip: View {
 }
 
 struct PersonalityInsightView: View {
-    let user: User
+    let user: DomainUser
     
     var body: some View {
         if let insight = user.personalityInsight {
@@ -279,7 +281,7 @@ struct PersonalityInsightView: View {
                     .buttonStyle(CompactButtonStyle(variant: .secondary))
                 }
                 
-                Text(insight)
+                Text(insight.description)
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .lineLimit(6)

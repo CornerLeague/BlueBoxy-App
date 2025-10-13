@@ -26,8 +26,7 @@ struct MessageDetailView: View {
     @State private var copied = false
     
     var body: some View {
-        NavigationView {
-            ScrollView {
+        ScrollView {
                 VStack(spacing: 24) {
                     // Message content
                     MessageContentSection(message: message)
@@ -51,10 +50,10 @@ struct MessageDetailView: View {
                     )
                 }
                 .padding()
-            }
-            .navigationTitle("Message Details")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
+        }
+        .navigationTitle("Message Details")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Close") {
                         dismiss()
@@ -96,7 +95,6 @@ struct MessageDetailView: View {
                     }
                 }
             }
-        }
         .task {
             await loadFavoriteStatus()
         }
@@ -109,7 +107,7 @@ struct MessageDetailView: View {
             Text("Are you sure you want to delete this message? This action cannot be undone.")
         }
         .sheet(isPresented: $showingShareSheet) {
-            ShareSheet(items: [createShareText()])
+            ShareSheet(activityItems: [createShareText()])
         }
     }
     

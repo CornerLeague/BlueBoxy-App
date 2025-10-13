@@ -161,13 +161,13 @@ struct CalendarEventsView: View {
                 
                 // Events for this date
                 ForEach(dayEvents.sorted(by: { $0.startTime < $1.startTime })) { event in
-                    EventRow(
-                        event: event,
-                        onTap: {
-                            selectedEvent = event
-                            showingEventDetail = true
-                        }
-                    )
+                    Button(action: {
+                        selectedEvent = event
+                        showingEventDetail = true
+                    }) {
+                        EventRowView(event: event)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
         }
@@ -648,6 +648,73 @@ extension DateFormatter {
         formatter.timeStyle = .short
         return formatter
     }()
+}
+
+// MARK: - Event Row View (for Event objects)
+
+struct EventRowView: View {
+    let event: Event
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            VStack(spacing: 2) {
+                Text(dayFormatter.string(from: event.startTime))
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .foregroundStyle(.secondary)
+                
+                Text(dateFormatter.string(from: event.startTime))
+                    .font(.title3)
+                    .fontWeight(.bold)
+            }
+            .frame(width: 40)
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(event.title)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                
+                if let description = event.description {
+                    Text(description)
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                }
+                
+                Text(timeFormatter.string(from: event.startTime))
+                    .font(.caption)
+                    .foregroundStyle(.blue)
+            }
+            
+            Spacer()
+            
+            Image(systemName: "chevron.right")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .padding()
+        .background(.regularMaterial)
+        .cornerRadius(12)
+    }
+    
+    private var dayFormatter: DateFormatter {
+        let f = DateFormatter()
+        f.dateFormat = "EEE"
+        return f
+    }
+    
+    private var dateFormatter: DateFormatter {
+        let f = DateFormatter()
+        f.dateFormat = "d"
+        return f
+    }
+    
+    private var timeFormatter: DateFormatter {
+        let f = DateFormatter()
+        f.dateStyle = .none
+        f.timeStyle = .short
+        return f
+    }
 }
 
 // MARK: - Preview

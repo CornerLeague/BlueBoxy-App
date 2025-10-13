@@ -78,7 +78,7 @@ final class MessagingNetworkClient: ObservableObject {
                 response = try await messagingAPIService.fetchMessageCategories()
             } else {
                 // Use cached response with intelligent fallback
-                let result = await cachedAPIClient.getCached<MessageCategoriesResponse>(
+                let result: Result<MessageCategoriesResponse, NetworkError> = await cachedAPIClient.getCached(
                     Endpoint.messagesCategories(),
                     configuration: cacheConfiguration.with(cacheKey: "enhanced_message_categories")
                 )
@@ -218,7 +218,7 @@ final class MessagingNetworkClient: ObservableObject {
         
         do {
             if useCache {
-                let result = await cachedAPIClient.getCached<MessageHistoryResponse>(
+                let result: Result<MessageHistoryResponse, NetworkError> = await cachedAPIClient.getCached(
                     Endpoint.messagesHistory(limit: limit, offset: offset),
                     configuration: cacheConfiguration.with(
                         cacheKey: "message_history_\(limit)_\(offset)"
@@ -411,7 +411,7 @@ final class MessagingNetworkClient: ObservableObject {
             case .connectivity:
                 return .networkError(error)
             case .decoding(let details):
-                return .decodingError(details)
+                return .decodingError(NSError(domain: "DecodingError", code: -1, userInfo: [NSLocalizedDescriptionKey: details]))
             case .cancelled:
                 return .networkError(error)
             case .rateLimited:

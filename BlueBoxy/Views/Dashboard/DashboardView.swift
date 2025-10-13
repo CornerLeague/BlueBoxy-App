@@ -49,7 +49,7 @@ struct DashboardView: View {
                     
                     // AI insights
                     if let user = authViewModel.user, let insight = user.personalityInsight {
-                        AIInsightsSection(insight: insight)
+                        AIInsightsSection(insight: PersonalityInsightDisplay(from: insight))
                     }
                 }
                 .padding()
@@ -92,7 +92,7 @@ struct DashboardView: View {
 }
 
 struct HeaderSection: View {
-    let user: User
+    let user: DomainUser
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {

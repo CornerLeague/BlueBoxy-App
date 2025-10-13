@@ -115,15 +115,7 @@ final class MessagesViewModel: ObservableObject {
             if case .loaded(let historyResponse) = history {
                 // Create new message history items from generation response
                 let newMessages = response.messages.map { message in
-                    let enhancedMessage = EnhancedGeneratedMessage(
-                        id: message.id,
-                        content: message.content,
-                        category: message.category,
-                        personalityMatch: message.personalityMatch,
-                        tone: message.tone,
-                        estimatedImpact: EnhancedGeneratedMessage.ImpactLevel(rawValue: message.estimatedImpact) ?? .medium,
-                        generatedAt: message.createdAt
-                    )
+                    let enhancedMessage = EnhancedGeneratedMessage(from: message)
                     
                     return MessageHistoryItem(
                         message: enhancedMessage,

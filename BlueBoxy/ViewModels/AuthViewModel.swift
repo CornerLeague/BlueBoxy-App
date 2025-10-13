@@ -14,10 +14,10 @@ final class AuthViewModel: ObservableObject {
     
     // MARK: - Published State
     
-    @Published var user: User?
+    @Published var user: DomainUser?
     @Published var isAuthenticated: Bool = false
-    @Published var authState: Loadable<User> = .idle
-    @Published var registrationState: Loadable<User> = .idle
+    @Published var authState: Loadable<DomainUser> = .idle
+    @Published var registrationState: Loadable<DomainUser> = .idle
     @Published var logoutState: Loadable<Void> = .idle
     
     // MARK: - Dependencies
@@ -64,11 +64,11 @@ final class AuthViewModel: ObservableObject {
                 partnerAge: partnerAge
             )
             
-            let response: AuthResponse = try await apiClient.request(.authRegister(request))
+            let response: AuthEnvelope = try await apiClient.request(.authRegister(request))
             
             // Update session and state
-            await updateAuthenticationState(user: response.user.user, token: response.token)
-            registrationState = .loaded(response.user.user)
+            await updateAuthenticationState(user: response.user, token: response.token ?? "")
+            registrationState = .loaded(response.user)
             
         } catch {
             let networkError = ErrorMapper.map(error)
@@ -83,11 +83,11 @@ final class AuthViewModel: ObservableObject {
         
         do {
             let request = LoginRequest(email: email, password: password)
-            let response: AuthResponse = try await apiClient.request(.authLogin(request))
+            let response: AuthEnvelope = try await apiClient.request(.authLogin(request))
             
             // Update session and state
-            await updateAuthenticationState(user: response.user.user, token: response.token)
-            authState = .loaded(response.user.user)
+            await updateAuthenticationState(user: response.user, token: response.token ?? "")
+            authState = .loaded(response.user)
             
         } catch {
             let networkError = ErrorMapper.map(error)
@@ -104,7 +104,7 @@ final class AuthViewModel: ObservableObject {
         }
         
         do {
-            let user: User = try await apiClient.request(.authMe())
+            let user: DomainUser = try await apiClient.request(.authMe())
             self.user = user
             authState = .loaded(user)
             
@@ -180,7 +180,7 @@ final class AuthViewModel: ObservableObject {
         //     .store(in: &cancellables)
     }
     
-    private func updateAuthenticationState(user: User, token: String) async {
+    private func updateAuthenticationState(user: DomainUser, token: String) async {
         // Update session store
         sessionStore.userId = user.id
         sessionStore.authToken = token

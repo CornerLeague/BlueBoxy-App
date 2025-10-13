@@ -403,11 +403,11 @@ struct DebugInfoView: View {
                 .fontWeight(.semibold)
             
             Group {
-                Text("Authenticated: \(appEnvironment.isAuthenticated ? "Yes" : "No")")
-                Text("User ID: \(appEnvironment.currentUser?.id ?? 0)")
-                Text("Session Valid: \(appEnvironment.sessionStore.isSessionValid() ? "Yes" : "No")")
+                Text("Authenticated: \(appEnvironment?.isAuthenticated ?? false ? "Yes" : "No")")
+                Text("User ID: \(appEnvironment?.currentUser?.id ?? 0)")
+                Text("Session Valid: \(appEnvironment?.sessionStore.isSessionValid() ?? false ? "Yes" : "No")")
                 
-                if let expiry = appEnvironment.sessionStore.sessionExpiryDate {
+                if let expiry = appEnvironment?.sessionStore.sessionExpiryDate {
                     Text("Session Expires: \(expiry.formatted())")
                 }
             }
