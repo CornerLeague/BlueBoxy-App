@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 
 struct CacheManagementView: View {
     @StateObject private var cacheManager = CacheManager.shared
@@ -177,6 +178,30 @@ struct CacheManagementView: View {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full
         return formatter.localizedString(for: date, relativeTo: Date())
+    }
+}
+
+struct CacheStatus {
+    let activitiesExpired: Bool
+    let statsExpired: Bool
+    let eventsExpired: Bool
+    let totalCacheSize: Int64
+    let lastUpdated: Date?
+
+    var formattedCacheSize: String {
+        let formatter = ByteCountFormatter()
+        formatter.allowedUnits = [.useMB, .useKB]
+        formatter.countStyle = .file
+        return formatter.string(fromByteCount: totalCacheSize)
+    }
+
+    var hasExpiredData: Bool {
+        activitiesExpired || statsExpired || eventsExpired
+    }
+
+    var cacheHealthScore: Double {
+        let expiredCount = [activitiesExpired, statsExpired, eventsExpired].filter { $0 }.count
+        return Double(3 - expiredCount) / 3.0
     }
 }
 

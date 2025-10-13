@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 // MARK: - Messaging Error View
 
@@ -380,7 +381,30 @@ struct NetworkStatusIndicator: View {
 }
 
 // MARK: - Network Monitor
-// Using NetworkMonitor from EnhancedDashboardViewModel.swift
+
+final class NetworkMonitor: ObservableObject {
+    @Published var isConnected: Bool = true
+
+    private var timer: Timer?
+
+    init() {
+        startMonitoring()
+    }
+
+    deinit {
+        timer?.invalidate()
+    }
+
+    private func startMonitoring() {
+        timer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true) { [weak self] _ in
+            DispatchQueue.main.async {
+                // In this demo environment we assume connectivity is restored.
+                // Integrate with the Network framework or reachability checks as needed.
+                self?.isConnected = true
+            }
+        }
+    }
+}
 
 // MARK: - Preview Helpers
 
