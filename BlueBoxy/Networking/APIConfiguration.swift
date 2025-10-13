@@ -95,10 +95,11 @@ extension APIConfiguration {
     
     /// Validate configuration at app startup
     static func validateConfiguration() {
-        print("🌐 API Base URL: \(baseURL)")
-        print("📦 App Version: \(appVersion)")
-        print("⏱️ Request Timeout: \(session.configuration.timeoutIntervalForRequest)s")
-        print("🔄 Resource Timeout: \(session.configuration.timeoutIntervalForResource)s")
+        print("[API] Base URL: \(baseURL)")
+        print("[API] App Version: \(appVersion)")
+        print("[API] Request Timeout: \(session.configuration.timeoutIntervalForRequest)s")
+        print("[API] Resource Timeout: \(session.configuration.timeoutIntervalForResource)s")
     }
 }
 #endif
+

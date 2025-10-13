@@ -106,7 +106,7 @@ final class ActivitiesViewModel: ObservableObject {
     }
     
     func loadActivities(forceRefresh: Bool = false) async {
-        if !forceRefresh && case .loaded = activities {
+        if !forceRefresh, case .loaded = activities {
             return // Already loaded
         }
         
