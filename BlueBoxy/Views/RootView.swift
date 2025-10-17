@@ -406,8 +406,9 @@ struct RootView: View {
     private func navigateToOnboardingAfterRegistration() async {
         // Always navigate new registrations to onboarding
         // The registration process clears the hasCompletedOnboarding flag
-        navigationCoordinator.navigateTo(.onboarding)
-        print("🎯 Navigated new registration to onboarding flow")
+        // Reset onboarding step to start from the beginning
+        navigationCoordinator.restartOnboarding()
+        print("🎯 Navigated new registration to onboarding flow (starting from welcome)")
     }
     
     // Store cancellables
