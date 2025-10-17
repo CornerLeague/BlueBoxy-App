@@ -387,6 +387,8 @@ final class NavigationCoordinator: ObservableObject {
                 }
                 processPendingDeepLink()
             } else {
+                // No onboarding completed OR new registration cleared the flag
+                // Always go to onboarding for new users
                 navigateTo(.onboarding)
             }
         } else {

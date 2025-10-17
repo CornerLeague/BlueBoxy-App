@@ -210,6 +210,9 @@ final class AuthViewModel: ObservableObject {
         // Post appropriate notification for navigation
         DispatchQueue.main.async {
             if isRegistration {
+                // Clear onboarding completion flag for new registrations
+                // to ensure they go through the onboarding flow
+                UserDefaults.standard.removeObject(forKey: "hasCompletedOnboarding")
                 NotificationCenter.default.post(name: .userDidRegister, object: user)
             } else {
                 NotificationCenter.default.post(name: .userDidLogin, object: user)

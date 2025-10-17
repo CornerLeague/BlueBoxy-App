@@ -558,7 +558,7 @@ struct RegisterView: View {
     }
     
     private var isLoading: Bool {
-        authViewModel.authState.isLoading
+        authViewModel.registrationState.isLoading
     }
     
     // MARK: - Actions
@@ -571,7 +571,7 @@ struct RegisterView: View {
                 name: name
             )
             
-            if case .failed(let error) = authViewModel.authState {
+            if case .failed(let error) = authViewModel.registrationState {
                 alertMessage = error.localizedDescription
                 showingAlert = true
             }
