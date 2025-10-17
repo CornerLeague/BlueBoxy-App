@@ -77,6 +77,12 @@ final class SessionViewModel: ObservableObject {
             user = env.user
             status = "Registered successfully"
             
+            // Clear onboarding flag and emit registration notification for new users
+            UserDefaults.standard.removeObject(forKey: "hasCompletedOnboarding")
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .userDidRegister, object: env.user)
+            }
+            
         } catch let apiError as APIServiceError {
             error = apiError
             status = apiError.localizedDescription

@@ -215,7 +215,7 @@ final class APIClient {
 
     private func addAuthentication(to request: inout URLRequest, endpoint: Endpoint) throws {
         if endpoint.requiresAuth {
-            guard let token = auth.authToken else {
+            guard let token = auth.authToken, !token.isEmpty else {
                 throw APIServiceError.missingAuth
             }
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")

@@ -207,7 +207,7 @@ extension AuthViewModel {
             let response: AuthEnvelope = try await apiClient.request(.authLogin(request))
             
             // Set up complete session using standard updateAuthenticationState
-            await updateAuthenticationState(user: response.user, token: response.token ?? "")
+            await updateAuthenticationState(user: response.user, token: response.token, refreshToken: response.refreshToken)
             
             // Cache user data
             cacheUserData(response.user)
@@ -248,7 +248,7 @@ extension AuthViewModel {
             let response = try await registrationService.register(request)
             
             // Set up complete session using standard updateAuthenticationState
-            await updateAuthenticationState(user: response.user, token: response.token ?? "")
+            await updateAuthenticationState(user: response.user, token: response.token, refreshToken: response.refreshToken, isRegistration: true)
             
             // Cache user data
             cacheUserData(response.user)

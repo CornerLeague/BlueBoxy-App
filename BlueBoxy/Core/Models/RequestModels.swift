@@ -20,6 +20,13 @@ struct RegisterRequest: Encodable {
     let partnerName: String?
     let relationshipDuration: String?
     let partnerAge: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case email, password, name
+        case partnerName = "partner_name"
+        case relationshipDuration = "relationship_duration"
+        case partnerAge = "partner_age"
+    }
 
     init(email: String,
          password: String,
@@ -455,9 +462,17 @@ extension CreateEventRequest {
          eventType: String = "date") {
         self.init(
             title: title,
+            description: nil,
+            location: nil,
             startTime: startTime,
             endTime: endTime,
-            eventType: eventType
+            allDay: nil,
+            eventType: eventType,
+            status: nil,
+            externalEventId: nil,
+            calendarProvider: nil,
+            reminders: nil,
+            metadata: nil
         )
     }
     
@@ -471,10 +486,17 @@ extension CreateEventRequest {
         
         self.init(
             title: title,
+            description: nil,
+            location: nil,
             startTime: startOfDay,
             endTime: endOfDay,
             allDay: true,
-            eventType: eventType
+            eventType: eventType,
+            status: nil,
+            externalEventId: nil,
+            calendarProvider: nil,
+            reminders: nil,
+            metadata: nil
         )
     }
 }

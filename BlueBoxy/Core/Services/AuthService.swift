@@ -77,6 +77,12 @@ class AuthService: ObservableObject {
             sessionStore.userId = response.user.id
             currentUser = response.user
             
+            // Clear onboarding flag and emit registration notification for new users
+            UserDefaults.standard.removeObject(forKey: "hasCompletedOnboarding")
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .userDidRegister, object: response.user)
+            }
+            
             return response.user
             
         } catch let apiError as APIServiceError {

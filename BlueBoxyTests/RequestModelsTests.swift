@@ -32,9 +32,14 @@ struct RequestModelsTests {
         #expect(json?["email"] as? String == "test@example.com")
         #expect(json?["password"] as? String == "password123")
         #expect(json?["name"] as? String == "Test User")
-        #expect(json?["partnerName"] as? String == "Test Partner")
-        #expect(json?["relationshipDuration"] as? String == "1 year")
-        #expect(json?["partnerAge"] as? Int == 25)
+        #expect(json?["partner_name"] as? String == "Test Partner")
+        #expect(json?["relationship_duration"] as? String == "1 year")
+        #expect(json?["partner_age"] as? Int == 25)
+        
+        // Verify no camelCase fields leak through
+        #expect(json?["partnerName"] == nil)
+        #expect(json?["relationshipDuration"] == nil)
+        #expect(json?["partnerAge"] == nil)
     }
     
     @Test func testRegisterRequestValidation() async throws {

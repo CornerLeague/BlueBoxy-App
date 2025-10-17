@@ -233,6 +233,62 @@ final class RegistrationServiceTests: XCTestCase {
         XCTAssertFalse(mockAPIClient.lastEndpoint?.requiresUser ?? true)
     }
     
+    // MARK: - Payload Consistency Tests
+    
+    func testRegisterRequestPayloadConsistency() throws {
+        // Test that legacy RegisterRequest now uses snake_case like RegistrationRequest
+        let legacyRequest = RegisterRequest(
+            email: "test@example.com",
+            password: "password123",
+            name: "Test User",
+            partnerName: "Test Partner",
+            relationshipDuration: "2 years",
+            partnerAge: 30
+        )
+        
+        let newRequest = RegistrationRequest(
+            email: "test@example.com",
+            password: "password123",
+            name: "Test User",
+            partnerName: "Test Partner",
+            personalityType: nil,
+            relationshipDuration: "2 years",
+            partnerAge: 30
+        )
+        
+        let encoder = JSONEncoder()
+        
+        // Encode both requests
+        let legacyData = try encoder.encode(legacyRequest)
+        let newData = try encoder.encode(newRequest)
+        
+        let legacyJSON = try JSONSerialization.jsonObject(with: legacyData) as! [String: Any]
+        let newJSON = try JSONSerialization.jsonObject(with: newData) as! [String: Any]
+        
+        // Both should use snake_case field mapping
+        XCTAssertEqual(legacyJSON["partner_name"] as? String, "Test Partner")
+        XCTAssertEqual(legacyJSON["relationship_duration"] as? String, "2 years")
+        XCTAssertEqual(legacyJSON["partner_age"] as? Int, 30)
+        
+        XCTAssertEqual(newJSON["partner_name"] as? String, "Test Partner")
+        XCTAssertEqual(newJSON["relationship_duration"] as? String, "2 years")
+        XCTAssertEqual(newJSON["partner_age"] as? Int, 30)
+        
+        // Neither should have camelCase fields
+        XCTAssertNil(legacyJSON["partnerName"])
+        XCTAssertNil(legacyJSON["relationshipDuration"])
+        XCTAssertNil(legacyJSON["partnerAge"])
+        
+        XCTAssertNil(newJSON["partnerName"])
+        XCTAssertNil(newJSON["relationshipDuration"])
+        XCTAssertNil(newJSON["partnerAge"])
+        
+        // Verify common fields are identical
+        XCTAssertEqual(legacyJSON["email"] as? String, newJSON["email"] as? String)
+        XCTAssertEqual(legacyJSON["password"] as? String, newJSON["password"] as? String)
+        XCTAssertEqual(legacyJSON["name"] as? String, newJSON["name"] as? String)
+    }
+    
     // MARK: - Error Handling Tests
     
     func testRegistrationErrorDescriptions() {

@@ -74,7 +74,7 @@ final class AuthViewModel: ObservableObject {
             let response = try await registrationService.register(request)
             
             // Update session and state
-            await updateAuthenticationState(user: response.user, token: response.token ?? "", isRegistration: true)
+            await updateAuthenticationState(user: response.user, token: response.token, refreshToken: response.refreshToken, isRegistration: true)
             registrationState = .loaded(response.user)
             
         } catch {
@@ -93,7 +93,7 @@ final class AuthViewModel: ObservableObject {
             let response: AuthEnvelope = try await apiClient.request(.authLogin(request))
             
             // Update session and state
-            await updateAuthenticationState(user: response.user, token: response.token ?? "")
+            await updateAuthenticationState(user: response.user, token: response.token, refreshToken: response.refreshToken)
             authState = .loaded(response.user)
             
         } catch {
@@ -187,7 +187,7 @@ final class AuthViewModel: ObservableObject {
         //     .store(in: &cancellables)
     }
     
-    internal func updateAuthenticationState(user: DomainUser, token: String, isRegistration: Bool = false) async {
+    internal func updateAuthenticationState(user: DomainUser, token: String?, refreshToken: String? = nil, isRegistration: Bool = false) async {
         // Convert DomainUser to BasicUser for SessionStore
         let basicUser = User(
             id: user.id,
@@ -198,12 +198,19 @@ final class AuthViewModel: ObservableObject {
             lastLoginAt: user.lastLoginAt
         )
         
-        // Update session store with complete user session
+        // Update session store with complete user session - only if we have a valid token
+        guard let authToken = token, !authToken.isEmpty else {
+            print("❌ Cannot set user session: missing or empty auth token")
+            // Clear any existing session if token is invalid
+            sessionStore.logout()
+            return
+        }
+        
         sessionStore.setUserSession(
             userId: user.id,
             user: basicUser,
-            authToken: token,
-            refreshToken: "" // Empty for now since we don't have refresh token from response
+            authToken: authToken,
+            refreshToken: refreshToken ?? "" // Use provided refresh token or empty string
         )
         
         // Update view model state

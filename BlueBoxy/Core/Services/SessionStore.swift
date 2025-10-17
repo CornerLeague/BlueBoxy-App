@@ -88,8 +88,9 @@ final class SessionStore: ObservableObject {
     ) {
         self.userId = userId
         self.currentUser = user
-        self.authToken = authToken
-        self.refreshToken = refreshToken
+        // Only set tokens if they are non-empty, otherwise set to nil
+        self.authToken = authToken.isEmpty ? nil : authToken
+        self.refreshToken = refreshToken.isEmpty ? nil : refreshToken
         self.sessionExpiryDate = expiryDate
         
         updateAuthenticationState()
@@ -102,8 +103,9 @@ final class SessionStore: ObservableObject {
     
     /// Update auth tokens and expiry
     func updateTokens(authToken: String, refreshToken: String, expiryDate: Date? = nil) {
-        self.authToken = authToken
-        self.refreshToken = refreshToken
+        // Only set tokens if they are non-empty, otherwise set to nil
+        self.authToken = authToken.isEmpty ? nil : authToken
+        self.refreshToken = refreshToken.isEmpty ? nil : refreshToken
         self.sessionExpiryDate = expiryDate
         
         updateAuthenticationState()
@@ -131,7 +133,7 @@ final class SessionStore: ObservableObject {
     /// Check if current session is valid
     func isSessionValid() -> Bool {
         guard userId != nil,
-              authToken != nil else {
+              let token = authToken, !token.isEmpty else {
             return false
         }
         
