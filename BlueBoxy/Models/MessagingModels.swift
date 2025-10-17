@@ -293,6 +293,8 @@ extension DomainUser {
             partnerName: partnerName
         )
     }
+    
+    // createComprehensiveMessageRequest is defined in MessageModelBridge.swift
 }
 
 // MARK: - Message Personalization Helpers
@@ -402,3 +404,45 @@ typealias GeneratedMessageResponse = MessageGenerationResponse
 
 /// Alias for MessageItem to maintain compatibility
 typealias Message = MessageItem
+
+// MARK: - Missing Service Types
+
+// MessageGenerationOptions is defined in MessagingNetworkClient.swift
+
+// MessageCategorySelector and MessageStatistics are defined in MessageModelBridge.swift
+
+// MARK: - Type Conversion Extensions
+
+extension EnhancedGeneratedMessage {
+    /// Convert to ComprehensiveGeneratedMessage for compatibility
+    func toComprehensiveMessage(with context: MessageGenerationContext? = nil) -> ComprehensiveGeneratedMessage {
+        let messageContext = context ?? MessageGenerationContext(
+            category: self.category,
+            personalityType: self.personalityMatch,
+            partnerName: "Partner", // Default value
+            timeOfDay: .current,
+            relationshipDuration: nil,
+            specialOccasion: nil
+        )
+        
+        let comprehensiveContext = ComprehensiveGeneratedMessage.MessageContext(
+            timeOfDay: messageContext.timeOfDay ?? .current,
+            relationshipDuration: messageContext.relationshipDuration,
+            recentContext: nil,
+            specialOccasion: messageContext.specialOccasion,
+            userPersonalityType: messageContext.personalityType,
+            partnerName: messageContext.partnerName
+        )
+        
+        return ComprehensiveGeneratedMessage(
+            id: self.id,
+            content: self.content,
+            category: MessageCategoryType(rawValue: self.category) ?? .dailyCheckins,
+            personalityMatch: self.personalityMatch,
+            tone: MessageTone.warm, // Default tone
+            estimatedImpact: MessageImpact.medium, // Default impact
+            context: comprehensiveContext,
+            generatedAt: self.generatedAt ?? Date()
+        )
+    }
+}

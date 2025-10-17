@@ -21,6 +21,9 @@ final class NavigationCoordinator: ObservableObject {
     @Published var showingModal: Bool = false
     @Published var modalRoute: AppRoute?
     
+    // Registration state tracking
+    @Published var isNewRegistration: Bool = false
+    
     // Tab navigation
     @Published var selectedTab: Int = 0
     @Published var tabRoutes: [AppRoute.MainRoute] = [.dashboard, .messages(.list), .calendar(.main), .profile(nil)]
@@ -124,7 +127,14 @@ final class NavigationCoordinator: ObservableObject {
     /// Complete onboarding flow
     func completeOnboarding() {
         UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
-        navigateTo(.main(.dashboard))
+        
+        // If user is already authenticated, go to main dashboard
+        // If not authenticated, redirect to registration page (not login)
+        if sessionStore.isAuthenticated {
+            navigateTo(.main(.dashboard))
+        } else {
+            navigateTo(.auth(.register))
+        }
     }
     
     /// Restart onboarding flow
@@ -193,7 +203,9 @@ final class NavigationCoordinator: ObservableObject {
         if route.requiresAuthentication && !sessionStore.isAuthenticated {
             // Store the intended route and redirect to auth
             UserDefaults.standard.set(route.urlString, forKey: "pendingDeepLinkRoute")
-            navigateTo(.auth(.login))
+            // If user has completed onboarding, send to register; otherwise login
+            let authRoute: AppRoute.AuthRoute = hasCompletedOnboarding ? .register : .login
+            navigateTo(.auth(authRoute))
             return
         }
         
@@ -215,7 +227,9 @@ final class NavigationCoordinator: ObservableObject {
             if sessionStore.isAuthenticated {
                 navigateTo(route)
             } else {
-                navigateTo(.auth(.login))
+                // If user has completed onboarding, send to register; otherwise login  
+                let authRoute: AppRoute.AuthRoute = hasCompletedOnboarding ? .register : .login
+                navigateTo(.auth(authRoute))
             }
         }
     }
@@ -328,6 +342,15 @@ final class NavigationCoordinator: ObservableObject {
                 self?.handleAuthenticationChange(isAuthenticated)
             }
             .store(in: &cancellables)
+        
+        // Listen for new user registration notifications
+        NotificationCenter.default
+            .publisher(for: .userDidRegister)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.isNewRegistration = true
+            }
+            .store(in: &cancellables)
     }
     
     private func setupInitialRoute() {
@@ -341,7 +364,8 @@ final class NavigationCoordinator: ObservableObject {
             }
         } else {
             if hasCompletedOnboarding {
-                currentRoute = .auth(.login)
+                // After completing onboarding, direct users to signup instead of login
+                currentRoute = .auth(.register)
             } else {
                 currentRoute = .onboarding
             }
@@ -350,9 +374,17 @@ final class NavigationCoordinator: ObservableObject {
     
     private func handleAuthenticationChange(_ isAuthenticated: Bool) {
         if isAuthenticated {
-            // User logged in
+            // User logged in or registered
             if hasCompletedOnboarding {
-                navigateTo(.main(.dashboard))
+                // Check if this is a new registration
+                if isNewRegistration {
+                    // New registration - navigate to assessment/questionnaire
+                    navigateTo(.main(.assessment(.start)))
+                    isNewRegistration = false // Reset the flag
+                } else {
+                    // Regular login - navigate to dashboard
+                    navigateTo(.main(.dashboard))
+                }
                 processPendingDeepLink()
             } else {
                 navigateTo(.onboarding)
@@ -361,9 +393,11 @@ final class NavigationCoordinator: ObservableObject {
             // User logged out
             navigationPath = NavigationPath()
             navigationHistory.removeAll()
+            isNewRegistration = false // Reset flag on logout
             
             if hasCompletedOnboarding {
-                navigateTo(.auth(.login))
+                // After completing onboarding, direct users to signup instead of login
+                navigateTo(.auth(.register))
             } else {
                 navigateTo(.onboarding)
             }

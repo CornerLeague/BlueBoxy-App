@@ -89,7 +89,7 @@ final class RetryableMessagingService: RetryableMessagingServiceProtocol, Observ
         
         return await withRetryAndFallback(
             operation: {
-                try await self.apiService.generateMessage(request: request)
+                try await self.apiService.generateMessages(request: request)
             },
             policy: policy,
             operationType: .messageGeneration,
@@ -108,7 +108,8 @@ final class RetryableMessagingService: RetryableMessagingServiceProtocol, Observ
         
         return await withRetryAndFallback(
             operation: {
-                try await self.apiService.fetchCategories()
+                let response = try await self.apiService.fetchMessageCategories()
+                return response.categories
             },
             policy: policy,
             operationType: .categoryLoading,
@@ -129,7 +130,7 @@ final class RetryableMessagingService: RetryableMessagingServiceProtocol, Observ
         // For saving, we use a different strategy - queue locally if network fails
         let result = await withRetryAndFallback(
             operation: {
-                try await self.apiService.saveMessage(message)
+                try await self.apiService.saveMessage(messageId: message.id)
             },
             policy: policy,
             operationType: .messageSaving,
@@ -150,7 +151,8 @@ final class RetryableMessagingService: RetryableMessagingServiceProtocol, Observ
         
         return await withRetryAndFallback(
             operation: {
-                try await self.apiService.fetchMessageHistory()
+                let response = try await self.apiService.fetchMessageHistory(limit: 50, offset: 0)
+                return response.messages.map { $0.message.toComprehensiveMessage() }
             },
             policy: policy,
             operationType: .historyLoading,
@@ -175,7 +177,7 @@ final class RetryableMessagingService: RetryableMessagingServiceProtocol, Observ
                 guard let self = self else {
                     throw NetworkError.unknown(status: nil)
                 }
-                return try await self.apiService.generateMessage(request: request)
+                return try await self.apiService.generateMessages(request: request)
             },
             policy: policy,
             operationType: .messageGeneration
@@ -193,7 +195,8 @@ final class RetryableMessagingService: RetryableMessagingServiceProtocol, Observ
                 guard let self = self else {
                     throw NetworkError.unknown(status: nil)
                 }
-                return try await self.apiService.fetchCategories()
+                let response = try await self.apiService.fetchMessageCategories()
+                return response.categories
             },
             policy: policy,
             operationType: .categoryLoading
@@ -564,14 +567,16 @@ final class DefaultFallbackProvider: MessagingFallbackProvider {
             category: fallbackMessage.category.rawValue,
             personalityMatch: fallbackMessage.personalityMatch,
             tone: fallbackMessage.tone.rawValue,
-            estimatedImpact: fallbackMessage.estimatedImpact.rawValue
+            estimatedImpact: fallbackMessage.estimatedImpact.rawValue,
+            createdAt: fallbackMessage.generatedAt
         )
         
         let response = MessageGenerationResponse(
             success: true,
             messages: [messageItem],
             context: ["generation_mode": "offline_fallback"],
-            error: nil
+            error: nil,
+            generatedAt: fallbackMessage.generatedAt
         )
         
         return .success(response)
@@ -583,21 +588,15 @@ final class DefaultFallbackProvider: MessagingFallbackProvider {
                 id: "general",
                 name: "General",
                 description: "General purpose messages",
-                icon: "message.circle",
-                color: .blue,
-                priority: 1,
-                personalityTags: ["professional", "friendly"],
-                contextualHints: ["Always available offline"]
+                emoji: "💬",
+                tags: ["professional", "friendly"]
             ),
             MessageCategory(
                 id: "followup",
                 name: "Follow-up",
                 description: "Following up on previous conversations",
-                icon: "arrow.clockwise.circle",
-                color: .green,
-                priority: 2,
-                personalityTags: ["persistent", "polite"],
-                contextualHints: ["Reference previous interaction"]
+                emoji: "🔄",
+                tags: ["persistent", "polite"]
             )
         ]
         
@@ -633,11 +632,11 @@ extension RetryableMessagingService {
 // Mock implementations for previews
 class MockMessagingAPIService: MessagingAPIServiceProtocol {
     func fetchMessageCategories() async throws -> MessageCategoriesResponse {
-        throw NetworkError.server("Mock server error")
+        throw NetworkError.server(message: "Mock server error")
     }
     
     func fetchEnhancedMessageCategories() async throws -> EnhancedMessageCategoriesResponse {
-        throw NetworkError.server("Mock server error")
+        throw NetworkError.server(message: "Mock server error")
     }
     
     func generateMessages(request: MessageGenerateRequest) async throws -> MessageGenerationResponse {

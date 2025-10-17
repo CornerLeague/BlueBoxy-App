@@ -82,13 +82,32 @@ struct ActivitiesView: View {
     private var headerSection: some View {
         VStack(spacing: 12) {
             // Search bar
-            SearchBar(
-                text: $searchText,
-                placeholder: "Search activities, categories, or tags..."
-            )
-            .onChange(of: searchText) { newValue in
-                viewModel.searchText = newValue
+            HStack {
+                Image(systemName: "magnifyingglass")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 16))
+                
+                TextField("Search activities, categories, or tags...", text: $searchText)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .onChange(of: searchText) {
+                        viewModel.searchText = searchText
+                    }
+                
+                if !searchText.isEmpty {
+                    Button(action: { searchText = "" }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 16))
+                    }
+                }
             }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.gray.opacity(0.1))
+                    .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+            )
             
             // Categories scroll view
             if !viewModel.categories.isEmpty {
@@ -157,15 +176,13 @@ struct ActivitiesView: View {
             case .loaded:
                 if viewModel.filteredActivities.isEmpty {
                     EmptyStateView(
-                        icon: "magnifyingglass",
                         title: "No Activities Found",
                         subtitle: searchText.isEmpty ? 
                             "Try adjusting your filters to see more activities." :
                             "No activities match your search '\(searchText)'.",
-                        primaryButton: EmptyStateView.Button(
-                            title: "Clear Filters",
-                            action: viewModel.clearAllFilters
-                        )
+                        systemImage: "magnifyingglass",
+                        actionTitle: "Clear Filters",
+                        action: viewModel.clearAllFilters
                     )
                 } else {
                     ActivitiesListView(
@@ -179,7 +196,7 @@ struct ActivitiesView: View {
             case .failed(let error):
                 ErrorView(
                     error: error,
-                    retryAction: {
+                    onRetry: {
                         Task {
                             await viewModel.loadActivities(forceRefresh: true)
                         }
@@ -304,6 +321,223 @@ struct QuickFilterButton: View {
     }
 }
 
+// MARK: - Activities List View
+
+struct ActivitiesListView: View {
+    let activities: [Activity]
+    let bookmarkedActivities: Set<Int>
+    let onBookmarkToggle: (Int) -> Void
+    let onActivitySelect: (Activity) -> Void
+    
+    var body: some View {
+        ScrollView {
+            LazyVStack(spacing: 16) {
+                ForEach(activities, id: \.id) { activity in
+                    ActivityListCard(
+                        activity: activity,
+                        isBookmarked: bookmarkedActivities.contains(activity.id),
+                        onBookmarkToggle: { onBookmarkToggle(activity.id) },
+                        onTap: { onActivitySelect(activity) }
+                    )
+                }
+            }
+            .padding()
+        }
+    }
+}
+
+// MARK: - Activity List Card
+
+struct ActivityListCard: View {
+    let activity: Activity
+    let isBookmarked: Bool
+    let onBookmarkToggle: () -> Void
+    let onTap: () -> Void
+    
+    var body: some View {
+        Button(action: onTap) {
+            VStack(alignment: .leading, spacing: 12) {
+                // Header with bookmark button
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(activity.name)
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.primary)
+                            .multilineTextAlignment(.leading)
+                        
+                        Text(activity.category.capitalized)
+                            .font(.caption)
+                            .fontWeight(.medium)
+                            .foregroundColor(.blue)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 2)
+                            .background(Color.blue.opacity(0.1))
+                            .clipShape(Capsule())
+                    }
+                    
+                    Spacer()
+                    
+                    Button(action: onBookmarkToggle) {
+                        Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
+                            .foregroundColor(isBookmarked ? .blue : .gray)
+                            .font(.title3)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+                
+                // Description
+                Text(activity.description)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(3)
+                
+                // Footer with rating and distance
+                HStack {
+                    if let rating = activity.rating {
+                        HStack(spacing: 2) {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.yellow)
+                                .font(.caption)
+                            Text(String(format: "%.1f", rating))
+                                .font(.caption)
+                                .fontWeight(.medium)
+                        }
+                    }
+                    
+                    if let distance = activity.distance {
+                        HStack(spacing: 2) {
+                            Image(systemName: "location")
+                                .foregroundColor(.gray)
+                                .font(.caption)
+                            Text(distance)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    // Personality match indicator
+                    if let matchScore = activity.personalityMatchScore, matchScore > 0.7 {
+                        HStack(spacing: 2) {
+                            Image(systemName: "heart.fill")
+                                .foregroundColor(.red)
+                                .font(.caption)
+                            Text("Great Match")
+                                .font(.caption)
+                                .fontWeight(.medium)
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
+            }
+            .padding()
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+// MARK: - Bookmarked Activities View
+
+struct BookmarkedActivitiesView: View {
+    @ObservedObject var viewModel: ActivitiesViewModel
+    @Environment(\.presentationMode) var presentationMode
+    @State private var selectedActivity: Activity?
+    
+    private var bookmarkedActivitiesList: [Activity] {
+        guard case .loaded(let allActivities) = viewModel.activities else { return [] }
+        return allActivities.filter { viewModel.bookmarkedActivities.contains($0.id) }
+    }
+    
+    var body: some View {
+        NavigationView {
+            ZStack {
+                Color.gray.opacity(0.05)
+                    .ignoresSafeArea()
+                
+                if bookmarkedActivitiesList.isEmpty {
+                    EmptyStateView(
+                        title: "No Bookmarked Activities",
+                        subtitle: "Activities you bookmark will appear here for quick access.",
+                        systemImage: "bookmark",
+                        actionTitle: "Explore Activities",
+                        action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    )
+                } else {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 16) {
+                            // Header
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text("\(bookmarkedActivitiesList.count) Bookmarked Activities")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                
+                                Text("Your saved activities for easy access")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(.horizontal)
+                            
+                            // Activities list
+                            LazyVStack(spacing: 16) {
+                                ForEach(bookmarkedActivitiesList, id: \.id) { activity in
+                                    ActivityListCard(
+                                        activity: activity,
+                                        isBookmarked: true,
+                                        onBookmarkToggle: {
+                                            viewModel.toggleBookmark(for: activity.id)
+                                        },
+                                        onTap: {
+                                            selectedActivity = activity
+                                        }
+                                    )
+                                }
+                            }
+                            .padding(.horizontal)
+                        }
+                        .padding(.vertical)
+                    }
+                }
+            }
+            .navigationTitle("Bookmarks")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Done") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    .fontWeight(.semibold)
+                }
+                
+                if !bookmarkedActivitiesList.isEmpty {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            Button("Clear All Bookmarks", role: .destructive) {
+                                // Clear all bookmarks
+                                for activity in bookmarkedActivitiesList {
+                                    viewModel.toggleBookmark(for: activity.id)
+                                }
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
+                        }
+                    }
+                }
+            }
+            .sheet(item: $selectedActivity) { activity in
+                ActivityDetailView(activity: activity, viewModel: viewModel)
+            }
+        }
+    }
+}
+
 // MARK: - Category Scroll View
 
 struct CategoryScrollView: View {
@@ -314,7 +548,7 @@ struct CategoryScrollView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach(categories, id: \.self) { category in
-                    CategoryButton(
+                    ActivityCategoryButton(
                         category: category,
                         isSelected: selectedCategory == category
                     ) {
@@ -323,6 +557,63 @@ struct CategoryScrollView: View {
                 }
             }
             .padding(.horizontal)
+        }
+    }
+}
+
+// MARK: - Activity Category Button
+
+struct ActivityCategoryButton: View {
+    let category: String
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 6) {
+                Image(systemName: categoryIcon)
+                    .font(.caption)
+                Text(category.capitalized)
+                    .font(.caption)
+                    .fontWeight(.medium)
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(
+                isSelected ? Color.blue.opacity(0.2) : Color.gray.opacity(0.1)
+            )
+            .foregroundColor(
+                isSelected ? .blue : .primary
+            )
+            .clipShape(Capsule())
+            .overlay(
+                Capsule()
+                    .stroke(
+                        isSelected ? Color.blue : Color.clear,
+                        lineWidth: 1.5
+                    )
+            )
+        }
+        .scaleEffect(isSelected ? 1.05 : 1.0)
+        .animation(.easeInOut(duration: 0.2), value: isSelected)
+    }
+    
+    private var categoryIcon: String {
+        switch category.lowercased() {
+        case "romantic":
+            return "heart.circle"
+        case "active":
+            return "figure.run.circle"
+        case "cultural":
+            return "building.columns.circle"
+        case "outdoor":
+            return "leaf.circle"
+        case "food":
+            return "fork.knife.circle"
+        case "entertainment":
+            return "tv.circle"
+        default:
+            return "tag.circle"
         }
     }
 }

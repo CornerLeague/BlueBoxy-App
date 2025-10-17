@@ -1,0 +1,16 @@
+// Release.xcconfig
+// Production Environment Configuration (Non-sensitive values only)
+BASE_URL = https://api.blueboxy.ai
+
+// iOS Deployment Target
+IPHONEOS_DEPLOYMENT_TARGET = 16.0
+
+// API Configuration (non-sensitive)
+OPENAI_BASE_URL = https://api.openai.com/v1
+XAI_BASE_URL = https://api.x.ai/v1
+
+// Production flags
+ENABLE_LOGGING = 0
+DEBUG_API_CALLS = 0
+
+// Optimizations are handled by Xcode default Release settings.

@@ -11,7 +11,7 @@ import Foundation
 // MARK: - Network Error
 
 /// User-facing network error that ViewModels should use
-enum NetworkError: Error, LocalizedError, Equatable {
+enum NetworkError: Error, LocalizedError, Equatable, Hashable, Codable {
     case unauthorized              // 401 - User needs to log in again
     case forbidden                 // 403 - User doesn't have permission
     case notFound                  // 404 - Resource doesn't exist
@@ -22,6 +22,79 @@ enum NetworkError: Error, LocalizedError, Equatable {
     case cancelled                // User cancelled the request
     case rateLimited              // 429 - Too many requests
     case unknown(status: Int?)    // Unexpected error
+    
+    // MARK: - Codable Implementation
+    
+    enum CodingKeys: String, CodingKey {
+        case type, message, status, details
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let type = try container.decode(String.self, forKey: .type)
+        
+        switch type {
+        case "unauthorized":
+            self = .unauthorized
+        case "forbidden":
+            self = .forbidden
+        case "notFound":
+            self = .notFound
+        case "badRequest":
+            let message = try container.decode(String.self, forKey: .message)
+            self = .badRequest(message: message)
+        case "server":
+            let message = try container.decode(String.self, forKey: .message)
+            self = .server(message: message)
+        case "decoding":
+            let details = try container.decode(String.self, forKey: .details)
+            self = .decoding(details)
+        case "connectivity":
+            let details = try container.decode(String.self, forKey: .details)
+            self = .connectivity(details)
+        case "cancelled":
+            self = .cancelled
+        case "rateLimited":
+            self = .rateLimited
+        case "unknown":
+            let status = try container.decodeIfPresent(Int.self, forKey: .status)
+            self = .unknown(status: status)
+        default:
+            self = .unknown(status: nil)
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        switch self {
+        case .unauthorized:
+            try container.encode("unauthorized", forKey: .type)
+        case .forbidden:
+            try container.encode("forbidden", forKey: .type)
+        case .notFound:
+            try container.encode("notFound", forKey: .type)
+        case .badRequest(let message):
+            try container.encode("badRequest", forKey: .type)
+            try container.encode(message, forKey: .message)
+        case .server(let message):
+            try container.encode("server", forKey: .type)
+            try container.encode(message, forKey: .message)
+        case .decoding(let details):
+            try container.encode("decoding", forKey: .type)
+            try container.encode(details, forKey: .details)
+        case .connectivity(let details):
+            try container.encode("connectivity", forKey: .type)
+            try container.encode(details, forKey: .details)
+        case .cancelled:
+            try container.encode("cancelled", forKey: .type)
+        case .rateLimited:
+            try container.encode("rateLimited", forKey: .type)
+        case .unknown(let status):
+            try container.encode("unknown", forKey: .type)
+            try container.encodeIfPresent(status, forKey: .status)
+        }
+    }
 
     var errorDescription: String? {
         switch self {
@@ -35,7 +108,7 @@ enum NetworkError: Error, LocalizedError, Equatable {
             return message.isEmpty ? "There was a problem with your request." : message
         case .server(let message):
             return message.isEmpty ? "We're experiencing server issues. Please try again later." : message
-        case .decoding(let details):
+        case .decoding(_):
             return "We couldn't process the server response. Please try again."
         case .connectivity(let details):
             return details.isEmpty ? "Please check your internet connection and try again." : details
@@ -239,6 +312,8 @@ struct ErrorMapper {
             return .unauthorized
         case .invalidURL:
             return .badRequest(message: "Invalid request configuration.")
+        case .noContent:
+            return .server(message: "Server returned no content when data was expected.")
         }
     }
     
@@ -280,13 +355,13 @@ extension NetworkError {
 // MARK: - Result Extensions
 
 extension Result where Failure == NetworkError {
-    /// Create a success result
-    static func success(_ value: Success) -> Result<Success, NetworkError> {
+    /// Create a success result with NetworkError as the failure type
+    static func networkSuccess(_ value: Success) -> Result<Success, NetworkError> {
         return .success(value)
     }
     
-    /// Create a failure result from any error
-    static func failure(_ error: Error) -> Result<Success, NetworkError> {
+    /// Create a failure result from any error, mapping it to NetworkError
+    static func networkFailure(_ error: Error) -> Result<Success, NetworkError> {
         return .failure(ErrorMapper.map(error))
     }
     

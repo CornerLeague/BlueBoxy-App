@@ -39,7 +39,7 @@ extension AuthViewModel {
         }
         
         print("🔄 Refreshing user session...")
-        authState = .loading
+        authState = .loading()
         
         do {
             // First, validate the current session
@@ -52,10 +52,18 @@ extension AuthViewModel {
             }
             
             // Fetch latest user data
-            let user: User = try await apiClient.request(.userProfile)
+            let user: DomainUser = try await apiClient.request(.userProfile())
             
-            // Update session store with fresh user data
-            sessionStore.updateUser(user)
+            // Update session store with fresh user data  
+            let basicUser = BasicUser(
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt,
+                lastLoginAt: user.lastLoginAt
+            )
+            sessionStore.updateUser(basicUser)
             
             // Update auth state
             authState = .loaded(user)
@@ -71,7 +79,7 @@ extension AuthViewModel {
                 case .unauthorized, .forbidden:
                     // Token is invalid, logout user
                     await handleSessionExpiry()
-                case .noConnection:
+                case .connectivity:
                     // Network issue, keep user logged in but show cached data
                     if let cachedUser = loadCachedUserData() {
                         authState = .loaded(cachedUser)
@@ -82,7 +90,7 @@ extension AuthViewModel {
                     authState = .failed(networkError)
                 }
             } else {
-                authState = .failed(error)
+                authState = .failed(ErrorMapper.map(error))
             }
         }
     }
@@ -161,9 +169,9 @@ extension AuthViewModel {
     
     /// Load cached user data from local storage
     @discardableResult
-    private func loadCachedUserData() -> User? {
+    private func loadCachedUserData() -> DomainUser? {
         guard let userData = UserDefaults.standard.data(forKey: "cachedUserData"),
-              let user = try? JSONDecoder().decode(User.self, from: userData) else {
+              let user = try? JSONDecoder().decode(DomainUser.self, from: userData) else {
             return nil
         }
         
@@ -172,7 +180,7 @@ extension AuthViewModel {
     }
     
     /// Cache user data to local storage
-    private func cacheUserData(_ user: User) {
+    private func cacheUserData(_ user: DomainUser) {
         if let userData = try? JSONEncoder().encode(user) {
             UserDefaults.standard.set(userData, forKey: "cachedUserData")
             print("💾 Cached user data")
@@ -191,21 +199,15 @@ extension AuthViewModel {
     @MainActor
     func enhancedLogin(email: String, password: String) async {
         print("🔐 Attempting login for: \(email)")
-        authState = .loading
+        authState = .loading()
         lastSessionRefresh = Date()
         
         do {
             let request = LoginRequest(email: email, password: password)
-            let response: LoginResponse = try await apiClient.request(.login(request))
+            let response: AuthEnvelope = try await apiClient.request(.authLogin(request))
             
-            // Set up complete session
-            sessionStore.setUserSession(
-                userId: response.user.id,
-                user: response.user,
-                authToken: response.accessToken,
-                refreshToken: response.refreshToken,
-                expiryDate: response.expiresAt
-            )
+            // Set up complete session using standard updateAuthenticationState
+            await updateAuthenticationState(user: response.user, token: response.token ?? "")
             
             // Cache user data
             cacheUserData(response.user)
@@ -220,7 +222,7 @@ extension AuthViewModel {
             
         } catch {
             print("❌ Login failed: \(error)")
-            authState = .failed(error)
+            authState = .failed(ErrorMapper.map(error))
             
             // Track failed login attempt
             trackLoginFailure(error: error)
@@ -231,27 +233,20 @@ extension AuthViewModel {
     @MainActor
     func enhancedRegister(email: String, password: String, name: String) async {
         print("📝 Attempting registration for: \(email)")
-        authState = .loading
+        authState = .loading()
         lastSessionRefresh = Date()
         
         do {
             let request = RegisterRequest(
                 email: email,
                 password: password,
-                name: name,
-                deviceInfo: getDeviceInfo()
+                name: name
             )
             
-            let response: RegisterResponse = try await apiClient.request(.register(request))
+            let response: AuthEnvelope = try await apiClient.request(.authRegister(request))
             
-            // Set up complete session
-            sessionStore.setUserSession(
-                userId: response.user.id,
-                user: response.user,
-                authToken: response.accessToken,
-                refreshToken: response.refreshToken,
-                expiryDate: response.expiresAt
-            )
+            // Set up complete session using standard updateAuthenticationState
+            await updateAuthenticationState(user: response.user, token: response.token ?? "")
             
             // Cache user data
             cacheUserData(response.user)
@@ -266,7 +261,7 @@ extension AuthViewModel {
             
         } catch {
             print("❌ Registration failed: \(error)")
-            authState = .failed(error)
+            authState = .failed(ErrorMapper.map(error))
             
             // Track failed registration attempt
             trackRegistrationFailure(error: error)
@@ -408,16 +403,7 @@ extension AuthViewModel {
         print("📊 Tracking logout")
     }
     
-    // MARK: - Device Info
-    
-    private func getDeviceInfo() -> DeviceInfo {
-        return DeviceInfo(
-            deviceType: "iOS",
-            deviceModel: UIDevice.current.model,
-            systemVersion: UIDevice.current.systemVersion,
-            appVersion: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
-        )
-    }
+    // MARK: - Device Info (Not currently used)
     
     // MARK: - Properties
     // Note: These properties should be defined in the main AuthViewModel class
@@ -425,13 +411,6 @@ extension AuthViewModel {
 }
 
 // MARK: - Supporting Models
-
-struct DeviceInfo: Codable {
-    let deviceType: String
-    let deviceModel: String
-    let systemVersion: String
-    let appVersion: String
-}
 
 struct ForgotPasswordRequest: Codable {
     let email: String

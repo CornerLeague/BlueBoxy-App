@@ -1,0 +1,998 @@
+{
+  "" : {
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxy-master.dia",
+    "emit-module-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxy-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxy-master-emit-module.dia",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxy-master.swiftdeps"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/BlueBoxyApp.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyApp.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyApp.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyApp.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyApp.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyApp.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyApp.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyApp.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyApp~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ContentView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/AppEnvironment.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppEnvironment.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppEnvironment.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppEnvironment.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppEnvironment.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppEnvironment.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppEnvironment.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppEnvironment.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppEnvironment~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Cache/CacheManager.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManager.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManager.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManager.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManager.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManager.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManager.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManager.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManager~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/DesignSystem/Button+DesignSystem.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Button+DesignSystem.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Button+DesignSystem.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Button+DesignSystem.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Button+DesignSystem.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Button+DesignSystem.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Button+DesignSystem.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Button+DesignSystem.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Button+DesignSystem~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/DesignSystem/DesignSystem.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DesignSystem.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DesignSystem.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DesignSystem.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DesignSystem.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DesignSystem.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DesignSystem.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DesignSystem.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DesignSystem~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/LoadableState.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/LoadableState.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/LoadableState.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/LoadableState.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/LoadableState.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/LoadableState.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/LoadableState.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/LoadableState.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/LoadableState~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/Activity.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Activity.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Activity.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Activity.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Activity.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Activity.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Activity.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Activity.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Activity~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/AnyDecodable.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodable.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodable.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodable.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodable.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodable.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodable.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodable.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodable~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/AnyDecodableExamples.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodableExamples.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodableExamples.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodableExamples.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodableExamples.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodableExamples.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodableExamples.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodableExamples.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AnyDecodableExamples~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/AuthModels.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthModels.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthModels.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthModels.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthModels.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthModels.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthModels.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthModels.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthModels~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/BackendModels.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BackendModels.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BackendModels.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BackendModels.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BackendModels.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BackendModels.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BackendModels.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BackendModels.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BackendModels~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/Event.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Event.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Event.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Event.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Event.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Event.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Event.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Event.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Event~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/ModelOptionalityGuide.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelOptionalityGuide.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelOptionalityGuide.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelOptionalityGuide.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelOptionalityGuide.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelOptionalityGuide.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelOptionalityGuide.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelOptionalityGuide.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelOptionalityGuide~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/ModelValidation.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelValidation.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelValidation.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelValidation.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelValidation.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelValidation.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelValidation.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelValidation.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ModelValidation~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/NamingConventions.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NamingConventions.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NamingConventions.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NamingConventions.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NamingConventions.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NamingConventions.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NamingConventions.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NamingConventions.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NamingConventions~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/Recommendation.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Recommendation.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Recommendation.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Recommendation.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Recommendation.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Recommendation.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Recommendation.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Recommendation.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Recommendation~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/RequestModels.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RequestModels.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RequestModels.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RequestModels.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RequestModels.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RequestModels.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RequestModels.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RequestModels.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RequestModels~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Models/User.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/User.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/User.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/User.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/User.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/User.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/User.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/User.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/User~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Networking/APIError.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIError.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIError.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIError.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIError.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIError.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIError.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIError.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIError~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Networking/APIExamples.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIExamples.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIExamples.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIExamples.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIExamples.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIExamples.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIExamples.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIExamples.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIExamples~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Networking/MockAPIClient.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MockAPIClient.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MockAPIClient.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MockAPIClient.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MockAPIClient.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MockAPIClient.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MockAPIClient.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MockAPIClient.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MockAPIClient~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Services/AuthService.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthService.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthService.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthService.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthService.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthService.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthService.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthService.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthService~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Services/SessionStore.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionStore.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionStore.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionStore.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionStore.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionStore.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionStore.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionStore.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionStore~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/Services/UserService.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UserService.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UserService.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UserService.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UserService.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UserService.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UserService.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UserService.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UserService~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/ViewModels/AuthView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/ViewModels/SessionViewModel.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionViewModel.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionViewModel.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionViewModel.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionViewModel.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionViewModel.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionViewModel.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionViewModel.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/SessionViewModel~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Models/AssessmentModels.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentModels.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentModels.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentModels.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentModels.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentModels.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentModels.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentModels.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentModels~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Models/MessageCategoryModels.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageCategoryModels.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageCategoryModels.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageCategoryModels.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageCategoryModels.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageCategoryModels.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageCategoryModels.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageCategoryModels.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageCategoryModels~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Models/MessageModelBridge.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageModelBridge.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageModelBridge.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageModelBridge.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageModelBridge.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageModelBridge.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageModelBridge.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageModelBridge.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageModelBridge~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Models/MessagingModels.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingModels.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingModels.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingModels.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingModels.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingModels.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingModels.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingModels.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingModels~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Navigation/AppRoute.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppRoute.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppRoute.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppRoute.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppRoute.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppRoute.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppRoute.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppRoute.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AppRoute~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Navigation/NavigationCoordinator.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NavigationCoordinator.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NavigationCoordinator.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NavigationCoordinator.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NavigationCoordinator.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NavigationCoordinator.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NavigationCoordinator.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NavigationCoordinator.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NavigationCoordinator~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/APIClient.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIClient.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIClient.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIClient.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIClient.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIClient.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIClient.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIClient.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIClient~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/APIConfiguration.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIConfiguration.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIConfiguration.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIConfiguration.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIConfiguration.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIConfiguration.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIConfiguration.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIConfiguration.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/APIConfiguration~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/CachedAPIClient.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CachedAPIClient.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CachedAPIClient.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CachedAPIClient.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CachedAPIClient.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CachedAPIClient.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CachedAPIClient.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CachedAPIClient.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CachedAPIClient~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/CalendarAPIClient.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarAPIClient.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarAPIClient.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarAPIClient.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarAPIClient.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarAPIClient.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarAPIClient.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarAPIClient.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarAPIClient~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/Endpoints.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Endpoints.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Endpoints.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Endpoints.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Endpoints.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Endpoints.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Endpoints.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Endpoints.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Endpoints~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/MessagingAPIConfig.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIConfig.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIConfig.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIConfig.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIConfig.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIConfig.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIConfig.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIConfig.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIConfig~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/MessagingAPIService.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIService.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIService.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIService.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIService.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIService.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIService.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIService.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingAPIService~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/MessagingNetworkClient.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingNetworkClient.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingNetworkClient.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingNetworkClient.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingNetworkClient.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingNetworkClient.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingNetworkClient.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingNetworkClient.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingNetworkClient~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/NetworkError.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NetworkError.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NetworkError.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NetworkError.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NetworkError.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NetworkError.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NetworkError.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NetworkError.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/NetworkError~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/ResponseCache.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ResponseCache.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ResponseCache.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ResponseCache.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ResponseCache.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ResponseCache.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ResponseCache.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ResponseCache.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ResponseCache~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Networking/RetryStrategy.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryStrategy.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryStrategy.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryStrategy.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryStrategy.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryStrategy.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryStrategy.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryStrategy.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryStrategy~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Resources/FixtureLoader.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/FixtureLoader.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/FixtureLoader.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/FixtureLoader.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/FixtureLoader.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/FixtureLoader.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/FixtureLoader.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/FixtureLoader.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/FixtureLoader~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Resources/PreviewContent/MessagesPreviewView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesPreviewView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesPreviewView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesPreviewView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesPreviewView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesPreviewView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesPreviewView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesPreviewView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesPreviewView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Resources/PreviewContent/PreviewData.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreviewData.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreviewData.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreviewData.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreviewData.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreviewData.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreviewData.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreviewData.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreviewData~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Services/BlueBoxyAPIService.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyAPIService.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyAPIService.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyAPIService.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyAPIService.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyAPIService.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyAPIService.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyAPIService.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BlueBoxyAPIService~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Services/EnhancedMessagingService.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedMessagingService.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedMessagingService.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedMessagingService.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedMessagingService.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedMessagingService.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedMessagingService.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedMessagingService.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedMessagingService~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Services/MessageStorageService.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageService.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageService.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageService.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageService.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageService.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageService.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageService.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageService~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Services/MessageStorageServiceProtocol.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageServiceProtocol.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageServiceProtocol.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageServiceProtocol.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageServiceProtocol.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageServiceProtocol.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageServiceProtocol.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageServiceProtocol.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageStorageServiceProtocol~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Services/OAuthService.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthService.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthService.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthService.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthService.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthService.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthService.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthService.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthService~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Services/RetryableMessagingService.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryableMessagingService.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryableMessagingService.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryableMessagingService.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryableMessagingService.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryableMessagingService.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryableMessagingService.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryableMessagingService.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RetryableMessagingService~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Services/URLSchemeHandler.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/URLSchemeHandler.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/URLSchemeHandler.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/URLSchemeHandler.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/URLSchemeHandler.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/URLSchemeHandler.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/URLSchemeHandler.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/URLSchemeHandler.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/URLSchemeHandler~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Support/Config/Environment.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Environment.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Environment.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Environment.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Environment.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Environment.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Environment.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Environment.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/Environment~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Support/Extensions/View+Extensions.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/View+Extensions.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/View+Extensions.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/View+Extensions.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/View+Extensions.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/View+Extensions.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/View+Extensions.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/View+Extensions.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/View+Extensions~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ViewModels/ActivitiesViewModel.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesViewModel.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesViewModel.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesViewModel.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesViewModel.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesViewModel.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesViewModel.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesViewModel.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesViewModel~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ViewModels/AssessmentViewModel.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentViewModel.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentViewModel.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentViewModel.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentViewModel.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentViewModel.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentViewModel.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentViewModel.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentViewModel~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ViewModels/AuthViewModel+Bootstrap.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel+Bootstrap.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel+Bootstrap.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel+Bootstrap.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel+Bootstrap.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel+Bootstrap.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel+Bootstrap.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel+Bootstrap.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel+Bootstrap~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ViewModels/AuthViewModel.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViewModel~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ViewModels/CalendarViewModel.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarViewModel.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarViewModel.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarViewModel.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarViewModel.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarViewModel.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarViewModel.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarViewModel.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarViewModel~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ViewModels/DashboardViewModel.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardViewModel.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardViewModel.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardViewModel.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardViewModel.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardViewModel.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardViewModel.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardViewModel.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardViewModel~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ViewModels/EnhancedDashboardViewModel.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedDashboardViewModel.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedDashboardViewModel.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedDashboardViewModel.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedDashboardViewModel.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedDashboardViewModel.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedDashboardViewModel.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedDashboardViewModel.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EnhancedDashboardViewModel~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ViewModels/MessagesViewModel.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesViewModel.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesViewModel.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesViewModel.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesViewModel.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesViewModel.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesViewModel.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesViewModel.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesViewModel~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ViewModels/OnboardingViewModel.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingViewModel.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingViewModel.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingViewModel.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingViewModel.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingViewModel.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingViewModel.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingViewModel.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingViewModel~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/ViewModels/RecommendationsViewModel.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsViewModel.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsViewModel.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsViewModel.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsViewModel.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsViewModel.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsViewModel.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsViewModel.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsViewModel~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Activities/ActivitiesView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivitiesView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Activities/ActivityDetailView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivityDetailView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivityDetailView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivityDetailView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivityDetailView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivityDetailView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivityDetailView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivityDetailView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ActivityDetailView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Assessment/AssessmentView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AssessmentView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Auth/AuthComponents.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthComponents.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthComponents.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthComponents.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthComponents.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthComponents.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthComponents.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthComponents.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthComponents~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Auth/AuthViews.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViews.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViews.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViews.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViews.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViews.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViews.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViews.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AuthViews~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Bootstrap/BootstrapViews.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BootstrapViews.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BootstrapViews.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BootstrapViews.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BootstrapViews.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BootstrapViews.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BootstrapViews.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BootstrapViews.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/BootstrapViews~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Calendar/CalendarEventsView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarEventsView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarEventsView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarEventsView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarEventsView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarEventsView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarEventsView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarEventsView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarEventsView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Calendar/CalendarMainView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarMainView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarMainView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarMainView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarMainView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarMainView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarMainView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarMainView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarMainView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Calendar/CalendarProviderListView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarProviderListView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarProviderListView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarProviderListView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarProviderListView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarProviderListView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarProviderListView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarProviderListView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CalendarProviderListView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Calendar/OAuthProgressView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthProgressView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthProgressView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthProgressView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthProgressView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthProgressView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthProgressView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthProgressView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OAuthProgressView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Components/AIInsightsSection.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIInsightsSection.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIInsightsSection.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIInsightsSection.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIInsightsSection.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIInsightsSection.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIInsightsSection.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIInsightsSection.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIInsightsSection~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Components/AIMessageCard.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIMessageCard.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIMessageCard.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIMessageCard.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIMessageCard.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIMessageCard.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIMessageCard.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIMessageCard.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/AIMessageCard~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Components/UIComponents.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UIComponents.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UIComponents.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UIComponents.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UIComponents.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UIComponents.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UIComponents.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UIComponents.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/UIComponents~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Dashboard/DashboardView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/DashboardView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Messages/EmptyStateView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EmptyStateView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EmptyStateView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EmptyStateView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EmptyStateView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EmptyStateView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EmptyStateView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EmptyStateView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EmptyStateView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Messages/MessageDetailView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageDetailView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageDetailView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageDetailView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageDetailView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageDetailView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageDetailView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageDetailView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageDetailView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Messages/MessageHistoryView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageHistoryView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageHistoryView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageHistoryView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageHistoryView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageHistoryView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageHistoryView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageHistoryView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessageHistoryView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Messages/MessagesView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagesView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Messages/MessagingComponents.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingComponents.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingComponents.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingComponents.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingComponents.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingComponents.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingComponents.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingComponents.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingComponents~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Messages/MessagingErrorViews.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingErrorViews.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingErrorViews.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingErrorViews.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingErrorViews.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingErrorViews.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingErrorViews.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingErrorViews.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/MessagingErrorViews~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Messages/StorageManagementView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/StorageManagementView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/StorageManagementView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/StorageManagementView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/StorageManagementView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/StorageManagementView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/StorageManagementView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/StorageManagementView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/StorageManagementView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Onboarding/OnboardingStepViews.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingStepViews.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingStepViews.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingStepViews.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingStepViews.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingStepViews.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingStepViews.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingStepViews.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingStepViews~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Onboarding/OnboardingView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/OnboardingView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Profile/EditProfileView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EditProfileView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EditProfileView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EditProfileView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EditProfileView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EditProfileView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EditProfileView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EditProfileView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/EditProfileView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Profile/PreferencesEditView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreferencesEditView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreferencesEditView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreferencesEditView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreferencesEditView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreferencesEditView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreferencesEditView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreferencesEditView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/PreferencesEditView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Profile/ProfileView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ProfileView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ProfileView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ProfileView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ProfileView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ProfileView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ProfileView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ProfileView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/ProfileView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Recommendations/RecommendationCards.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationCards.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationCards.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationCards.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationCards.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationCards.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationCards.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationCards.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationCards~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Recommendations/RecommendationDetailView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationDetailView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationDetailView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationDetailView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationDetailView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationDetailView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationDetailView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationDetailView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationDetailView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Recommendations/RecommendationSupportingViews.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationSupportingViews.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationSupportingViews.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationSupportingViews.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationSupportingViews.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationSupportingViews.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationSupportingViews.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationSupportingViews.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationSupportingViews~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Recommendations/RecommendationsView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RecommendationsView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/RootView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RootView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RootView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RootView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RootView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RootView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RootView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RootView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/RootView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Settings/CacheManagementView.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManagementView.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManagementView.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManagementView.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManagementView.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManagementView.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManagementView.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManagementView.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/CacheManagementView~partial.swiftmodule"
+  },
+  "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/newmac/Desktop/BlueBoxy/build/BlueBoxy.build/Debug-iphonesimulator/BlueBoxy.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

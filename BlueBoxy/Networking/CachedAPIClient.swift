@@ -243,7 +243,7 @@ private extension CachedAPIClient {
             case .notFound:
                 return .notFound
             case .server(let message):
-                return .server(message)
+                return .server(message: message)
             case .unknown(let status):
                 return .unknown(status: status)
             default:
@@ -294,7 +294,7 @@ private extension CachedAPIClient {
 extension APIClient {
     
     /// Get cached data with automatic fallback
-    func getCachedWithFallback<T: Decodable>(
+    func getCachedWithFallback<T: Codable>(
         _ endpoint: Endpoint,
         cache: ResponseCache = FileResponseCache(),
         cacheKey: String? = nil,
@@ -308,11 +308,11 @@ extension APIClient {
             policy: policy
         )
         
-        return await getCached(endpoint, configuration: config)
+        return await CachedAPIClient.shared.getCached(endpoint, configuration: config)
     }
     
     /// Get offline-friendly data (cache-first)
-    func getCachedOffline<T: Decodable>(
+    func getCachedOffline<T: Codable>(
         _ endpoint: Endpoint,
         cache: ResponseCache = FileResponseCache(),
         cacheKey: String? = nil
@@ -325,11 +325,11 @@ extension APIClient {
             policy: .conservative
         )
         
-        return await getCached(endpoint, configuration: config)
+        return await CachedAPIClient.shared.getCached(endpoint, configuration: config)
     }
     
     /// Force refresh data and update cache
-    func refreshAndCache<T: Decodable>(
+    func refreshAndCache<T: Codable>(
         _ endpoint: Endpoint,
         cache: ResponseCache = FileResponseCache(),
         cacheKey: String? = nil,
@@ -343,7 +343,7 @@ extension APIClient {
             policy: policy
         )
         
-        return await getCached(endpoint, configuration: config)
+        return await CachedAPIClient.shared.getCached(endpoint, configuration: config)
     }
 }
 

@@ -206,7 +206,7 @@ final class APIClient {
     func requestOptional<T: Decodable>(_ endpoint: Endpoint) async throws -> T? {
         do {
             return try await request(endpoint)
-        } catch APIServiceError.unknown(let status) where status == 204 {
+        } catch APIServiceError.noContent {
             return nil
         }
     }
@@ -244,13 +244,13 @@ final class APIClient {
             
             // Handle successful responses
             if (200..<300).contains(httpResponse.statusCode) {
-                // Handle empty responses
-                if T.self == Empty.self {
-                    return Empty() as! T
-                }
-                
                 // Handle 204 No Content
                 if httpResponse.statusCode == 204 {
+                    throw APIServiceError.noContent
+                }
+                
+                // Handle empty responses
+                if T.self == Empty.self {
                     return Empty() as! T
                 }
                 

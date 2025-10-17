@@ -28,7 +28,7 @@ struct PersonalityInsight: Codable {
 
 // MARK: - Full Domain User Model
 
-struct DomainUser: Decodable, Identifiable {
+struct DomainUser: Codable, Identifiable {
     let id: Int
     let email: String
     let name: String

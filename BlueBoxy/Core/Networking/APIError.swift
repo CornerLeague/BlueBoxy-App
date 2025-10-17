@@ -31,6 +31,7 @@ enum APIServiceError: Error, LocalizedError {
     case network(Error)
     case invalidURL
     case missingAuth
+    case noContent
     case unknown(status: Int)
 
     var errorDescription: String? {
@@ -44,6 +45,7 @@ enum APIServiceError: Error, LocalizedError {
         case .network(let e): return "Network error: \(e.localizedDescription)"
         case .invalidURL: return "Invalid URL"
         case .missingAuth: return "Missing authentication"
+        case .noContent: return "No content"
         case .unknown(let s): return "Unexpected status: \(s)"
         }
     }

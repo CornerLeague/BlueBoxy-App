@@ -333,7 +333,7 @@ extension Loadable {
     }
     
     /// Create a failed state from any error
-    static func failed(_ error: Error) -> Loadable<T> {
+    static func failedWithError(_ error: Error) -> Loadable<T> {
         return .failed(ErrorMapper.map(error))
     }
 }
@@ -410,7 +410,7 @@ extension Loadable {
         return publisher
             .map { Loadable.loaded($0) }
             .catch { error in
-                Just(Loadable.failed(error))
+                Just(Loadable.failed(ErrorMapper.map(error)))
             }
             .prepend(.loading())
             .eraseToAnyPublisher()

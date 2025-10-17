@@ -117,7 +117,7 @@ struct PreferencesResponse: Decodable {
 // Using Activity from Core/Models/Activity.swift
 
 // OpenAI simple recommendations (/api/recommendations/activities)
-struct SimpleRecommendation: Decodable {
+struct SimpleRecommendation: Codable {
     let title: String
     let description: String
     let category: String
@@ -138,7 +138,7 @@ struct LocationBasedGETResponse: Decodable {
 }
 
 // Grok (X.ai) recommendation item
-struct GrokActivityRecommendation: Decodable {
+struct GrokActivityRecommendation: Codable {
     let id: String
     let name: String
     let description: String
@@ -157,9 +157,9 @@ struct GrokActivityRecommendation: Decodable {
 }
 
 // POST /api/recommendations/location-based (Grok)
-struct GrokLocationPostResponse: Decodable {
+struct GrokLocationPostResponse: Codable {
     let success: Bool
-    let recommendations: [GrokActivityRecommendation]
+    var recommendations: [GrokActivityRecommendation] // Made mutable
     let canGenerateMore: Bool
     let generationsRemaining: Int
     let category: String
@@ -193,7 +193,7 @@ struct RecommendationCategoriesResponse: Decodable {
 }
 
 // AI-powered recommendations
-struct AIPoweredActivity: Decodable {
+struct AIPoweredActivity: Codable {
     let id: Int
     let name: String
     let description: String
@@ -205,13 +205,13 @@ struct AIPoweredActivity: Decodable {
     let location: String?
 }
 
-struct AIPoweredRecommendationsResponse: Decodable {
+struct AIPoweredRecommendationsResponse: Codable {
     let success: Bool
-    let recommendations: ActivitiesWrapper
+    var recommendations: ActivitiesWrapper
     let message: String
 
-    struct ActivitiesWrapper: Decodable {
-        let activities: [AIPoweredActivity]
+    struct ActivitiesWrapper: Codable {
+        var activities: [AIPoweredActivity] // Made mutable
     }
 }
 

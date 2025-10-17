@@ -30,7 +30,7 @@ struct AssessmentStepView: View {
             
             if viewModel.hasCompletedAssessment {
                 // Assessment completed view
-                AssessmentCompletedView()
+                AssessmentCompletedView(insight: nil, onSubmit: {}, isSubmitting: false)
                     .environmentObject(viewModel)
             } else {
                 // Assessment questions
@@ -78,14 +78,14 @@ struct AssessmentQuestionsView: View {
                     VStack(spacing: 12) {
                         ForEach(Array(question.options.enumerated()), id: \.offset) { index, option in
                             AssessmentOptionButton(
-                                option: option,
+                                option: option.text,
                                 isSelected: selectedAnswerIndex == index,
                                 action: {
                                     selectedAnswerIndex = index
                                     
                                     // Add slight delay for visual feedback
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                        viewModel.selectAssessmentAnswer(option)
+                                        viewModel.selectAssessmentAnswer(option.text)
                                         selectedAnswerIndex = nil
                                     }
                                 }
@@ -128,7 +128,7 @@ struct AssessmentOptionButton: View {
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? .blue : .ultraThinMaterial)
+                    .fill(isSelected ? .blue : Color.gray.opacity(0.1))
                     .stroke(
                         isSelected ? Color.blue : Color.gray.opacity(0.3),
                         lineWidth: isSelected ? 2 : 1
@@ -177,7 +177,7 @@ struct PersonalityDescriptionView: View {
         .padding(16)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(.ultraThinMaterial)
+                .fill(Color.gray.opacity(0.1))
                 .stroke(Color.gray.opacity(0.2), lineWidth: 1)
         )
         .padding(.horizontal, 24)
@@ -410,7 +410,7 @@ struct BudgetOptionButton: View {
             .padding(.vertical, 16)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(isSelected ? .blue : .ultraThinMaterial)
+                    .fill(isSelected ? .blue : Color.gray.opacity(0.1))
                     .stroke(
                         isSelected ? Color.blue : Color.gray.opacity(0.3),
                         lineWidth: isSelected ? 2 : 1
@@ -450,7 +450,7 @@ struct PreferenceTagButton: View {
             .padding(12)
             .background(
                 RoundedRectangle(cornerRadius: 10)
-                    .fill(isSelected ? .blue : .ultraThinMaterial)
+                    .fill(isSelected ? .blue : Color.gray.opacity(0.1))
                     .stroke(
                         isSelected ? Color.blue : Color.gray.opacity(0.3),
                         lineWidth: isSelected ? 2 : 1

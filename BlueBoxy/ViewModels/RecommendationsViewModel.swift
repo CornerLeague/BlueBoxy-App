@@ -159,11 +159,11 @@ final class RecommendationsViewModel: ObservableObject {
         ) {
             simpleRecs = .loaded(cachedRecs)
         } else {
-            simpleRecs = .loading
+            simpleRecs = .loading()
         }
         
         do {
-            let recs: [SimpleRecommendation] = try await apiClient.request(.recsActivities())
+            let recs: [SimpleRecommendation] = try await apiClient.request(.recommendationsActivities())
             let enhancedRecs = await enrichSimpleRecommendations(recs)
             simpleRecs = .loaded(enhancedRecs)
             
@@ -192,7 +192,7 @@ final class RecommendationsViewModel: ObservableObject {
         ) {
             aiPoweredRecs = .loaded(cachedRecs)
         } else {
-            aiPoweredRecs = .loading
+            aiPoweredRecs = .loading()
         }
         
         do {
@@ -202,7 +202,7 @@ final class RecommendationsViewModel: ObservableObject {
                 personalityContext: await getPersonalityContext(),
                 filters: createAPIFilters()
             )
-            let response: AIPoweredRecommendationsResponse = try await apiClient.request(.recsAIPowered(request))
+            let response: AIPoweredRecommendationsResponse = try await apiClient.request(.recommendationsActivities()) // TODO: Replace with correct AI-powered endpoint
             let enhancedResponse = await enrichAIPoweredRecommendations(response)
             aiPoweredRecs = .loaded(enhancedResponse)
             
@@ -226,11 +226,12 @@ final class RecommendationsViewModel: ObservableObject {
         // Try cache first
         if let cachedRecs = await cacheManager.load(
             for: cacheKey,
-            type: GrokLocationPostResponse.self
+            type: GrokLocationPostResponse.self,
+            strategy: .diskOnly()
         ) {
             grokRecs = .loaded(cachedRecs)
         } else {
-            grokRecs = .loading
+            grokRecs = .loading()
         }
         
         do {
@@ -240,7 +241,7 @@ final class RecommendationsViewModel: ObservableObject {
                 category: category,
                 filters: createGrokFilters()
             )
-            let response: GrokLocationPostResponse = try await apiClient.request(.recsLocationPOST(request))
+            let response: GrokLocationPostResponse = try await apiClient.request(.recommendationsLocationPOST(request))
             let enhancedResponse = await enrichGrokRecommendations(response)
             grokRecs = .loaded(enhancedResponse)
             
@@ -248,7 +249,7 @@ final class RecommendationsViewModel: ObservableObject {
             await cacheManager.save(
                 enhancedResponse,
                 for: cacheKey,
-                strategy: .memory(expiration: 300) // 5 minutes for location-based
+                strategy: .memoryOnly(expiration: 300) // 5 minutes for location-based
             )
         } catch {
             if case .loaded = grokRecs {
@@ -273,8 +274,8 @@ final class RecommendationsViewModel: ObservableObject {
         var enhanced = response
         enhanced.recommendations.activities = enhanced.recommendations.activities.map { activity in
             var enhancedActivity = activity
-            enhancedActivity.isFavorite = favoriteRecommendations.contains(activity.id)
-            enhancedActivity.isDismissed = dismissedRecommendations.contains(activity.id)
+            enhancedActivity.isFavorite = favoriteRecommendations.contains(String(activity.id))
+            enhancedActivity.isDismissed = dismissedRecommendations.contains(String(activity.id))
             return enhancedActivity
         }
         return enhanced
@@ -292,16 +293,31 @@ final class RecommendationsViewModel: ObservableObject {
     }
     
     private func getPersonalityContext() async -> PersonalityContext? {
-        guard let insight = await cacheManager.load(
+        // First try to get user data which contains personalityType
+        guard let user = await cacheManager.load(
+            for: "currentUser",
+            type: DomainUser.self
+        ), let personalityType = user.personalityType else { return nil }
+        
+        // Try to get insight details if available
+        if let insight = await cacheManager.load(
             for: CacheKey.personalityInsight,
             type: PersonalityInsight.self
-        ) else { return nil }
+        ) {
+            return PersonalityContext(
+                personalityType: personalityType,
+                loveLanguage: insight.loveLanguage,
+                communicationStyle: insight.communicationStyle,
+                idealActivities: insight.idealActivities
+            )
+        }
         
+        // Fallback with just personality type
         return PersonalityContext(
-            personalityType: insight.personalityType,
-            loveLanguage: insight.loveLanguage,
-            communicationStyle: insight.communicationStyle,
-            idealActivities: insight.idealActivities
+            personalityType: personalityType,
+            loveLanguage: "Unknown",
+            communicationStyle: "Unknown",
+            idealActivities: []
         )
     }
     
@@ -443,19 +459,19 @@ final class RecommendationsViewModel: ObservableObject {
     }
     
     private func clearRecommendationCaches() async {
-        await cacheManager.clear(for: CacheKey.simpleRecommendations)
+        await cacheManager.remove(for: CacheKey.simpleRecommendations)
         
         // Clear all AI-powered recommendation caches
         for category in categories {
             let cacheKey = "ai_recs_\(category.0)_\(userLocation?.latitude ?? 0)_\(userLocation?.longitude ?? 0)"
-            await cacheManager.clear(for: cacheKey)
+            await cacheManager.remove(for: cacheKey)
         }
         
         // Clear Grok caches
         if let location = userLocation {
             for category in categories {
                 let cacheKey = "grok_recs_\(category.0)_\(location.latitude)_\(location.longitude)"
-                await cacheManager.clear(for: cacheKey)
+                await cacheManager.remove(for: cacheKey)
             }
         }
     }
@@ -466,7 +482,9 @@ final class RecommendationsViewModel: ObservableObject {
         // Track user interactions for improving recommendations
         Task {
             do {
-                try await apiClient.request(.trackInteraction(interaction))
+                // For now, silently track interaction locally
+                // TODO: Implement trackInteraction endpoint
+                // try await apiClient.request(.trackInteraction(interaction))
             } catch {
                 // Silently fail analytics
             }

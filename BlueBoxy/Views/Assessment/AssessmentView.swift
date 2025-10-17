@@ -93,7 +93,7 @@ struct AssessmentView: View {
             } message: {
                 Text("You're \(Int(viewModel.progress * 100))% complete. Would you like to save your progress?")
             }
-            .alert("Submission Error", isPresented: .constant(viewModel.submissionState.hasFailed)) {
+            .alert("Submission Error", isPresented: .constant(viewModel.submissionState.isFailed)) {
                 Button("Retry") {
                     Task {
                         await viewModel.submitAssessment()
@@ -470,7 +470,7 @@ struct MultipleChoiceQuestion: View {
                     .padding(16)
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(.regularMaterial)
+                            .fill(Material.regularMaterial)
                             .stroke(selectedOptions.contains(option.id) ? .blue : .clear, lineWidth: 2)
                     )
                     .scaleEffect(selectedOptions.contains(option.id) ? 1.02 : 1.0)
@@ -545,7 +545,7 @@ struct ScaleQuestion: View {
                             .frame(width: 44, height: 44)
                             .background(
                                 Circle()
-                                    .fill(selectedValue == value ? .blue : .quaternary)
+                                    .fill(selectedValue == value ? .blue : Color.gray.opacity(0.3))
                             )
                             .scaleEffect(selectedValue == value ? 1.1 : 1.0)
                             .animation(.easeInOut(duration: 0.2), value: selectedValue)
@@ -638,7 +638,7 @@ struct RankingOptionRow: View {
         .padding(12)
         .background(
             RoundedRectangle(cornerRadius: 8)
-                .fill(isDragging ? .blue.opacity(0.1) : .regularMaterial)
+                .fill(isDragging ? Color.blue.opacity(0.1) : Color.gray.opacity(0.1))
         )
         .scaleEffect(isDragging ? 1.05 : 1.0)
         .animation(.easeInOut(duration: 0.2), value: isDragging)
@@ -709,7 +709,7 @@ struct TextInputQuestion: View {
                 get: { textValue },
                 set: { onTextChanged($0) }
             ), axis: .vertical)
-            .textFieldStyle(AuthTextFieldStyle())
+            .textFieldStyle(AuthTextFieldStyle(isFocused: isTextFieldFocused, validationState: .valid))
             .lineLimit(3...8)
             .focused($isTextFieldFocused)
             .padding(.horizontal)
@@ -772,7 +772,7 @@ struct AssessmentNavigationControls: View {
                 Button(questionsRemaining > 0 ? "Next" : "Complete") {
                     onNext()
                 }
-                .buttonStyle(PrimaryButtonStyle(isEnabled: canProceed))
+                .buttonStyle(PrimaryButtonStyle())
                 .frame(maxWidth: .infinity)
                 .disabled(!canProceed)
             }
@@ -835,7 +835,7 @@ struct AssessmentCompletedView: View {
                 Button("Save Results") {
                     onSubmit()
                 }
-                .buttonStyle(PrimaryButtonStyle(isLoading: isSubmitting))
+                .buttonStyle(PrimaryButtonStyle())
                 .disabled(isSubmitting)
             }
             .padding(.vertical, 32)

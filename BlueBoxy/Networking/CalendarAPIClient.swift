@@ -42,7 +42,10 @@ class CalendarAPIClient: ObservableObject {
         }
         
         var isLoading: Bool {
-            return self == .connecting
+            if case .connecting = self {
+                return true
+            }
+            return false
         }
         
         var connectedProviders: [CalendarProvider] {
@@ -188,8 +191,8 @@ class CalendarAPIClient: ObservableObject {
         connectionState = .connecting
         
         let startTime = Date()
-        let result = await executeRequest {
-            try await apiClient.request<CalendarProvidersResponse>(.calendarProviders())
+        let result: Result<CalendarProvidersResponse, CalendarAPIError> = await executeRequest {
+            try await self.apiClient.request<CalendarProvidersResponse>(.calendarProviders())
         }
         
         switch result {
@@ -223,8 +226,8 @@ class CalendarAPIClient: ObservableObject {
         }
         
         let startTime = Date()
-        let result = await executeRequest {
-            try await apiClient.request<CalendarConnectionResponse>(.calendarConnect(providerId: providerId))
+        let result: Result<CalendarConnectionResponse, CalendarAPIError> = await executeRequest {
+            try await self.apiClient.request<CalendarConnectionResponse>(.calendarConnect(providerId: providerId))
         }
         
         switch result {
@@ -248,8 +251,8 @@ class CalendarAPIClient: ObservableObject {
         let startTime = Date()
         let request = CalendarDisconnectRequest(userId: userId)
         
-        let result = await executeRequest {
-            try await apiClient.requestEmpty(.calendarDisconnect(request))
+        let result: Result<Void, CalendarAPIError> = await executeRequest {
+            try await self.apiClient.requestEmpty(.calendarDisconnect(request))
         }
         
         switch result {
@@ -273,8 +276,8 @@ class CalendarAPIClient: ObservableObject {
     /// Fetch events from calendar providers
     func fetchEvents(startDate: String, endDate: String) async -> Result<[Event], CalendarAPIError> {
         let startTime = Date()
-        let result = await executeRequest {
-            try await apiClient.request<EventsResponse>(.eventsList(startDate: startDate, endDate: endDate))
+        let result: Result<EventsResponse, CalendarAPIError> = await executeRequest {
+            try await self.apiClient.request<EventsResponse>(.eventsList(startDate: startDate, endDate: endDate))
         }
         
         switch result {
@@ -292,8 +295,8 @@ class CalendarAPIClient: ObservableObject {
     /// Create a new event
     func createEvent(_ request: CreateEventRequest) async -> Result<Event, CalendarAPIError> {
         let startTime = Date()
-        let result = await executeRequest {
-            try await apiClient.request<Event>(.eventsCreate(request))
+        let result: Result<Event, CalendarAPIError> = await executeRequest {
+            try await self.apiClient.request<Event>(.eventsCreate(request))
         }
         
         switch result {
@@ -311,8 +314,8 @@ class CalendarAPIClient: ObservableObject {
     /// Update an existing event
     func updateEvent(id: Int, request: CreateEventRequest) async -> Result<Event, CalendarAPIError> {
         let startTime = Date()
-        let result = await executeRequest {
-            try await apiClient.request<Event>(.eventsUpdate(id: id, request))
+        let result: Result<Event, CalendarAPIError> = await executeRequest {
+            try await self.apiClient.request<Event>(.eventsUpdate(id: id, request))
         }
         
         switch result {
@@ -330,8 +333,8 @@ class CalendarAPIClient: ObservableObject {
     /// Delete an event
     func deleteEvent(id: Int) async -> Result<Void, CalendarAPIError> {
         let startTime = Date()
-        let result = await executeRequest {
-            try await apiClient.requestEmpty(.eventsDelete(id: id))
+        let result: Result<Void, CalendarAPIError> = await executeRequest {
+            try await self.apiClient.requestEmpty(.eventsDelete(id: id))
         }
         
         switch result {
@@ -435,8 +438,8 @@ class CalendarAPIClient: ObservableObject {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         
-        let result = await executeRequest {
-            try await apiClient.request<CalendarEventsResponse>(.calendarEvents(
+        let result: Result<CalendarEventsResponse, CalendarAPIError> = await executeRequest {
+            try await self.apiClient.request<CalendarEventsResponse>(.calendarEvents(
                 providerId: provider.id,
                 startDate: formatter.string(from: startDate),
                 endDate: formatter.string(from: endDate)

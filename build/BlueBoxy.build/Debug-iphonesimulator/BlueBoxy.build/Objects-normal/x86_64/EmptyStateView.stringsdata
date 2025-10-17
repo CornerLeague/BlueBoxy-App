@@ -1,0 +1,64 @@
+{
+  "source": "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Messages/EmptyStateView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Tips to get started",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 83
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading message categories...",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 185
+        }
+      },
+      {
+        "comment": "",
+        "key": "Try Again",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 233
+        }
+      },
+      {
+        "comment": "",
+        "key": "Complete Your Profile",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 279
+        }
+      },
+      {
+        "comment": "",
+        "key": "Welcome to AI Messages",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 268
+        }
+      },
+      {
+        "comment": "",
+        "key": "To get personalized message suggestions, we need to know a bit about your relationship.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 272
+        }
+      },
+      {
+        "comment": "",
+        "key": "This helps us create messages that:",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 286
+        }
+      }
+    ]
+  },
+  "version": 1
+}

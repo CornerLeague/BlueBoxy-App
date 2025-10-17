@@ -381,6 +381,8 @@ struct MessageCategory: Codable, Identifiable {
         }
         return name
     }
+    
+    // toDetailedCategory is defined in MessageModelBridge.swift
 }
 
 struct MessageCategoriesResponse: Codable {

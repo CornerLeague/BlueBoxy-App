@@ -1,0 +1,96 @@
+{
+  "source": "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Views/Dashboard/DashboardView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Dashboard",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 60
+        }
+      },
+      {
+        "comment": "",
+        "key": "Good %@, %@",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ready to make today special?",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your Progress",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 138
+        }
+      },
+      {
+        "comment": "",
+        "key": "Quick Actions",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 230
+        }
+      },
+      {
+        "comment": "",
+        "key": "Suggested Activities",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 322
+        }
+      },
+      {
+        "comment": "",
+        "key": "See All",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 327
+        }
+      },
+      {
+        "comment": "",
+        "key": "Upcoming Events",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 433
+        }
+      },
+      {
+        "comment": "",
+        "key": "Calendar",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 438
+        }
+      },
+      {
+        "comment": "",
+        "key": "No upcoming events",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 545
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add Your First Event",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 549
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -2,7 +2,7 @@ import SwiftUI
 import PhotosUI
 
 struct EditProfileView: View {
-    @EnvironmentObject var authViewModel: AuthViewModel
+    @EnvironmentObject var authService: AuthService
     @Environment(\.dismiss) private var dismiss
     
     // Form fields
@@ -86,6 +86,24 @@ struct EditProfileView: View {
     
     // MARK: - Form Sections
     
+    @ViewBuilder
+    private var profileImageContent: some View {
+        if let profileImage = profileImage {
+            profileImage
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        } else {
+            // Default placeholder since user model doesn't have profileImageUrl
+            Circle()
+                .fill(.gray.opacity(0.3))
+                .overlay {
+                    Image(systemName: "person.fill")
+                        .font(.title)
+                        .foregroundStyle(.gray)
+                }
+        }
+    }
+    
     private var profileImageSection: some View {
         Section {
             HStack {
@@ -93,27 +111,7 @@ struct EditProfileView: View {
                 
                 VStack(spacing: 12) {
                     // Current profile image
-                    Group {
-                        if let profileImage = profileImage {
-                            profileImage
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                        } else {
-                            AsyncImage(url: URL(string: authViewModel.user?.profileImageUrl ?? "")) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                            } placeholder: {
-                                Circle()
-                                    .fill(.gray.opacity(0.3))
-                                    .overlay {
-                                        Image(systemName: "person.fill")
-                                            .font(.title)
-                                            .foregroundStyle(.gray)
-                                    }
-                            }
-                        }
-                    }
+                    profileImageContent
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
                     .overlay(
@@ -146,7 +144,10 @@ struct EditProfileView: View {
         Section("Personal Information") {
             VStack(alignment: .leading, spacing: 4) {
                 TextField("Your name", text: $name)
-                    .textFieldStyle(AuthTextFieldStyle())
+                    .textFieldStyle(AuthTextFieldStyle(
+                        isFocused: false,
+                        validationState: nameError.isEmpty ? .valid : .invalid(nameError)
+                    ))
                     .onChange(of: name) { _, _ in hasUnsavedChanges = true }
                 
                 if !nameError.isEmpty {
@@ -161,16 +162,25 @@ struct EditProfileView: View {
     private var relationshipDetailsSection: some View {
         Section("Relationship Details") {
             TextField("Partner's name (optional)", text: $partnerName)
-                .textFieldStyle(AuthTextFieldStyle())
+                .textFieldStyle(AuthTextFieldStyle(
+                    isFocused: false,
+                    validationState: .empty
+                ))
                 .onChange(of: partnerName) { _, _ in hasUnsavedChanges = true }
             
             TextField("How long together? (optional)", text: $relationshipDuration)
-                .textFieldStyle(AuthTextFieldStyle())
+                .textFieldStyle(AuthTextFieldStyle(
+                    isFocused: false,
+                    validationState: .empty
+                ))
                 .onChange(of: relationshipDuration) { _, _ in hasUnsavedChanges = true }
             
             VStack(alignment: .leading, spacing: 4) {
                 TextField("Partner's age (optional)", text: $partnerAge)
-                    .textFieldStyle(AuthTextFieldStyle())
+                    .textFieldStyle(AuthTextFieldStyle(
+                        isFocused: false,
+                        validationState: partnerAgeError.isEmpty ? .empty : .invalid(partnerAgeError)
+                    ))
                     .keyboardType(.numberPad)
                     .onChange(of: partnerAge) { _, _ in hasUnsavedChanges = true }
                 
@@ -185,7 +195,7 @@ struct EditProfileView: View {
     
     private var personalitySection: some View {
         Section("Personality Assessment") {
-            if let user = authViewModel.user, let personalityType = user.personalityType {
+            if let user = authService.currentUser, let personalityType = user.personalityType {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Current Type")
@@ -231,7 +241,7 @@ struct EditProfileView: View {
     // MARK: - Helper Methods
     
     private func loadUserData() {
-        guard let user = authViewModel.user else { return }
+        guard let user = authService.currentUser else { return }
         
         name = user.name
         partnerName = user.partnerName ?? ""
@@ -289,15 +299,18 @@ struct EditProfileView: View {
         
         do {
             // Create update request
-            let updateRequest = UserUpdateRequest(
+            let updateRequest = UpdateProfileRequest(
                 name: name.isEmpty ? nil : name,
                 partnerName: partnerName.isEmpty ? nil : partnerName,
                 relationshipDuration: relationshipDuration.isEmpty ? nil : relationshipDuration,
-                partnerAge: partnerAge.isEmpty ? nil : Int(partnerAge)
+                partnerAge: partnerAge.isEmpty ? nil : Int(partnerAge),
+                personalityType: nil,
+                preferences: nil,
+                location: nil
             )
             
-            // Update profile
-            try await authViewModel.updateProfile(updateRequest)
+            // Update profile through AuthService
+            try await authService.updateProfile(updateRequest)
             
             // Upload profile image if changed
             if let profileImage = profileImage {
@@ -328,5 +341,5 @@ struct UserUpdateRequest: Codable {
 
 #Preview {
     EditProfileView()
-        .environmentObject(AuthViewModel())
+        .environmentObject(AuthService())
 }

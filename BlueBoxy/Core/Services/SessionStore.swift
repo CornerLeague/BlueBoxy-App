@@ -357,6 +357,7 @@ final class SessionStore: ObservableObject {
 
 extension Notification.Name {
     static let userDidLogin = Notification.Name("userDidLogin")
+    static let userDidRegister = Notification.Name("userDidRegister")
     static let userDidLogout = Notification.Name("userDidLogout")
     static let userDataDidUpdate = Notification.Name("userDataDidUpdate")
     static let sessionWillExpire = Notification.Name("sessionWillExpire")

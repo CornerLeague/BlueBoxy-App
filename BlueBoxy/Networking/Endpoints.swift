@@ -83,7 +83,8 @@ extension Endpoint {
             path: "/api/assessment/submit",
             method: .POST,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -101,7 +102,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/assessment/results",
             method: .GET,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -121,7 +123,8 @@ extension Endpoint {
             path: "/api/messages/generate",
             method: .POST,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -132,7 +135,8 @@ extension Endpoint {
             method: .POST,
             headers: ["x-user-id": String(body.userId)],
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -145,7 +149,8 @@ extension Endpoint {
                 URLQueryItem(name: "limit", value: String(limit)),
                 URLQueryItem(name: "offset", value: String(offset))
             ],
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -154,7 +159,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/messages/\(messageId)/save",
             method: .POST,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -163,7 +169,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/messages/\(messageId)",
             method: .DELETE,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -172,7 +179,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/messages/\(messageId)/favorite",
             method: .POST,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -184,7 +192,8 @@ extension Endpoint {
             path: "/api/events",
             method: .POST,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -203,7 +212,8 @@ extension Endpoint {
             path: "/api/events",
             method: .GET,
             query: queryItems.isEmpty ? nil : queryItems,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -212,7 +222,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/events/\(id)",
             method: .GET,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -222,7 +233,8 @@ extension Endpoint {
             path: "/api/events/\(id)",
             method: .PUT,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -231,7 +243,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/events/\(id)",
             method: .DELETE,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -242,7 +255,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/recommendations/activities",
             method: .GET,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -258,7 +272,8 @@ extension Endpoint {
             path: "/api/recommendations/location-based",
             method: .GET,
             query: queryItems,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -268,7 +283,8 @@ extension Endpoint {
             path: "/api/recommendations/location-based",
             method: .POST,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -278,7 +294,8 @@ extension Endpoint {
             path: "/api/recommendations/drinks",
             method: .POST,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -288,7 +305,8 @@ extension Endpoint {
             path: "/api/recommendations/ai-powered",
             method: .POST,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -297,7 +315,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/recommendations/refresh",
             method: .POST,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -309,7 +328,8 @@ extension Endpoint {
             path: "/api/user/preferences",
             method: .POST,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -319,7 +339,8 @@ extension Endpoint {
             path: "/api/user/preferences",
             method: .PUT,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -328,7 +349,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/user/preferences",
             method: .GET,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -337,7 +359,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/user/preferences",
             method: .DELETE,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -348,7 +371,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/user/stats/0", // Path param ignored by server
             method: .GET,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -358,7 +382,8 @@ extension Endpoint {
             path: "/api/user/activity-summary",
             method: .GET,
             query: [URLQueryItem(name: "days", value: String(days))],
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -369,7 +394,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/calendar/providers",
             method: .GET,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -379,7 +405,8 @@ extension Endpoint {
             path: "/api/calendar/connect/\(providerId)",
             method: .POST,
             body: Empty(),
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -389,7 +416,8 @@ extension Endpoint {
             path: "/api/calendar/disconnect",
             method: .POST,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -402,7 +430,8 @@ extension Endpoint {
                 URLQueryItem(name: "startDate", value: startDate),
                 URLQueryItem(name: "endDate", value: endDate)
             ],
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -411,7 +440,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/calendar/sync/\(providerId)",
             method: .POST,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -420,7 +450,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/calendar/status",
             method: .GET,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -431,7 +462,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/user/profile",
             method: .GET,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -441,7 +473,8 @@ extension Endpoint {
             path: "/api/user/profile",
             method: .PUT,
             body: body,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -450,7 +483,8 @@ extension Endpoint {
         Endpoint(
             path: "/api/user/delete",
             method: .DELETE,
-            requiresUser: true
+            requiresUser: true,
+            requiresAuth: true
         )
     }
 }

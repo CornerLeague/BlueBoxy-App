@@ -22,9 +22,13 @@ final class AuthViewModel: ObservableObject {
     
     // MARK: - Dependencies
     
-    private let apiClient: APIClient
-    private let sessionStore: SessionStore
-    private var cancellables = Set<AnyCancellable>()
+    internal let apiClient: APIClient
+    internal let sessionStore: SessionStore
+    internal var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - Additional Properties
+    
+    @Published var lastSessionRefresh: Date?
     
     // MARK: - Initialization
     
@@ -67,7 +71,7 @@ final class AuthViewModel: ObservableObject {
             let response: AuthEnvelope = try await apiClient.request(.authRegister(request))
             
             // Update session and state
-            await updateAuthenticationState(user: response.user, token: response.token ?? "")
+            await updateAuthenticationState(user: response.user, token: response.token ?? "", isRegistration: true)
             registrationState = .loaded(response.user)
             
         } catch {
@@ -180,14 +184,37 @@ final class AuthViewModel: ObservableObject {
         //     .store(in: &cancellables)
     }
     
-    private func updateAuthenticationState(user: DomainUser, token: String) async {
-        // Update session store
-        sessionStore.userId = user.id
-        sessionStore.authToken = token
+    internal func updateAuthenticationState(user: DomainUser, token: String, isRegistration: Bool = false) async {
+        // Convert DomainUser to BasicUser for SessionStore
+        let basicUser = User(
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt,
+            lastLoginAt: user.lastLoginAt
+        )
+        
+        // Update session store with complete user session
+        sessionStore.setUserSession(
+            userId: user.id,
+            user: basicUser,
+            authToken: token,
+            refreshToken: "" // Empty for now since we don't have refresh token from response
+        )
         
         // Update view model state
         self.user = user
         self.isAuthenticated = true
+        
+        // Post appropriate notification for navigation
+        DispatchQueue.main.async {
+            if isRegistration {
+                NotificationCenter.default.post(name: .userDidRegister, object: user)
+            } else {
+                NotificationCenter.default.post(name: .userDidLogin, object: user)
+            }
+        }
     }
     
     private func clearAuthenticationState() {

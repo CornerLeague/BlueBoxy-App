@@ -1,0 +1,19 @@
+{
+  "user": {
+    "id": 1,
+    "email": "test@example.com",
+    "name": "Test User",
+    "partnerName": "Alex",
+    "relationshipDuration": "1 year",
+    "personalityType": "Thoughtful Harmonizer",
+    "personalityInsight": {
+      "description": "Alex values meaningful connection and calm conversations.",
+      "loveLanguage": "Quality Time",
+      "communicationStyle": "Direct and thoughtful",
+      "idealActivities": ["Deep conversations", "Shared hobbies", "Quiet time together"],
+      "stressResponse": "Prefers to talk through problems calmly"
+    },
+    "preferences": { "budget": "medium" },
+    "location": { "latitude": 37.77, "longitude": -122.42 }
+  }
+}

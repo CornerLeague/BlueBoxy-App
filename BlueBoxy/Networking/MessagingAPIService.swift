@@ -352,12 +352,14 @@ final class MessagingAPIService: MessagingAPIServiceProtocol {
                 return .serverError(message)
             case .network(let networkError):
                 return .networkError(networkError)
-            case .decodingError(let decodingError):
+            case .decoding(let decodingError):
                 return .decodingError(decodingError)
             case .missingAuth:
                 return .unauthorized
             case .invalidURL:
                 return .invalidConfiguration("Invalid API URL")
+            case .noContent:
+                return .notFound
             case .unknown(let status):
                 return .httpError(status)
             }
@@ -373,15 +375,50 @@ final class MessagingAPIService: MessagingAPIServiceProtocol {
     // MARK: - Caching Support
     
     private func getCachedResponse<T: Codable>(for key: String) async -> T? {
-        return await cache?.get(key: key)
+        guard let cache = cache else { return nil }
+        
+        // ResponseCache works synchronously and with Data
+        guard let data = cache.load(for: key) else { return nil }
+        
+        do {
+            let decoder = JSONDecoder()
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            #if DEBUG
+            print("📦 Cache decode error for \(key): \(error)")
+            #endif
+            // Remove invalid cached data
+            cache.remove(for: key)
+            return nil
+        }
     }
     
     private func setCachedResponse<T: Codable>(_ response: T, for key: String, ttl: TimeInterval) async {
-        await cache?.set(key: key, value: response, ttl: ttl)
+        guard let cache = cache else { return }
+        
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(response)
+            
+            // ResponseCache doesn't support TTL, so we just save the data
+            // TTL would need to be handled at the protocol level or with metadata
+            cache.save(data, for: key)
+            
+            #if DEBUG
+            print("💾 Cached response for key: \(key)")
+            #endif
+        } catch {
+            #if DEBUG
+            print("📦 Cache encode error for \(key): \(error)")
+            #endif
+        }
     }
     
     private func clearMessageCaches() async {
-        await cache?.remove(key: "message_categories")
+        guard let cache = cache else { return }
+        
+        // Clear message-related caches
+        cache.remove(for: "message_categories")
         // Clear other message-related caches as needed
     }
     

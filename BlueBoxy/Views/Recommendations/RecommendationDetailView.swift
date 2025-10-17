@@ -171,7 +171,6 @@ struct RecommendationDetailView: View {
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
             .background(.regularMaterial, in: Capsule())
-            .backdrop(blur: 10)
             .foregroundColor(.white)
     }
     
@@ -185,7 +184,7 @@ struct RecommendationDetailView: View {
                             .foregroundColor(.yellow)
                             .font(.subheadline)
                     }
-                    Text("(\(rating, specifier: "%.1f"))")
+                    Text(String(format: "(%.1f)", rating))
                         .font(.subheadline)
                         .foregroundColor(.white.opacity(0.9))
                 }
@@ -227,7 +226,7 @@ struct RecommendationDetailView: View {
                 QuickStatCard(
                     icon: "star.fill",
                     title: "Rating",
-                    value: "\(rating, specifier: "%.1f")",
+                    value: String(format: "%.1f", rating),
                     color: .yellow
                 )
             }
@@ -718,7 +717,7 @@ struct RecommendationDetailView: View {
     
     private func getId() -> String {
         switch recommendation {
-        case .aiPowered(let activity): return activity.id
+        case .aiPowered(let activity): return String(activity.id)
         case .grok(let rec): return rec.id
         case .simple(let rec): return rec.id ?? rec.title
         }
@@ -804,7 +803,7 @@ struct DetailInfoChip: View {
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
         .background(color.opacity(0.1))
-        .clipShape(RoundedRectangle(cornerRadius, 10))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 

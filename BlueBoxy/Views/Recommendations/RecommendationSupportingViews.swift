@@ -57,8 +57,8 @@ struct CategoryChip: View {
             .padding(.vertical, 10)
             .background(
                 isSelected ?
-                    AnyView(Color.blue) :
-                    AnyView(.regularMaterial)
+                    Color.blue :
+                    Color.gray.opacity(0.1)
             )
             .foregroundColor(isSelected ? .white : .primary)
             .clipShape(Capsule())
@@ -203,7 +203,7 @@ struct LocationPromptCard: View {
             .padding(.top, 8)
         }
         .padding(24)
-        .background(.regularMaterial)
+        .background(Material.regularMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 4)
     }
@@ -225,86 +225,11 @@ struct RecommendationFiltersView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
-                    // Distance Filter
-                    filterSection("Distance", icon: "location.circle") {
-                        VStack(spacing: 16) {
-                            HStack {
-                                Text("Maximum Distance")
-                                    .font(.subheadline)
-                                    .fontWeight(.medium)
-                                Spacer()
-                                Text("\(Int(localFilters.maxDistance)) miles")
-                                    .font(.subheadline)
-                                    .foregroundColor(.blue)
-                                    .fontWeight(.medium)
-                            }
-                            
-                            Slider(
-                                value: $localFilters.maxDistance,
-                                in: 1...50,
-                                step: 1
-                            ) {
-                                Text("Distance")
-                            } minimumValueLabel: {
-                                Text("1")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            } maximumValueLabel: {
-                                Text("50")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                            .accentColor(.blue)
-                        }
-                    }
-                    
-                    // Price Range Filter
-                    filterSection("Price Range", icon: "dollarsign.circle") {
-                        VStack(spacing: 8) {
-                            ForEach(RecommendationsViewModel.RecommendationFilters.PriceRange.allCases, id: \.rawValue) { range in
-                                FilterOptionRow(
-                                    title: range.displayName,
-                                    isSelected: localFilters.priceRange == range
-                                ) {
-                                    localFilters.priceRange = range
-                                }
-                            }
-                        }
-                    }
-                    
-                    // Time of Day Filter
-                    filterSection("Time of Day", icon: "clock") {
-                        VStack(spacing: 8) {
-                            ForEach(RecommendationsViewModel.RecommendationFilters.TimeOfDay.allCases, id: \.rawValue) { time in
-                                FilterOptionRow(
-                                    title: time.displayName,
-                                    isSelected: localFilters.timeOfDay == time
-                                ) {
-                                    localFilters.timeOfDay = time
-                                }
-                            }
-                        }
-                    }
-                    
-                    // Group Size Filter
-                    filterSection("Group Size", icon: "person.2") {
-                        VStack(spacing: 8) {
-                            ForEach(RecommendationsViewModel.RecommendationFilters.GroupSize.allCases, id: \.rawValue) { size in
-                                FilterOptionRow(
-                                    title: size.displayName,
-                                    isSelected: localFilters.groupSize == size
-                                ) {
-                                    localFilters.groupSize = size
-                                }
-                            }
-                        }
-                    }
-                    
-                    // Additional Options
-                    filterSection("Options", icon: "gear") {
-                        Toggle("Include Bookmarked Activities", isOn: $localFilters.includeBookmarked)
-                            .font(.subheadline)
-                    }
+                    distanceFilterSection
+                    priceRangeFilterSection
+                    timeOfDayFilterSection
+                    groupSizeFilterSection
+                    additionalOptionsSection
                 }
                 .padding()
             }
@@ -329,6 +254,92 @@ struct RecommendationFiltersView: View {
         }
     }
     
+    private var distanceFilterSection: some View {
+        filterSection("Distance", icon: "location.circle") {
+            VStack(spacing: 16) {
+                HStack {
+                    Text("Maximum Distance")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                    Spacer()
+                    Text("\(Int(localFilters.maxDistance)) miles")
+                        .font(.subheadline)
+                        .foregroundColor(.blue)
+                        .fontWeight(.medium)
+                }
+                
+                Slider(
+                    value: $localFilters.maxDistance,
+                    in: 1...50,
+                    step: 1
+                ) {
+                    Text("Distance")
+                } minimumValueLabel: {
+                    Text("1")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                } maximumValueLabel: {
+                    Text("50")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .accentColor(.blue)
+            }
+        }
+    }
+    
+    private var priceRangeFilterSection: some View {
+        filterSection("Price Range", icon: "dollarsign.circle") {
+            VStack(spacing: 8) {
+                ForEach(RecommendationsViewModel.RecommendationFilters.PriceRange.allCases, id: \.rawValue) { range in
+                    FilterOptionRow(
+                        title: range.displayName,
+                        isSelected: localFilters.priceRange == range
+                    ) {
+                        localFilters.priceRange = range
+                    }
+                }
+            }
+        }
+    }
+    
+    private var timeOfDayFilterSection: some View {
+        filterSection("Time of Day", icon: "clock") {
+            VStack(spacing: 8) {
+                ForEach(RecommendationsViewModel.RecommendationFilters.FilterTimeOfDay.allCases, id: \.rawValue) { time in
+                    FilterOptionRow(
+                        title: time.displayName,
+                        isSelected: localFilters.timeOfDay == time
+                    ) {
+                        localFilters.timeOfDay = time
+                    }
+                }
+            }
+        }
+    }
+    
+    private var groupSizeFilterSection: some View {
+        filterSection("Group Size", icon: "person.2") {
+            VStack(spacing: 8) {
+                ForEach(RecommendationsViewModel.RecommendationFilters.GroupSize.allCases, id: \.rawValue) { size in
+                    FilterOptionRow(
+                        title: size.displayName,
+                        isSelected: localFilters.groupSize == size
+                    ) {
+                        localFilters.groupSize = size
+                    }
+                }
+            }
+        }
+    }
+    
+    private var additionalOptionsSection: some View {
+        filterSection("Options", icon: "gear") {
+            Toggle("Include Bookmarked Activities", isOn: $localFilters.includeBookmarked)
+                .font(.subheadline)
+        }
+    }
+    
     private func filterSection<Content: View>(_ title: String, icon: String, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(spacing: 8) {
@@ -344,7 +355,7 @@ struct RecommendationFiltersView: View {
             content()
         }
         .padding()
-        .background(.regularMaterial)
+        .background(Material.regularMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
@@ -394,23 +405,23 @@ struct RecommendationStatsView: View {
             
             HStack(spacing: 16) {
                 StatCard(
+                    icon: "eye.fill",
                     title: "Total Seen",
                     value: "\(stats.totalRecommendations)",
-                    icon: "eye.fill",
                     color: .blue
                 )
                 
                 StatCard(
+                    icon: "heart.fill",
                     title: "Favorites",
                     value: "\(stats.favoriteCount)",
-                    icon: "heart.fill",
                     color: .red
                 )
                 
                 StatCard(
+                    icon: "eye.slash.fill",
                     title: "Hidden",
                     value: "\(stats.dismissedCount)",
-                    icon: "eye.slash.fill",
                     color: .gray
                 )
             }
@@ -503,7 +514,7 @@ struct CategoryStatsCard: View {
         }
         .padding()
         .background(
-            isSelected ? Color.blue.opacity(0.1) : .regularMaterial
+            isSelected ? Color.blue.opacity(0.1) : Color.gray.opacity(0.1)
         )
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay(

@@ -94,19 +94,17 @@ enum PreviewData {
                 id: domainUser.id,
                 email: domainUser.email,
                 name: domainUser.name,
-                personalityInsight: domainUser.personalityInsight
+                createdAt: domainUser.createdAt,
+                updatedAt: domainUser.updatedAt,
+                lastLoginAt: domainUser.lastLoginAt
             )
         }, fallback: BasicUser(
             id: 1,
             email: "preview@example.com",
             name: "Preview User",
-            personalityInsight: PersonalityInsight(
-                description: "Preview personality description",
-                loveLanguage: "Quality Time",
-                communicationStyle: "Direct and thoughtful",
-                idealActivities: ["Deep conversations", "Quiet activities"],
-                stressResponse: "Prefers calm discussion"
-            )
+            createdAt: Date().addingTimeInterval(-86400 * 30), // 30 days ago
+            updatedAt: Date().addingTimeInterval(-86400), // 1 day ago
+            lastLoginAt: Date() // now
         ))
     }
     

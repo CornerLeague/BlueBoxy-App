@@ -110,7 +110,7 @@ final class ActivitiesViewModel: ObservableObject {
             return // Already loaded
         }
         
-        activities = .loading
+        activities = .loading()
         
         // Try cache first if not forcing refresh
         if !forceRefresh {
@@ -446,11 +446,6 @@ enum QuickFilter: String, CaseIterable {
 // MARK: - Enhanced Activity Model
 
 extension Activity {
-    var personalityMatchScore: Double? {
-        get { return nil } // Would be stored in the actual model
-        set { } // Would be stored in the actual model
-    }
-    
     var estimatedPrice: Double? {
         // Parse price from description or use a dedicated field
         return nil // Would be implemented based on actual data structure

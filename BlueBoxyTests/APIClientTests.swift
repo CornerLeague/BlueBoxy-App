@@ -486,6 +486,76 @@ struct APIClientTests {
         #expect(duration < 1.0) // Less than 1 second
         #expect(MockURLProtocol.requestCount == 10)
     }
+    
+    // MARK: - 204 No Content Tests
+    
+    @Test func testRequestThrowsNoContentOn204() async throws {
+        let client = makeTestClient(userId: 123)
+        let endpoint = Endpoint.eventsDelete(id: 456)
+        
+        MockURLProtocol.handler = MockURLProtocol.successHandler(
+            for: "https://api.blueboxy.test/api/events/456",
+            statusCode: 204 // No content
+        )
+        
+        do {
+            let _: User = try await client.request(endpoint)
+            #expect(Bool(false), "Expected noContent error to be thrown")
+        } catch let error as APIServiceError {
+            switch error {
+            case .noContent:
+                break // Expected
+            default:
+                #expect(Bool(false), "Expected noContent error, got \(error)")
+            }
+        }
+        
+        #expect(MockURLProtocol.requestCount == 1)
+    }
+    
+    @Test func testRequestOptionalReturnsNilOn204() async throws {
+        let client = makeTestClient(userId: 123)
+        let endpoint = Endpoint.eventsDelete(id: 456)
+        
+        MockURLProtocol.handler = MockURLProtocol.successHandler(
+            for: "https://api.blueboxy.test/api/events/456",
+            statusCode: 204 // No content
+        )
+        
+        let result: User? = try await client.requestOptional(endpoint)
+        
+        #expect(result == nil)
+        #expect(MockURLProtocol.requestCount == 1)
+    }
+    
+    @Test func testRequestEmptySucceedsWithEmptyType() async throws {
+        let client = makeTestClient(userId: 123)
+        let endpoint = Endpoint.eventsDelete(id: 456)
+        
+        MockURLProtocol.handler = MockURLProtocol.successHandler(
+            for: "https://api.blueboxy.test/api/events/456",
+            statusCode: 200 // Success with empty body
+        )
+        
+        // Should not throw when expecting Empty type on 200
+        try await client.requestEmpty(endpoint)
+        #expect(MockURLProtocol.requestCount == 1)
+    }
+    
+    @Test func testRequestOptionalReturnsValueOnSuccess() async throws {
+        let client = makeTestClient()
+        let endpoint = Endpoint.authMe()
+        
+        MockURLProtocol.handler = try MockURLProtocol.fixtureHandler(
+            for: "https://api.blueboxy.test/api/auth/me",
+            fixtureName: "auth/me_success"
+        )
+        
+        let result: User? = try await client.requestOptional(endpoint)
+        
+        #expect(result != nil)
+        #expect(MockURLProtocol.requestCount == 1)
+    }
 }
 
 // MARK: - Test Helper Extensions

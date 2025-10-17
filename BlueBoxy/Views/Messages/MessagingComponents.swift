@@ -640,7 +640,7 @@ struct MessageHistoryPreviewCard: View {
                         .multilineTextAlignment(.leading)
                     
                     HStack {
-                        Text(historyItem.message.category.displayName)
+                        Text(historyItem.message.category.capitalized)
                             .font(.caption2)
                             .foregroundStyle(.secondary)
                         

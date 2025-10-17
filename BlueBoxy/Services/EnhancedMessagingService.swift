@@ -472,16 +472,17 @@ final class EnhancedMessagingService: EnhancedMessagingServiceProtocol {
         
         // Convert comprehensive messages to enhanced messages
         let historyItems = messages.compactMap { message -> MessageHistoryItem? in
-            // Convert ComprehensiveGeneratedMessage to EnhancedGeneratedMessage
-            let enhancedMessage = EnhancedGeneratedMessage(
+            // Convert ComprehensiveGeneratedMessage to MessageItem first, then to EnhancedGeneratedMessage
+            let messageItem = MessageItem(
                 id: message.id,
                 content: message.content,
                 category: message.category.rawValue,
                 personalityMatch: message.personalityMatch,
                 tone: message.tone.rawValue,
-                estimatedImpact: EnhancedGeneratedMessage.ImpactLevel(rawValue: message.estimatedImpact.rawValue) ?? .medium,
-                generatedAt: Date()
+                estimatedImpact: message.estimatedImpact.rawValue,
+                createdAt: Date()
             )
+            let enhancedMessage = EnhancedGeneratedMessage(from: messageItem)
             
             return MessageHistoryItem(
                 message: enhancedMessage,

@@ -300,7 +300,8 @@ struct RootView: View {
             }
         } else {
             if hasCompletedOnboarding {
-                navigationCoordinator.navigateTo(.auth(.login))
+                // After completing onboarding, direct users to signup instead of login
+                navigationCoordinator.navigateTo(.auth(.register))
             } else {
                 navigationCoordinator.navigateTo(.onboarding)
             }
@@ -315,8 +316,9 @@ struct RootView: View {
             let isStillValid = await appEnvironment.sessionStore.refreshSessionIfNeeded()
             
             if !isStillValid {
-                // Session expired, redirect to login
-                navigationCoordinator.navigateToAuth(.login)
+                // Session expired, redirect to appropriate auth screen based on onboarding status
+                let authRoute: AppRoute.AuthRoute = hasCompletedOnboarding ? .register : .login
+                navigationCoordinator.navigateToAuth(authRoute)
             } else {
                 // Refresh critical data
                 await appEnvironment.dashboardViewModel.loadDashboard()
@@ -331,6 +333,8 @@ struct RootView: View {
             .sink { _ in
                 Task {
                     await loadAuthenticatedUserData()
+                    // Navigate to main app after successful authentication
+                    await navigateToMainAppAfterAuth()
                 }
             }
             .store(in: &cancellables)
@@ -362,6 +366,18 @@ struct RootView: View {
         // Open App Store for update
         if let url = URL(string: "https://apps.apple.com/app/blueboxy/id123456789") {
             UIApplication.shared.open(url)
+        }
+    }
+    
+    @MainActor
+    private func navigateToMainAppAfterAuth() async {
+        // Navigate to main app after successful authentication
+        if hasCompletedOnboarding {
+            navigationCoordinator.navigateTo(.main(.dashboard))
+            print("🎯 Navigated to main dashboard after authentication")
+        } else {
+            navigationCoordinator.navigateTo(.onboarding)
+            print("🎯 Navigated to onboarding after authentication")
         }
     }
     

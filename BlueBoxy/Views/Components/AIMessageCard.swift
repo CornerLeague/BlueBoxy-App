@@ -342,38 +342,10 @@ struct MessageCustomizationView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Tone") {
-                    Picker("Message Tone", selection: $tone) {
-                        ForEach(MessageTone.allCases, id: \.self) { tone in
-                            HStack {
-                                Image(systemName: tone.icon)
-                                    .foregroundStyle(tone.color)
-                                Text(tone.displayName)
-                            }
-                            .tag(tone)
-                        }
-                    }
-                    .pickerStyle(WheelPickerStyle())
-                }
-                
-                Section("Length") {
-                    Picker("Message Length", selection: $length) {
-                        ForEach(MessageLength.allCases, id: \.self) { length in
-                            Text(length.displayName)
-                                .tag(length)
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
-                
-                Section("Style") {
-                    Toggle("Include Emojis", isOn: $includeEmojis)
-                }
-                
-                Section("Additional Instructions") {
-                    TextField("Any specific requests...", text: $customPrompt, axis: .vertical)
-                        .lineLimit(3...6)
-                }
+                toneSection
+                lengthSection
+                styleSection
+                instructionsSection
             }
             .navigationTitle("Customize Message")
             .navigationBarTitleDisplayMode(.inline)
@@ -392,6 +364,47 @@ struct MessageCustomizationView: View {
                     .disabled(isGenerating)
                 }
             }
+        }
+    }
+    
+    private var toneSection: some View {
+        Section("Tone") {
+            Picker("Message Tone", selection: $tone) {
+                ForEach(MessageTone.allCases, id: \.self) { messageTone in
+                    HStack {
+                        Text(messageTone.emoji)
+                        Text(messageTone.displayName)
+                            .foregroundStyle(messageTone.color)
+                    }
+                    .tag(messageTone)
+                }
+            }
+            .pickerStyle(WheelPickerStyle())
+        }
+    }
+    
+    private var lengthSection: some View {
+        Section("Length") {
+            Picker("Message Length", selection: $length) {
+                ForEach(MessageLength.allCases, id: \.self) { length in
+                    Text(length.displayName)
+                        .tag(length)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+        }
+    }
+    
+    private var styleSection: some View {
+        Section("Style") {
+            Toggle("Include Emojis", isOn: $includeEmojis)
+        }
+    }
+    
+    private var instructionsSection: some View {
+        Section("Additional Instructions") {
+            TextField("Any specific requests...", text: $customPrompt, axis: .vertical)
+                .lineLimit(3...6)
         }
     }
     

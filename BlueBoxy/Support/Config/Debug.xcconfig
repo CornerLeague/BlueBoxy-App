@@ -1,6 +1,6 @@
 // Debug.xcconfig
 // Environment Configuration (Non-sensitive values only)
-BASE_URL = http://localhost:5000
+BASE_URL = http://localhost:3001
 
 // Optional: use a distinct bundle id suffix for debug builds
 PRODUCT_BUNDLE_IDENTIFIER = ai.blueboxy.BlueBoxy.dev

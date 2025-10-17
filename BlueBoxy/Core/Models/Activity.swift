@@ -15,12 +15,14 @@ struct Activity: Codable, Identifiable {
     let location: String?
     let rating: Double?
     let distance: String?
-    let personalityMatch: String?
+    var personalityMatch: String?
+    var personalityMatchScore: Double?
     let imageUrl: String?
     
     enum CodingKeys: String, CodingKey {
         case id, name, description, category, location, rating, distance
         case personalityMatch = "personalityMatch"
+        case personalityMatchScore = "personalityMatchScore"
         case imageUrl = "imageUrl"
     }
 }

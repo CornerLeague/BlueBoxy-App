@@ -1,0 +1,136 @@
+{
+  "source": "/Users/newmac/Desktop/BlueBoxy/BlueBoxy/Core/ViewModels/AuthView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 133
+        }
+      },
+      {
+        "comment": "",
+        "key": "BlueBoxy",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 25
+        }
+      },
+      {
+        "comment": "",
+        "key": "Create Your Account",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Welcome Back",
+        "location": {
+          "startingColumn": 67,
+          "startingLine": 29
+        }
+      },
+      {
+        "comment": "",
+        "key": "Email",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 38
+        }
+      },
+      {
+        "comment": "",
+        "key": "Enter your email",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "Password",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "Enter your password",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your Name",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 62
+        }
+      },
+      {
+        "comment": "",
+        "key": "Enter your name",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 66
+        }
+      },
+      {
+        "comment": "",
+        "key": "Partner's Name (Optional)",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "Enter partner's name",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 76
+        }
+      },
+      {
+        "comment": "",
+        "key": "Personality Type (Optional)",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "e.g., ENFP",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "Already have an account? Sign In",
+        "location": {
+          "startingColumn": 45,
+          "startingLine": 112
+        }
+      },
+      {
+        "comment": "",
+        "key": "Don't have an account? Sign Up",
+        "location": {
+          "startingColumn": 82,
+          "startingLine": 112
+        }
+      }
+    ]
+  },
+  "version": 1
+}

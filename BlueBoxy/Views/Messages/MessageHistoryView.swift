@@ -563,27 +563,27 @@ struct StorageStatsHeaderView: View {
     var body: some View {
         HStack {
             StatItem(
+                title: "Messages",
                 value: "\(stats.totalMessages)",
-                label: "Messages",
-                color: .blue
+                icon: "message.fill"
             )
             
             StatItem(
+                title: "Favorites",
                 value: "\(stats.favoriteMessages)",
-                label: "Favorites",
-                color: .red
+                icon: "heart.fill"
             )
             
             StatItem(
+                title: "Storage",
                 value: String(format: "%.1f MB", stats.storageUsedMB),
-                label: "Storage",
-                color: .green
+                icon: "internaldrive.fill"
             )
             
             StatItem(
+                title: "Sessions",
                 value: "\(stats.generationRecords)",
-                label: "Sessions",
-                color: .purple
+                icon: "wand.and.rays"
             )
         }
         .padding(16)
