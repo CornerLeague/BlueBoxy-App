@@ -339,6 +339,20 @@ struct RootView: View {
             }
             .store(in: &cancellables)
         
+        // Listen for new user registrations
+        NotificationCenter.default.publisher(for: .userDidRegister)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                Task {
+                    // Refresh onboarding state from UserDefaults (registration clears this flag)
+                    await refreshOnboardingState()
+                    await loadAuthenticatedUserData()
+                    // Navigate to onboarding for new registrations
+                    await navigateToOnboardingAfterRegistration()
+                }
+            }
+            .store(in: &cancellables)
+        
         NotificationCenter.default.publisher(for: .userDidLogout)
             .receive(on: DispatchQueue.main)
             .sink { _ in
@@ -379,6 +393,21 @@ struct RootView: View {
             navigationCoordinator.navigateTo(.onboarding)
             print("🎯 Navigated to onboarding after authentication")
         }
+    }
+    
+    @MainActor
+    private func refreshOnboardingState() async {
+        // Refresh the onboarding completion state from UserDefaults
+        hasCompletedOnboarding = UserDefaults.standard.bool(forKey: "hasCompletedOnboarding")
+        print("🔄 Refreshed onboarding state: hasCompletedOnboarding = \(hasCompletedOnboarding)")
+    }
+    
+    @MainActor
+    private func navigateToOnboardingAfterRegistration() async {
+        // Always navigate new registrations to onboarding
+        // The registration process clears the hasCompletedOnboarding flag
+        navigationCoordinator.navigateTo(.onboarding)
+        print("🎯 Navigated new registration to onboarding flow")
     }
     
     // Store cancellables
