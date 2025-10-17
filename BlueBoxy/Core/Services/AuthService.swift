@@ -61,7 +61,8 @@ class AuthService: ObservableObject {
         defer { isLoading = false }
         
         do {
-            let request = SignUpRequest(
+            // Use centralized registration service for consistent endpoint and payload
+            let request = RegistrationRequest(
                 email: email,
                 password: password,
                 name: name,
@@ -69,13 +70,8 @@ class AuthService: ObservableObject {
                 personalityType: personalityType
             )
             
-            let endpoint = Endpoint(
-                path: "/auth/signup",
-                method: .POST,
-                body: request,
-                requiresUser: false
-            )
-            let response: AuthEnvelope = try await apiClient.request(endpoint)
+            let registrationService = RegistrationService(apiClient: apiClient)
+            let response = try await registrationService.register(request)
             
             // Store user ID in session
             sessionStore.userId = response.user.id

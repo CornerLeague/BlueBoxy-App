@@ -59,36 +59,18 @@ final class SessionViewModel: ObservableObject {
         error = nil
         status = "Registering..."
         
-        struct RegisterBody: Encodable {
-            let email: String
-            let password: String
-            let name: String
-            let partnerName: String?
-            let personalityType: String?
-            
-            enum CodingKeys: String, CodingKey {
-                case email, password, name
-                case partnerName = "partner_name"
-                case personalityType = "personality_type"
-            }
-        }
-        
         do {
-            let body = RegisterBody(
-                email: email, 
-                password: password, 
+            // Use centralized registration service for consistent endpoint and payload
+            let request = RegistrationRequest(
+                email: email,
+                password: password,
                 name: name,
                 partnerName: partnerName,
                 personalityType: personalityType
             )
             
-            let endpoint = Endpoint(
-                path: "/api/auth/register",
-                method: .POST,
-                body: body,
-                requiresUser: false
-            )
-            let env: AuthEnvelope = try await apiClient.request(endpoint)
+            let registrationService = RegistrationService(apiClient: apiClient)
+            let env = try await registrationService.register(request)
             
             // Update session
             sessionStore.userId = env.user.id

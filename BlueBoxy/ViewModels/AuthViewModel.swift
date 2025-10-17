@@ -59,16 +59,19 @@ final class AuthViewModel: ObservableObject {
         registrationState = .loading()
         
         do {
-            let request = RegisterRequest(
+            // Use centralized registration service for consistent endpoint and payload
+            let request = RegistrationRequest(
                 email: email,
                 password: password,
                 name: name,
                 partnerName: partnerName,
+                personalityType: nil, // AuthViewModel doesn't currently pass personalityType
                 relationshipDuration: relationshipDuration,
                 partnerAge: partnerAge
             )
             
-            let response: AuthEnvelope = try await apiClient.request(.authRegister(request))
+            let registrationService = RegistrationService(apiClient: apiClient)
+            let response = try await registrationService.register(request)
             
             // Update session and state
             await updateAuthenticationState(user: response.user, token: response.token ?? "", isRegistration: true)

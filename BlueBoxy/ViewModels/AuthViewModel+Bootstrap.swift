@@ -237,13 +237,15 @@ extension AuthViewModel {
         lastSessionRefresh = Date()
         
         do {
-            let request = RegisterRequest(
+            // Use centralized registration service for consistent endpoint and payload
+            let request = RegistrationRequest(
                 email: email,
                 password: password,
                 name: name
             )
             
-            let response: AuthEnvelope = try await apiClient.request(.authRegister(request))
+            let registrationService = RegistrationService(apiClient: apiClient)
+            let response = try await registrationService.register(request)
             
             // Set up complete session using standard updateAuthenticationState
             await updateAuthenticationState(user: response.user, token: response.token ?? "")
