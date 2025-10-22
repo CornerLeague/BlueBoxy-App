@@ -451,10 +451,10 @@ class EnhancedActivitiesViewModel: ObservableObject {
             print("🔧 Debug: Criteria - location: \(criteria.cityName ?? "none"), coordinates: \(currentLocation?.latitude ?? 0), \(currentLocation?.longitude ?? 0)")
             
             // Add timeout to prevent hanging (fast fallback to mock data)
-            let openAIResponse = try await withTimeout(seconds: 30) { [weak self] in
+            let openAIResponse = try await withTimeout(seconds: 75) { [weak self] in
                 guard let self = self else { throw URLError(.cancelled) }
                 return try await self.openAIService.findActivities(
-                    criteria: criteria, 
+                    criteria: criteria,
                     userPersonality: self.currentUser?.personalityInsight
                 )
             }
@@ -511,6 +511,9 @@ class EnhancedActivitiesViewModel: ObservableObject {
             
         } catch {
             let errorMessage = error.localizedDescription
+            if let urlError = error as? URLError, urlError.code == .timedOut || urlError.code == .cancelled {
+                print("⏳ OpenAI request timed out before receiving a response")
+            }
             print("❌ OpenAI failed: \(errorMessage)")
             print("🔧 Debug: Full error: \(error)")
             
