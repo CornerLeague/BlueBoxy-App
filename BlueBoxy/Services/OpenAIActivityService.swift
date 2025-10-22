@@ -150,12 +150,13 @@ class OpenAIActivityService: ObservableObject {
     
     private let defaultModel = "gpt-4" // or "gpt-3.5-turbo" for faster/cheaper responses
     private let maxRetries = 2
-    private let timeout: TimeInterval = 30 // Reasonable timeout for OpenAI
+    private let timeout: TimeInterval = 75 // Allow extra time for GPT-4 responses
     
     init() {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = timeout
         config.timeoutIntervalForResource = timeout * 2
+        config.waitsForConnectivity = true
         self.session = URLSession(configuration: config)
     }
     
