@@ -1,9 +1,0 @@
-{
-  "id": "google",
-  "name": "google",
-  "displayName": "Google Calendar",
-  "icon": "🔍",
-  "description": "Sync with your Google Calendar account",
-  "isConnected": false,
-  "status": "disconnected"
-}

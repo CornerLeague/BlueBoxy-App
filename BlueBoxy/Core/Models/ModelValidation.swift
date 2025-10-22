@@ -180,52 +180,54 @@ struct ModelValidation {
     
     // MARK: - Recommendation Validation
     
-    /// Validates GrokActivityRecommendation required fields
+    /// Validates Activity (AI-generated) required fields
     static func validateGrokActivityRecommendation(_ rec: GrokActivityRecommendation) -> ModelValidationResult {
         var issues: [String] = []
         
-        // Required fields
-        if rec.id.isEmpty {
-            issues.append("GrokActivityRecommendation.id is required")
-        }
-        
+        // Required fields - based on Activity model
         if rec.name.isEmpty {
-            issues.append("GrokActivityRecommendation.name is required")
+            issues.append("Activity.name is required")
         }
         
         if rec.description.isEmpty {
-            issues.append("GrokActivityRecommendation.description is required")
+            issues.append("Activity.description is required")
         }
         
         if rec.category.isEmpty {
-            issues.append("GrokActivityRecommendation.category is required")
+            issues.append("Activity.category is required")
         }
         
-        // Optional fields validation (when present, should be valid)
-        if let rating = rec.rating, rating < 0 || rating > 5 {
-            issues.append("GrokActivityRecommendation.rating when present should be between 0-5")
+        if (rec.location ?? "").isEmpty {
+            issues.append("Activity.location is required")
         }
         
-        if let distance = rec.distance, distance < 0 {
-            issues.append("GrokActivityRecommendation.distance when present should be non-negative")
+        if (rec.estimatedCost ?? "").isEmpty {
+            issues.append("Activity.estimatedCost is required")
         }
         
-        // String optionals validation
-        let stringOptionals: [(String?, String)] = [
-            (rec.price, "price"),
-            (rec.address, "address"), 
-            (rec.phone, "phone"),
-            (rec.website, "website"),
-            (rec.atmosphere, "atmosphere"),
-            (rec.estimatedCost, "estimatedCost"),
-            (rec.recommendedTime, "recommendedTime"),
-            (rec.personalityMatch, "personalityMatch")
-        ]
+        if (rec.duration ?? "").isEmpty {
+            issues.append("Activity.duration is required")
+        }
         
-        for (value, fieldName) in stringOptionals {
-            if let value = value, value.isEmpty {
-                issues.append("GrokActivityRecommendation.\(fieldName) when present should not be empty")
-            }
+        if (rec.bestTimeOfDay ?? "").isEmpty {
+            issues.append("Activity.bestTimeOfDay is required")
+        }
+        
+        if (rec.personalityMatch ?? "").isEmpty {
+            issues.append("Activity.personalityMatch is required")
+        }
+        
+        if (rec.whyRecommended ?? "").isEmpty {
+            issues.append("Activity.whyRecommended is required")
+        }
+        
+        // Array fields validation (optional)
+        if let tips = rec.tips, tips.isEmpty {
+            issues.append("Activity.tips when present should not be empty")
+        }
+        
+        if let alternatives = rec.alternatives, alternatives.isEmpty {
+            issues.append("Activity.alternatives when present should not be empty")
         }
         
         return ModelValidationResult(isValid: issues.isEmpty, issues: issues)

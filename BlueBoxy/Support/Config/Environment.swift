@@ -35,26 +35,29 @@ struct AppConfig {
     struct OpenAIConfig {
         /// Get OpenAI API key from secure storage or environment
         var apiKey: String {
-            // Try environment variable first (for development)
-            if let envKey = ProcessInfo.processInfo.environment["OPENAI_API_KEY"] {
-                return envKey
-            }
-            
-            // Try keychain (recommended for production)
+            // Try keychain first (recommended)
             if let keychainKey = KeychainHelper.shared.get(service: "BlueBoxy", account: "openai_api_key") {
                 return keychainKey
             }
             
-            // Fallback for development (replace with your dev key)
+            // Try environment variable
+            if let envKey = ProcessInfo.processInfo.environment["OPENAI_API_KEY"], !envKey.isEmpty {
+                return envKey
+            }
+            
+            // Fallback for development - API key is stored in keychain
             #if DEBUG
-            return "sk-dev-key-placeholder" // Replace this with your development key
+            // OpenAI API key saved in keychain for security
+            // If needed, update via: security add-generic-password -s BlueBoxy -a openai_api_key -w "your-key"
+            fatalError("OpenAI API key not configured. Please set OPENAI_API_KEY environment variable or save to keychain.")
             #else
-            fatalError("OpenAI API key not configured. Please set in environment or keychain.")
+            fatalError("OpenAI API key not configured. Please set OPENAI_API_KEY environment variable or save to keychain.")
             #endif
         }
         
         let baseURL = "https://api.openai.com/v1"
-        let model = "gpt-3.5-turbo"
+        // Using gpt-4 for better activity recommendations, or use gpt-3.5-turbo for cost savings
+        let model = "gpt-4"
     }
     
     struct XAIConfig {
@@ -69,7 +72,7 @@ struct AppConfig {
             }
             
             #if DEBUG
-            return "xai-dev-key-placeholder" // Replace this with your development key
+            fatalError("XAI API key not configured. Please set in environment or keychain.")
             #else
             fatalError("XAI API key not configured. Please set in environment or keychain.")
             #endif

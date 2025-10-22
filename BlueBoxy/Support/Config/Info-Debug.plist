@@ -56,8 +56,17 @@
 	</array>
 
 	<!-- Non-sensitive configuration from Debug.xcconfig -->
-	<key>BASE_URL</key>
-	<string>$(BASE_URL)</string>
+	<key>API_HOST</key>
+	<string>$(API_HOST)</string>
+	
+	<key>API_PORT</key>
+	<string>$(API_PORT)</string>
+	
+	<key>API_SCHEME</key>
+	<string>$(API_SCHEME)</string>
+	
+	<key>API_HOST_FALLBACK</key>
+	<string>$(API_HOST_FALLBACK)</string>
 	
 	<key>OPENAI_BASE_URL</key>
 	<string>$(OPENAI_BASE_URL)</string>
@@ -95,7 +104,7 @@
 				<true/>
 			</dict>
 			<!-- Mac IP address for device testing -->
-			<key>192.168.1.16</key>
+			<key>192.168.1.41</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>

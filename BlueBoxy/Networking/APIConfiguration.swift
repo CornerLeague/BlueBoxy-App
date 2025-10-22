@@ -10,16 +10,82 @@ import Foundation
 
 enum APIConfiguration {
     
-    /// Base URL loaded from Info.plist BASE_URL key (backed by xcconfig settings)
+    /// Base URL built from components to avoid xcconfig URL parsing issues
     static var baseURL: URL {
-        guard let urlString = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String,
-              !urlString.isEmpty,
-              let url = URL(string: urlString) else {
-            fatalError("BASE_URL missing or invalid in Info.plist. Check your xcconfig settings.")
+        // Strategy 1: Build from Info.plist components
+        let scheme = Bundle.main.object(forInfoDictionaryKey: "API_SCHEME") as? String
+        let host = Bundle.main.object(forInfoDictionaryKey: "API_HOST") as? String
+        let portString = Bundle.main.object(forInfoDictionaryKey: "API_PORT") as? String
+        let hostFallback = Bundle.main.object(forInfoDictionaryKey: "API_HOST_FALLBACK") as? String
+        
+        print("🔧 [APIConfiguration] API_SCHEME: '\(scheme ?? "nil")'")
+        print("🔧 [APIConfiguration] API_HOST: '\(host ?? "nil")'")
+        print("🔧 [APIConfiguration] API_PORT: '\(portString ?? "nil")'")
+        print("🔧 [APIConfiguration] API_HOST_FALLBACK: '\(hostFallback ?? "nil")'")
+        
+        // Strategy 2: Environment variable fallback
+        let envURL = ProcessInfo.processInfo.environment["BASE_URL"]
+        
+        let finalURL: URL
+        
+        // Try building from components first
+        if let scheme = scheme, !scheme.isEmpty, scheme != "$(API_SCHEME)",
+           let host = host, !host.isEmpty, host != "$(API_HOST)",
+           let portString = portString, !portString.isEmpty, portString != "$(API_PORT)",
+           let port = Int(portString) {
+            
+            var components = URLComponents()
+            components.scheme = scheme
+            components.host = host
+            components.port = port
+            
+            if let url = components.url {
+                finalURL = url
+                print("✅ [APIConfiguration] Built URL from components: \(finalURL)")
+            } else {
+                finalURL = fallbackURL(hostFallback: hostFallback)
+            }
+            
+        } else if let env = envURL, !env.isEmpty, let url = URL(string: env) {
+            // Environment variable fallback
+            finalURL = url
+            print("✅ [APIConfiguration] Using environment BASE_URL: \(finalURL)")
+            
+        } else {
+            // Development fallbacks
+            finalURL = fallbackURL(hostFallback: hostFallback)
         }
-        return url
+        
+        return finalURL
     }
     
+    /// Generate fallback URL based on target environment
+    private static func fallbackURL(hostFallback: String?) -> URL {
+        let fallbackURLString: String
+        
+        #if DEBUG
+        #if targetEnvironment(simulator)
+        fallbackURLString = "http://127.0.0.1:3001"
+        print("⚠️ [APIConfiguration] Using simulator fallback: \(fallbackURLString)")
+        #else
+        // Physical device - try fallback host or default IP
+        if let fallback = hostFallback, !fallback.isEmpty, fallback != "$(API_HOST_FALLBACK)" {
+            fallbackURLString = "http://\(fallback):3001"
+        } else {
+            fallbackURLString = "http://192.168.1.41:3001"
+        }
+        print("⚠️ [APIConfiguration] Using device fallback: \(fallbackURLString)")
+        #endif
+        #else
+        fatalError("API configuration missing in production build. Check your xcconfig settings.")
+        #endif
+        
+        guard let url = URL(string: fallbackURLString) else {
+            fatalError("Fallback URL has invalid format: \(fallbackURLString)")
+        }
+        
+        return url
+    }
     /// Default headers sent with every request
     static var defaultHeaders: [String: String] {
         [
@@ -29,22 +95,37 @@ enum APIConfiguration {
         ]
     }
     
-    /// Configured URLSession with appropriate timeouts and connectivity settings
+    /// Enhanced URLSession with networking best practices and debugging capabilities
     static var session: URLSession = {
         let configuration = URLSessionConfiguration.default
         
-        // Timeout settings
-        configuration.timeoutIntervalForRequest = 20 // seconds
-        configuration.timeoutIntervalForResource = 60 // seconds
+        // Enhanced timeout settings based on SwiftNIO research
+        configuration.timeoutIntervalForRequest = 30 // Increased for development servers
+        configuration.timeoutIntervalForResource = 90 // Extended for complex requests
         
-        // Network behavior
+        // Robust connectivity settings
         configuration.waitsForConnectivity = true
         configuration.allowsCellularAccess = true
         configuration.allowsExpensiveNetworkAccess = true
         configuration.allowsConstrainedNetworkAccess = true
         
-        // Cache policy
+        // Development-friendly cache policy
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+        configuration.urlCache = URLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024)
+        
+        // Enhanced HTTP settings
+        configuration.httpMaximumConnectionsPerHost = 4
+        configuration.httpShouldUsePipelining = false // Safer for debugging
+        configuration.httpCookieAcceptPolicy = .always
+        
+        // Development debugging enhancements
+        #if DEBUG
+        configuration.networkServiceType = .default
+        // Add debug protocols if available (from Pulse research)
+        if let debugProtocolClass = NSClassFromString("MockingURLProtocol") as? URLProtocol.Type {
+            configuration.protocolClasses = [debugProtocolClass] + (configuration.protocolClasses ?? [])
+        }
+        #endif
         
         return URLSession(configuration: configuration)
     }()

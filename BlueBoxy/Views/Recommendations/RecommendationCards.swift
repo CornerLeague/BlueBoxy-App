@@ -174,13 +174,13 @@ struct AIPoweredActivityCard: View {
             // Favorite button
             Button(action: onFavorite) {
                 HStack(spacing: 4) {
-                    Image(systemName: activity.isFavoriteValue ? "heart.fill" : "heart")
+                    Image(systemName: "heart")
                         .font(.subheadline)
-                    Text(activity.isFavoriteValue ? "Favorited" : "Favorite")
+                    Text("Favorite")
                         .font(.caption)
                         .fontWeight(.medium)
                 }
-                .foregroundColor(activity.isFavoriteValue ? .red : .secondary)
+                .foregroundColor(.secondary)
             }
             
             Spacer()
@@ -203,8 +203,7 @@ struct AIPoweredActivityCard: View {
     private var contextMenuItems: some View {
         Group {
             Button(action: onFavorite) {
-                Label(activity.isFavoriteValue ? "Remove from Favorites" : "Add to Favorites", 
-                      systemImage: activity.isFavoriteValue ? "heart.slash" : "heart")
+                Label("Add to Favorites", systemImage: "heart")
             }
             
             Button(action: {}) {
@@ -239,9 +238,9 @@ struct GrokRecommendationCard: View {
                 // Content section
                 contentSection
                 
-                // Specialties section
-                if let specialties = recommendation.specialties, !specialties.isEmpty {
-                    specialtiesSection(specialties)
+                // Tips section (using tips instead of specialties)
+                if let tips = recommendation.tips, !tips.isEmpty {
+                    tipsSection(tips)
                 }
                 
                 // Action bar
@@ -267,12 +266,13 @@ struct GrokRecommendationCard: View {
                         .foregroundColor(.primary)
                         .lineLimit(2)
                     
-                    if let address = recommendation.address {
+                    // Using location instead of address
+                    if let location = recommendation.location {
                         HStack(spacing: 4) {
                             Image(systemName: "location.fill")
                                 .font(.caption)
                                 .foregroundColor(.green)
-                            Text(address)
+                            Text(location)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                                 .lineLimit(1)
@@ -282,38 +282,36 @@ struct GrokRecommendationCard: View {
                 
                 Spacer()
                 
-                // Distance indicator
-                if let distance = recommendation.distance {
-                    VStack(alignment: .trailing, spacing: 2) {
-                        Text("\(String(format: "%.1f", distance)) mi")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.green)
-                        
-                        Image(systemName: "location.circle.fill")
-                            .font(.title3)
-                            .foregroundColor(.green)
-                    }
+                // Category indicator (no distance in new model)
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text(recommendation.category.capitalized)
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.blue)
+                    
+                    Image(systemName: "tag.circle.fill")
+                        .font(.title3)
+                        .foregroundColor(.blue)
                 }
             }
             
-            // Rating and price row
+            // Duration and cost row
             HStack(spacing: 16) {
-                if let rating = recommendation.rating {
+                // Duration
+                if let duration = recommendation.duration {
                     HStack(spacing: 2) {
-                        ForEach(0..<5, id: \.self) { star in
-                            Image(systemName: "star.fill")
-                                .font(.caption2)
-                                .foregroundColor(star < Int(rating) ? .yellow : .gray.opacity(0.3))
-                        }
-                        Text("(\(rating, specifier: "%.1f"))")
+                        Image(systemName: "clock")
+                            .font(.caption2)
+                            .foregroundColor(.blue)
+                        Text(duration)
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
                 }
                 
-                if let price = recommendation.price {
-                    Text(price)
+                // Estimated cost
+                if let cost = recommendation.estimatedCost {
+                    Text(cost)
                         .font(.caption)
                         .fontWeight(.medium)
                         .padding(.horizontal, 8)
@@ -340,22 +338,22 @@ struct GrokRecommendationCard: View {
             .padding(.top, 8)
     }
     
-    private func specialtiesSection(_ specialties: [String]) -> some View {
+    private func tipsSection(_ tips: [String]) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
-                ForEach(specialties.prefix(4), id: \.self) { specialty in
-                    Text(specialty)
+                ForEach(tips.prefix(4), id: \.self) { tip in
+                    Text(tip)
                         .font(.caption)
                         .fontWeight(.medium)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
-                        .background(Color.green.opacity(0.1))
-                        .foregroundColor(.green)
+                        .background(Color.blue.opacity(0.1))
+                        .foregroundColor(.blue)
                         .clipShape(Capsule())
                 }
                 
-                if specialties.count > 4 {
-                    Text("+\(specialties.count - 4) more")
+                if tips.count > 4 {
+                    Text("+\(tips.count - 4) more")
                         .font(.caption)
                         .fontWeight(.medium)
                         .padding(.horizontal, 8)
@@ -375,13 +373,13 @@ struct GrokRecommendationCard: View {
             // Favorite button
             Button(action: onFavorite) {
                 HStack(spacing: 4) {
-                    Image(systemName: recommendation.isFavoriteValue ? "heart.fill" : "heart")
+                    Image(systemName: "heart")
                         .font(.subheadline)
-                    Text(recommendation.isFavoriteValue ? "Favorited" : "Favorite")
+                    Text("Favorite")
                         .font(.caption)
                         .fontWeight(.medium)
                 }
-                .foregroundColor(recommendation.isFavoriteValue ? .red : .secondary)
+                .foregroundColor(.secondary)
             }
             
             Spacer()
@@ -406,8 +404,7 @@ struct GrokRecommendationCard: View {
     private var contextMenuItems: some View {
         Group {
             Button(action: onFavorite) {
-                Label(recommendation.isFavoriteValue ? "Remove from Favorites" : "Add to Favorites", 
-                      systemImage: recommendation.isFavoriteValue ? "heart.slash" : "heart")
+                Label("Add to Favorites", systemImage: "heart")
             }
             
             Button(action: {}) {
@@ -473,12 +470,15 @@ struct SimpleRecommendationCard: View {
                         
                         Spacer()
                         
-                        // Favorite indicator
-                        if recommendation.isFavoriteValue {
+                        // Favorite indicator - placeholder
+                        // TODO: Implement favorite functionality
+                        /*
+                        if recommendation.isFavorite {
                             Image(systemName: "heart.fill")
                                 .font(.caption)
                                 .foregroundColor(.red)
                         }
+                        */
                     }
                 }
                 
@@ -527,8 +527,7 @@ struct SimpleRecommendationCard: View {
     private var contextMenuItems: some View {
         Group {
             Button(action: onFavorite) {
-                Label(recommendation.isFavoriteValue ? "Remove from Favorites" : "Add to Favorites", 
-                      systemImage: recommendation.isFavoriteValue ? "heart.slash" : "heart")
+                Label("Add to Favorites", systemImage: "heart")
             }
             
             Button(action: {}) {
@@ -678,24 +677,18 @@ extension AIPoweredActivity {
         return 0.85
     }
     
-    var isFavoriteValue: Bool {
-        // Would be part of actual model - temporary mock
-        return false
-    }
+    // TODO: Implement favorite functionality
+    // var isFavorite: Bool = false
 }
 
 extension GrokActivityRecommendation {
-    var isFavoriteValue: Bool {
-        // Would be part of actual model - temporary mock
-        return false
-    }
+    // TODO: Implement favorite functionality
+    // var isFavorite: Bool = false
 }
 
 extension SimpleRecommendation {
-    var isFavoriteValue: Bool {
-        // Would be part of actual model - temporary mock
-        return false
-    }
+    // TODO: Implement favorite functionality
+    // var isFavorite: Bool = false
 }
 
 #Preview("AI-Powered Card") {

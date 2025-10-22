@@ -205,33 +205,71 @@ struct RootView: View {
         
         // Check if user has a valid session
         guard let appEnvironment = appEnvironment else { return }
+        
+        // First check if the session appears to be authenticated
         if appEnvironment.sessionStore.isAuthenticated {
-            // Attempt to refresh the user session
-            await appEnvironment.authViewModel.refreshUser()
+            print("📋 Found existing session, validating...")
             
-            // If session is still valid after refresh, load user data
-            if appEnvironment.sessionStore.isAuthenticated {
-                await loadAuthenticatedUserData()
+            // Validate the session by checking if it's actually still valid
+            let isSessionValid = appEnvironment.sessionStore.isSessionValid()
+            
+            if isSessionValid {
+                do {
+                    // Attempt to refresh/validate the user session
+                    await appEnvironment.authViewModel.refreshUser()
+                    
+                    // If session is still valid after refresh, load user data
+                    if appEnvironment.sessionStore.isAuthenticated {
+                        print("✅ Session validated successfully")
+                        await loadAuthenticatedUserData()
+                    } else {
+                        print("❌ Session validation failed, clearing session")
+                        appEnvironment.sessionStore.logout()
+                    }
+                } catch {
+                    print("❌ Session refresh failed: \(error.localizedDescription)")
+                    // Clear invalid session
+                    appEnvironment.sessionStore.logout()
+                }
+            } else {
+                print("❌ Session appears invalid, clearing session")
+                // Clear invalid session
+                appEnvironment.sessionStore.logout()
             }
+        } else {
+            print("ℹ️ No existing session found")
         }
     }
     
     private func loadAuthenticatedUserData() async {
-        print("📊 Loading authenticated user data...")
+        print("📁 Loading authenticated user data...")
         
         // Load essential user data in parallel
         guard let appEnvironment = appEnvironment else { return }
+        
         await withTaskGroup(of: Void.self) { group in
             group.addTask {
-                await appEnvironment.dashboardViewModel.loadDashboard()
+                do {
+                    await appEnvironment.dashboardViewModel.loadDashboard()
+                } catch {
+                    print("⚠️ Failed to load dashboard: \(error.localizedDescription)")
+                }
             }
             
             group.addTask {
-                await appEnvironment.messagesViewModel.loadCategories()
+                do {
+                    await appEnvironment.messagesViewModel.loadCategories()
+                } catch {
+                    print("⚠️ Failed to load message categories: \(error.localizedDescription)")
+                }
             }
             
             group.addTask {
-                await appEnvironment.calendarViewModel.loadProviders()
+                do {
+                    await appEnvironment.calendarViewModel.loadProviders()
+                } catch {
+                    print("⚠️ Failed to load calendar providers: \(error.localizedDescription)")
+                }
             }
         }
     }

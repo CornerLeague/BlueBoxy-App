@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D72909402EA8608300C19BC3 /* ACTIVITIES_TAB_DOCUMENTATION.md in Resources */ = {isa = PBXBuildFile; fileRef = D729093F2EA8608200C19BC3 /* ACTIVITIES_TAB_DOCUMENTATION.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D74F67142E8EE08600C307A1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D729093F2EA8608200C19BC3 /* ACTIVITIES_TAB_DOCUMENTATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ACTIVITIES_TAB_DOCUMENTATION.md; sourceTree = "<group>"; };
 		D74F67062E8EE08400C307A1 /* BlueBoxy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueBoxy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D74F67132E8EE08600C307A1 /* BlueBoxyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueBoxyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D74F671D2E8EE08600C307A1 /* BlueBoxyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueBoxyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +103,7 @@
 		D74F686B2E983D7400C307A1 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
+				D729093F2EA8608200C19BC3 /* ACTIVITIES_TAB_DOCUMENTATION.md */,
 				D74F67302E8EE08600C307A1 /* BlueBoxy/Support/Config/Debug.xcconfig */,
 				D74F67312E8EE08600C307A1 /* BlueBoxy/Support/Config/Release.xcconfig */,
 			);
@@ -224,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72909402EA8608300C19BC3 /* ACTIVITIES_TAB_DOCUMENTATION.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

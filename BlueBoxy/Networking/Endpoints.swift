@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 extension Endpoint {
     
@@ -57,13 +58,57 @@ extension Endpoint {
         )
     }
     
-    // MARK: - Activities Endpoints (Public)
+    // MARK: - Activities Endpoints
     
-    /// Get list of available activities
+    /// Get list of available activities (public, basic data)
     static func activitiesList() -> Endpoint {
         Endpoint(
             path: "/api/activities",
             method: .GET
+        )
+    }
+    
+    /// Search activities with enhanced criteria and optional AI integration
+    static func activitiesSearch(_ body: ActivitySearchRequest) -> Endpoint {
+        Endpoint(
+            path: "/api/activities/search",
+            method: .POST,
+            body: body,
+            requiresUser: body.useAI, // Only require auth if using AI
+            requiresAuth: body.useAI
+        )
+    }
+    
+    /// Get personalized activity recommendations using OpenAI
+    static func activitiesPersonalized(location: CLLocationCoordinate2D? = nil, preferences: [String]? = nil) -> Endpoint {
+        var query: [URLQueryItem] = []
+        
+        if let location = location {
+            query.append(URLQueryItem(name: "lat", value: String(location.latitude)))
+            query.append(URLQueryItem(name: "lng", value: String(location.longitude)))
+        }
+        
+        if let preferences = preferences, !preferences.isEmpty {
+            query.append(URLQueryItem(name: "preferences", value: preferences.joined(separator: ",")))
+        }
+        
+        return Endpoint(
+            path: "/api/activities/personalized",
+            method: .GET,
+            query: query.isEmpty ? nil : query,
+            requiresUser: true,
+            requiresAuth: true
+        )
+    }
+    
+    /// Refine activity recommendations based on user feedback
+    static func activitiesRefine(_ body: ActivityRefinementRequest) -> Endpoint {
+        Endpoint(
+            path: "/api/activities/refine",
+            method: .POST,
+            body: body,
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -72,6 +117,26 @@ extension Endpoint {
         Endpoint(
             path: "/api/activities/\(id)",
             method: .GET
+        )
+    }
+    
+    /// Save activity as favorite/bookmark
+    static func activitiesSave(id: Int) -> Endpoint {
+        Endpoint(
+            path: "/api/activities/\(id)/save",
+            method: .POST,
+            requiresUser: true,
+            requiresAuth: true
+        )
+    }
+    
+    /// Remove activity from favorites
+    static func activitiesUnsave(id: Int) -> Endpoint {
+        Endpoint(
+            path: "/api/activities/\(id)/save",
+            method: .DELETE,
+            requiresUser: true,
+            requiresAuth: true
         )
     }
     
@@ -88,22 +153,22 @@ extension Endpoint {
         )
     }
     
-    /// Submit guest assessment (no auth required)
-    static func assessmentGuest(_ body: GuestAssessmentRequest) -> Endpoint {
-        Endpoint(
-            path: "/api/assessment/guest",
-            method: .POST,
-            body: body
-        )
-    }
-    
-    /// Get assessment results
+    /// Get assessment results for authenticated user
     static func assessmentResults() -> Endpoint {
         Endpoint(
             path: "/api/assessment/results",
             method: .GET,
             requiresUser: true,
             requiresAuth: true
+        )
+    }
+    
+    /// Submit guest assessment (no auth required)
+    static func assessmentGuest(_ body: GuestAssessmentRequest) -> Endpoint {
+        Endpoint(
+            path: "/api/assessment/guest",
+            method: .POST,
+            body: body
         )
     }
     

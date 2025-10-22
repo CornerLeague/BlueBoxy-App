@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct BlueBoxyApp: App {
+    
+    // Initialize RecentMessagesManager on app launch
+    @StateObject private var recentMessagesManager = RecentMessagesManager.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(recentMessagesManager)
         }
     }
 }

@@ -238,20 +238,32 @@ struct RecommendationsView: View {
                     }
                 ) { response in
                     LazyVStack(spacing: 12) {
-                        ForEach(response.recommendations.filter { !$0.isDismissed }, id: \.id) { rec in
-                            GrokRecommendationCard(
-                                recommendation: rec,
+                        ForEach(response.recommendations, id: \.id) { activity in
+                            // TODO: Create a card component that accepts Activity instead of GrokActivityRecommendation
+                            // For now, use AIPoweredActivityCard as it can handle Activity-like objects
+                            AIPoweredActivityCard(
+                                activity: AIPoweredActivity(
+                                    id: activity.id,
+                                    name: activity.name,
+                                    description: activity.description,
+                                    category: activity.category,
+                                    rating: activity.rating,
+                                    personalityMatch: activity.personalityMatch,
+                                    distance: activity.distance,
+                                    imageUrl: activity.imageUrl,
+                                    location: activity.location
+                                ),
                                 onTap: {
-                                    selectedRecommendation = .grok(rec)
-                                    trackInteraction(.view, for: rec.id, category: viewModel.selectedCategory)
+                                    // TODO: Create RecommendationItem case for Activity
+                                    trackInteraction(.view, for: String(activity.id), category: viewModel.selectedCategory)
                                 },
                                 onFavorite: {
-                                    viewModel.toggleFavorite(for: rec.id)
-                                    trackInteraction(.favorite, for: rec.id, category: viewModel.selectedCategory)
+                                    viewModel.toggleFavorite(for: String(activity.id))
+                                    trackInteraction(.favorite, for: String(activity.id), category: viewModel.selectedCategory)
                                 },
                                 onDismiss: {
-                                    viewModel.dismissRecommendation(id: rec.id)
-                                    trackInteraction(.dismiss, for: rec.id, category: viewModel.selectedCategory)
+                                    viewModel.dismissRecommendation(id: String(activity.id))
+                                    trackInteraction(.dismiss, for: String(activity.id), category: viewModel.selectedCategory)
                                 }
                             )
                         }
@@ -293,7 +305,7 @@ struct RecommendationsView: View {
             }
         ) { recommendations in
             LazyVStack(spacing: 12) {
-                ForEach(recommendations.filter { !$0.isDismissed }, id: \.title) { rec in
+                ForEach(recommendations, id: \.title) { rec in
                     SimpleRecommendationCard(
                         recommendation: rec,
                         onTap: {
@@ -385,7 +397,7 @@ enum RecommendationItem: Identifiable {
         case .aiPowered(let activity):
             return "ai_\(activity.id)"
         case .grok(let rec):
-            return "grok_\(rec.id)"
+            return "grok_\(rec.name.hash)" // GrokActivityRecommendation doesn't have id, use name hash
         case .simple(let rec):
             return "simple_\(rec.id ?? rec.title)"
         }

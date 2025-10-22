@@ -89,9 +89,12 @@ enum NetLog {
             }
         }
         
-        // Log body size
+        // Log body size and content (for debugging)
         if let body = request.httpBody {
             logger.debug("📦 Body size: \(body.count, privacy: .public) bytes")
+            if let bodyString = String(data: body, encoding: .utf8) {
+                logger.debug("📦 Body content: \(bodyString, privacy: .public)")
+            }
         }
         #endif
     }

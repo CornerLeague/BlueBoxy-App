@@ -14,7 +14,7 @@ struct MessagesView: View {
     
     @StateObject private var messagingService = EnhancedMessagingService(messagingNetworkClient: MessagingNetworkClient())
     @StateObject private var retryableService = RetryableMessagingService.preview
-    @EnvironmentObject private var authService: AuthService
+    @EnvironmentObject private var authViewModel: AuthViewModel
     
     // MARK: - State
     
@@ -68,7 +68,7 @@ struct MessagesView: View {
                         
                         emptyState
                         
-                        historyPreviewSection
+                        recentMessagesSection
                     }
                     .padding(.horizontal)
                     .padding(.bottom, keyboardHeight)
@@ -107,6 +107,15 @@ struct MessagesView: View {
         }
         .task {
             await loadInitialData()
+        }
+        .onChange(of: authViewModel.user?.id) { userId in
+            if let userId = userId, let user = authViewModel.user {
+                Task {
+                    print("👤 User became available (ID: \(userId)), loading personalized content")
+                    await messagingService.loadPersonalizedRecommendations(for: user)
+                    await messagingService.loadHistory(limit: 10, offset: 0)
+                }
+            }
         }
         .sheet(isPresented: $showingSettings) {
             // TODO: Create MessagingSettingsView or use alternative settings view
@@ -165,7 +174,7 @@ struct MessagesView: View {
                         .font(.title2)
                         .fontWeight(.semibold)
                     
-                    if let user = authService.currentUser {
+                    if let user = authViewModel.user {
                         Text("Personalized for \(user.partnerName ?? "your partner")")
                             .font(.caption)
                             .foregroundStyle(.secondary)
@@ -206,7 +215,7 @@ struct MessagesView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 12) {
                     ForEach(categories) { category in
-                        CategoryButton(
+                        MessageCategoryButton(
                             category: category,
                             isSelected: messagingService.selectedCategory == category.type,
                             isLoading: messagingService.isGenerating
@@ -234,7 +243,7 @@ struct MessagesView: View {
                     canGenerate: messagingService.canGenerate
                 ) {
                     Task {
-                        guard let user = authService.currentUser else { return }
+                        guard let user = authViewModel.user else { return }
                         await messagingService.generateMessages(for: user)
                     }
                 }
@@ -289,7 +298,7 @@ struct MessagesView: View {
                     }
                     
                     // Contextual suggestions
-                    if let user = authService.currentUser {
+                    if let user = authViewModel.user {
                         ContextualSuggestionsView(
                             suggestions: messagingService.getContextualSuggestions(for: user),
                             onSuggestionTapped: { suggestion in
@@ -389,7 +398,7 @@ struct MessagesView: View {
                     actionTitle: messagingService.selectedCategory != nil ? "Generate Messages" : nil
                 ) {
                     if messagingService.canGenerate,
-                       let user = authService.currentUser {
+                       let user = authViewModel.user {
                         Task {
                             await messagingService.generateMessages(for: user)
                         }
@@ -400,20 +409,23 @@ struct MessagesView: View {
         }
     }
     
-    // MARK: - History Preview Section
+    // MARK: - Recent Messages Section
     
-    private var historyPreviewSection: some View {
+    private var recentMessagesSection: some View {
         Group {
-            if case .loaded(let history) = messagingService.historyState,
-               !history.messages.isEmpty {
-                
+            let todaysMessages = messagingService.todaysRecentMessages
+            if !todaysMessages.isEmpty {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
-                        Text("Recent Messages")
+                        Text("Today's Messages")
                             .font(.headline)
                             .fontWeight(.semibold)
                         
                         Spacer()
+                        
+                        Text("\(todaysMessages.count) generated")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                         
                         Button("View All") {
                             showingHistory = true
@@ -423,11 +435,29 @@ struct MessagesView: View {
                     }
                     
                     LazyVStack(spacing: 8) {
-                        ForEach(Array(history.messages.prefix(3))) { historyItem in
-                            MessageHistoryPreviewCard(historyItem: historyItem) {
-                                // Convert EnhancedGeneratedMessage to ComprehensiveGeneratedMessage if needed
-                                // For now, comment out this assignment to fix compilation
-                                // selectedMessage = historyItem.message
+                        ForEach(Array(todaysMessages.prefix(3))) { recentMessage in
+                            RecentMessageCard(message: recentMessage) {
+                                // Create a ComprehensiveGeneratedMessage for detail view
+                                if let categoryType = MessageCategoryType(rawValue: recentMessage.category) {
+                                    let comprehensiveMessage = ComprehensiveGeneratedMessage(
+                                        id: recentMessage.id,
+                                        content: recentMessage.content,
+                                        category: categoryType,
+                                        personalityMatch: recentMessage.metadata.personalityMatch,
+                                        tone: MessageTone(rawValue: recentMessage.metadata.tone) ?? .warm,
+                                        estimatedImpact: MessageImpact(rawValue: recentMessage.metadata.estimatedImpact) ?? .medium,
+                                        context: ComprehensiveGeneratedMessage.MessageContext(
+                                            timeOfDay: .current,
+                                            relationshipDuration: nil,
+                                            recentContext: nil,
+                                            specialOccasion: nil,
+                                            userPersonalityType: recentMessage.metadata.personalityMatch,
+                                            partnerName: nil
+                                        ),
+                                        generatedAt: recentMessage.generatedAt
+                                    )
+                                    selectedMessage = comprehensiveMessage
+                                }
                             }
                         }
                     }
@@ -440,78 +470,73 @@ struct MessagesView: View {
     // MARK: - Error Handling Views
     
     private var categoriesWithErrorHandling: some View {
-        MessagingFallbackView(
-            loadableState: messagingService.categoriesState.map { _ in () },
-            primaryContent: {
-                if case .loaded(let categories) = messagingService.categoriesState {
-                    categoriesSection(categories: categories)
-                } else {
-                    EmptyView()
+        let _ = print("👀 CategoriesWithErrorHandling - Current state: \(messagingService.categoriesState)")
+        
+        return Group {
+            if case .loaded(let categories) = messagingService.categoriesState {
+                let _ = print("📜 Rendering categories section with \(categories.count) categories")
+                categoriesSection(categories: categories)
+            } else if case .loading = messagingService.categoriesState {
+                VStack(spacing: 16) {
+                    ProgressView("Loading categories...")
+                        .padding()
                 }
-            },
-            fallbackContent: {
+            } else if case .failed(let error) = messagingService.categoriesState {
                 VStack(spacing: 12) {
-                    Text("Limited Categories Available")
+                    Text("Failed to load categories")
                         .font(.headline)
-                        .foregroundColor(.secondary)
-                    
-                    Text("Showing offline categories while we restore connection.")
+                        .foregroundColor(.red)
+                    Text(error.localizedDescription)
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
-                    
-                    // Show minimal category options
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 12) {
-                            ForEach(["general", "followup"], id: \.self) { categoryId in
-                                Button(categoryId.capitalized) {
-                                    // Handle offline category selection
-                                }
-                                .buttonStyle(.bordered)
-                            }
+                    Button("Retry") {
+                        Task {
+                            await handleCategoryRetry()
                         }
-                        .padding(.horizontal)
                     }
+                    .buttonStyle(.bordered)
                 }
                 .padding()
-                .background(Color.orange.opacity(0.1))
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-            },
-            onRetry: {
-                Task {
-                    await handleCategoryRetry()
+                .background(Color.red.opacity(0.1))
+                .cornerRadius(12)
+            } else {
+                // .idle state
+                VStack(spacing: 12) {
+                    Text("Loading...")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Button("Load Categories") {
+                        Task {
+                            await loadCategoriesWithErrorHandling()
+                        }
+                    }
+                    .font(.caption)
+                    .buttonStyle(.bordered)
                 }
+                .padding()
             }
-        )
+        }
     }
     
     // MARK: - Private Methods
     
     private func loadInitialData() async {
-        guard let user = authService.currentUser else { return }
-        
-        // Load with error handling
+        // Always load categories first
         await loadCategoriesWithErrorHandling()
-        await messagingService.loadPersonalizedRecommendations(for: user)
-        await messagingService.loadHistory(limit: 10, offset: 0)
+        
+        // Only load user-specific content if user is available
+        if let user = authViewModel.user {
+            await messagingService.loadPersonalizedRecommendations(for: user)
+            await messagingService.loadHistory(limit: 10, offset: 0)
+        } else {
+            print("⚠️ User not available yet, will load recommendations and history when user loads")
+        }
     }
     
     private func loadCategoriesWithErrorHandling() async {
-        let result = await retryableService.loadCategories(retryPolicy: nil)
-        
-        switch result {
-        case .success:
-            // Categories loaded successfully, update UI state if needed
-            break
-        case .failure(let error):
-            // Show error banner for non-critical failures
-            if error.isRetryable {
-                await MainActor.run {
-                    self.errorBanner = error
-                }
-            }
-            // Fallback will be handled by MessagingFallbackView
-        }
+        // Use messagingService directly which has fallback support
+        await messagingService.loadCategories(forceRefresh: false)
     }
     
     private func handleRetryFromBanner() async {
@@ -524,7 +549,7 @@ struct MessagesView: View {
     }
     
     private func retryMessageGeneration() async {
-        guard let user = authService.currentUser else { return }
+        guard let user = authViewModel.user else { return }
         
         // First try to generate with retry service
         guard let selectedCategory = messagingService.selectedCategory,
@@ -574,7 +599,7 @@ struct MessagesView: View {
 
 // MARK: - Supporting Views
 
-struct CategoryButton: View {
+struct MessageCategoryButton: View {
     let category: DetailedMessageCategory
     let isSelected: Bool
     let isLoading: Bool

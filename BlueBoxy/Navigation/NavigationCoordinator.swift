@@ -26,7 +26,7 @@ final class NavigationCoordinator: ObservableObject {
     
     // Tab navigation
     @Published var selectedTab: Int = 0
-    @Published var tabRoutes: [AppRoute.MainRoute] = [.dashboard, .messages(.list), .calendar(.main), .profile(nil)]
+    @Published var tabRoutes: [AppRoute.MainRoute] = [.dashboard, .messages(.list), .activities(.list), .calendar(.main), .profile(nil)]
     
     // Alert and action sheet state
     @Published var showingAlert: Bool = false

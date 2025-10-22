@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct ActivitiesView: View {
-    @StateObject private var viewModel = ActivitiesViewModel()
+    @StateObject private var viewModel = EnhancedActivitiesViewModel()
+    @StateObject private var locationService = LocationService()
     @State private var showingBookmarkedActivities = false
     @State private var selectedActivity: Activity?
     @State private var showingFilters = false
+    @State private var showingPreferences = false
     @State private var searchText = ""
     
     var body: some View {
@@ -14,11 +16,18 @@ struct ActivitiesView: View {
                     .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
+                    // Location header
+                    LocationHeaderView(
+                        locationService: locationService,
+                        showingPreferences: $showingPreferences
+                    )
+                    .padding(.top, 8)
+                    
                     // Header with search and filters
                     headerSection
                     
-                    // Quick filters
-                    quickFiltersSection
+                    // Generate Button
+                    generateButton
                     
                     // Content
                     contentSection
@@ -71,10 +80,10 @@ struct ActivitiesView: View {
                 ActivityDetailView(activity: activity, viewModel: viewModel)
             }
             .task {
-                await viewModel.loadActivities()
-            }
-            .refreshable {
-                await viewModel.loadActivities(forceRefresh: true)
+                // Update viewModel with initial location
+                if let location = locationService.currentLocation {
+                    viewModel.currentLocation = location
+                }
             }
         }
     }
@@ -110,12 +119,7 @@ struct ActivitiesView: View {
             )
             
             // Categories scroll view
-            if !viewModel.categories.isEmpty {
-                CategoryScrollView(
-                    categories: viewModel.categories,
-                    selectedCategory: $viewModel.selectedCategory
-                )
-            }
+            CategoryTabBar(selectedCategory: $viewModel.selectedCategory)
         }
         .padding(.horizontal)
         .padding(.bottom, 8)
@@ -123,39 +127,86 @@ struct ActivitiesView: View {
         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 2)
     }
     
-    private var quickFiltersSection: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
-                ForEach(QuickFilter.allCases, id: \.rawValue) { filter in
-                    QuickFilterButton(
-                        filter: filter,
-                        isSelected: isQuickFilterSelected(filter)
-                    ) {
-                        viewModel.applyQuickFilter(filter)
-                    }
-                }
-                
-                // Clear filters button
-                if viewModel.activeFiltersCount > 0 {
-                    Button(action: viewModel.clearAllFilters) {
-                        HStack(spacing: 4) {
-                            Image(systemName: "xmark.circle.fill")
-                            Text("Clear")
+    private var generateButton: some View {
+        VStack(spacing: 12) {
+            if case .idle = viewModel.activities {
+                // Initial state - show generate button
+                VStack(spacing: 16) {
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 40))
+                        .foregroundColor(.blue)
+                    
+                    Text("Generate AI Activities")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
+                    
+                    Text("Get personalized activity recommendations powered by AI based on your personality and preferences.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 20)
+                    
+                    Button(action: {
+                        Task {
+                            await viewModel.generateActivities()
                         }
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .padding(.horizontal, 12)
+                    }) {
+                        HStack(spacing: 12) {
+                            Image(systemName: "wand.and.stars")
+                                .font(.title3)
+                            Text("Generate Activities")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                        }
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 16)
+                        .background(
+                            LinearGradient(
+                                colors: [.blue, .purple],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .shadow(color: .blue.opacity(0.3), radius: 8, x: 0, y: 4)
+                    }
+                    .scaleEffect(1.0)
+                }
+                .padding(.vertical, 40)
+                .padding(.horizontal, 20)
+            } else if case .loaded = viewModel.activities {
+                // Show regenerate button when activities are loaded
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        Task {
+                            await viewModel.generateActivities()
+                        }
+                    }) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "arrow.clockwise")
+                                .font(.subheadline)
+                            Text("Regenerate")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                        }
+                        .foregroundColor(.blue)
+                        .padding(.horizontal, 16)
                         .padding(.vertical, 8)
-                        .background(Color.red.opacity(0.1))
-                        .foregroundColor(.red)
+                        .background(Color.blue.opacity(0.1))
                         .clipShape(Capsule())
                     }
+                    .disabled({
+                        if case .loading = viewModel.activities { return true }
+                        return false
+                    }())
                 }
+                .padding(.horizontal)
+                .padding(.vertical, 8)
             }
-            .padding(.horizontal)
         }
-        .padding(.vertical, 8)
-        .background(Color.white)
     }
     
     private var contentSection: some View {
@@ -225,7 +276,7 @@ struct ActivitiesView: View {
             
             // Sort menu
             Menu {
-                ForEach(ActivitiesViewModel.SortOption.allCases, id: \.rawValue) { option in
+                ForEach(EnhancedActivitiesViewModel.SortOption.allCases, id: \.rawValue) { option in
                     Button(action: {
                         viewModel.sortOption = option
                     }) {
@@ -265,60 +316,6 @@ struct ActivitiesView: View {
         )
     }
     
-    private func isQuickFilterSelected(_ filter: QuickFilter) -> Bool {
-        switch filter {
-        case .nearbyAndFree:
-            return viewModel.locationFilter == .nearby && viewModel.priceRange == .free
-        case .highRated:
-            return viewModel.ratingFilter >= 4.0 && viewModel.sortOption == .rating
-        case .romantic:
-            return viewModel.selectedCategory == "romantic"
-        case .active:
-            return viewModel.selectedCategory == "active"
-        case .cultural:
-            return viewModel.selectedCategory == "cultural"
-        case .budget:
-            return viewModel.priceRange == .budget
-        }
-    }
-}
-
-// MARK: - Quick Filter Button
-
-struct QuickFilterButton: View {
-    let filter: QuickFilter
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: 6) {
-                Image(systemName: filter.icon)
-                    .font(.caption)
-                Text(filter.displayName)
-                    .font(.caption)
-                    .fontWeight(.medium)
-            }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
-            .background(
-                isSelected ? filter.color.opacity(0.2) : Color.gray.opacity(0.1)
-            )
-            .foregroundColor(
-                isSelected ? filter.color : .primary
-            )
-            .clipShape(Capsule())
-            .overlay(
-                Capsule()
-                    .stroke(
-                        isSelected ? filter.color : Color.clear,
-                        lineWidth: 1.5
-                    )
-            )
-        }
-        .scaleEffect(isSelected ? 1.05 : 1.0)
-        .animation(.easeInOut(duration: 0.2), value: isSelected)
-    }
 }
 
 // MARK: - Activities List View
@@ -445,7 +442,7 @@ struct ActivityListCard: View {
 // MARK: - Bookmarked Activities View
 
 struct BookmarkedActivitiesView: View {
-    @ObservedObject var viewModel: ActivitiesViewModel
+    @ObservedObject var viewModel: EnhancedActivitiesViewModel
     @Environment(\.presentationMode) var presentationMode
     @State private var selectedActivity: Activity?
     
@@ -538,176 +535,20 @@ struct BookmarkedActivitiesView: View {
     }
 }
 
-// MARK: - Category Scroll View
-
-struct CategoryScrollView: View {
-    let categories: [String]
-    @Binding var selectedCategory: String
-    
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
-                ForEach(categories, id: \.self) { category in
-                    ActivityCategoryButton(
-                        category: category,
-                        isSelected: selectedCategory == category
-                    ) {
-                        selectedCategory = category
-                    }
-                }
-            }
-            .padding(.horizontal)
-        }
-    }
-}
-
-// MARK: - Activity Category Button
-
-struct ActivityCategoryButton: View {
-    let category: String
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: 6) {
-                Image(systemName: categoryIcon)
-                    .font(.caption)
-                Text(category.capitalized)
-                    .font(.caption)
-                    .fontWeight(.medium)
-            }
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
-            .background(
-                isSelected ? Color.blue.opacity(0.2) : Color.gray.opacity(0.1)
-            )
-            .foregroundColor(
-                isSelected ? .blue : .primary
-            )
-            .clipShape(Capsule())
-            .overlay(
-                Capsule()
-                    .stroke(
-                        isSelected ? Color.blue : Color.clear,
-                        lineWidth: 1.5
-                    )
-            )
-        }
-        .scaleEffect(isSelected ? 1.05 : 1.0)
-        .animation(.easeInOut(duration: 0.2), value: isSelected)
-    }
-    
-    private var categoryIcon: String {
-        switch category.lowercased() {
-        case "romantic":
-            return "heart.circle"
-        case "active":
-            return "figure.run.circle"
-        case "cultural":
-            return "building.columns.circle"
-        case "outdoor":
-            return "leaf.circle"
-        case "food":
-            return "fork.knife.circle"
-        case "entertainment":
-            return "tv.circle"
-        default:
-            return "tag.circle"
-        }
-    }
-}
-
-
 // MARK: - Filter View
 
 struct FilterView: View {
-    @ObservedObject var viewModel: ActivitiesViewModel
+    @ObservedObject var viewModel: EnhancedActivitiesViewModel
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
-                    // Sort Section
-                    FilterSection(title: "Sort By", icon: "arrow.up.arrow.down") {
-                        VStack(spacing: 8) {
-                            ForEach(ActivitiesViewModel.SortOption.allCases, id: \.rawValue) { option in
-                                FilterOptionRow(
-                                    title: option.displayName,
-                                    icon: option.icon,
-                                    isSelected: viewModel.sortOption == option
-                                ) {
-                                    viewModel.sortOption = option
-                                }
-                            }
-                        }
-                    }
-                    
-                    // Price Range Section
-                    FilterSection(title: "Price Range", icon: "dollarsign.circle") {
-                        VStack(spacing: 8) {
-                            ForEach(ActivitiesViewModel.PriceRange.allCases, id: \.rawValue) { range in
-                                FilterOptionRow(
-                                    title: range.displayName,
-                                    isSelected: viewModel.priceRange == range
-                                ) {
-                                    viewModel.priceRange = range
-                                }
-                            }
-                        }
-                    }
-                    
-                    // Location Filter Section
-                    FilterSection(title: "Distance", icon: "location.circle") {
-                        VStack(spacing: 8) {
-                            ForEach(ActivitiesViewModel.LocationFilter.allCases, id: \.rawValue) { location in
-                                FilterOptionRow(
-                                    title: location.displayName,
-                                    isSelected: viewModel.locationFilter == location
-                                ) {
-                                    viewModel.locationFilter = location
-                                }
-                            }
-                        }
-                    }
-                    
-                    // Rating Filter Section
-                    FilterSection(title: "Minimum Rating", icon: "star.circle") {
-                        VStack(spacing: 12) {
-                            HStack {
-                                Text("Rating: \(viewModel.ratingFilter, specifier: "%.1f")+")
-                                    .font(.subheadline)
-                                    .fontWeight(.medium)
-                                Spacer()
-                                if viewModel.ratingFilter > 0 {
-                                    Button("Clear") {
-                                        viewModel.ratingFilter = 0.0
-                                    }
-                                    .font(.caption)
-                                    .foregroundColor(.blue)
-                                }
-                            }
-                            
-                            Slider(
-                                value: $viewModel.ratingFilter,
-                                in: 0...5,
-                                step: 0.5
-                            ) {
-                                Text("Rating")
-                            } minimumValueLabel: {
-                                Text("0")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            } maximumValueLabel: {
-                                Text("5")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                            .accentColor(.blue)
-                        }
-                        .padding(.vertical, 8)
-                    }
+                    sortSection
+                    priceRangeSection
+                    locationFilterSection
+                    ratingFilterSection
                 }
                 .padding()
             }
@@ -729,6 +570,90 @@ struct FilterView: View {
                     .fontWeight(.semibold)
                 }
             }
+        }
+    }
+    
+    private var sortSection: some View {
+        FilterSection(title: "Sort By", icon: "arrow.up.arrow.down") {
+            VStack(spacing: 8) {
+                ForEach(EnhancedActivitiesViewModel.SortOption.allCases, id: \.rawValue) { option in
+                    FilterOptionRow(
+                        title: option.displayName,
+                        icon: option.icon,
+                        isSelected: viewModel.sortOption == option
+                    ) {
+                        viewModel.sortOption = option
+                    }
+                }
+            }
+        }
+    }
+    
+    private var priceRangeSection: some View {
+        FilterSection(title: "Price Range", icon: "dollarsign.circle") {
+            VStack(spacing: 8) {
+                ForEach(ActivityPriceRange.allCases, id: \.rawValue) { range in
+                    FilterOptionRow(
+                        title: range.displayName,
+                        isSelected: viewModel.priceRange == range
+                    ) {
+                        viewModel.priceRange = range
+                    }
+                }
+            }
+        }
+    }
+    
+    private var locationFilterSection: some View {
+        FilterSection(title: "Distance", icon: "location.circle") {
+            VStack(spacing: 8) {
+                ForEach(EnhancedActivitiesViewModel.LocationFilter.allCases, id: \.rawValue) { location in
+                    FilterOptionRow(
+                        title: location.displayName,
+                        isSelected: viewModel.locationFilter == location
+                    ) {
+                        viewModel.locationFilter = location
+                    }
+                }
+            }
+        }
+    }
+    
+    private var ratingFilterSection: some View {
+        FilterSection(title: "Minimum Rating", icon: "star.circle") {
+            VStack(spacing: 12) {
+                HStack {
+                    Text("Rating: \(viewModel.ratingFilter, specifier: "%.1f")+")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                    Spacer()
+                    if viewModel.ratingFilter > 0 {
+                        Button("Clear") {
+                            viewModel.ratingFilter = 0.0
+                        }
+                        .font(.caption)
+                        .foregroundColor(.blue)
+                    }
+                }
+                
+                Slider(
+                    value: $viewModel.ratingFilter,
+                    in: 0...5,
+                    step: 0.5
+                ) {
+                    Text("Rating")
+                } minimumValueLabel: {
+                    Text("0")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                } maximumValueLabel: {
+                    Text("5")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .accentColor(.blue)
+            }
+            .padding(.vertical, 8)
         }
     }
 }

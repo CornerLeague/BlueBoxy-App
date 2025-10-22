@@ -9,7 +9,7 @@ struct PreferencesEditView: View {
     
     // Preferences state
     @State private var selectedBudget = BudgetRange.medium
-    @State private var selectedCategories: Set<ActivityCategory> = []
+    @State private var selectedCategories: Set<PreferenceActivityCategory> = []
     @State private var searchRadius: Double = 25.0 // kilometers
     @State private var selectedTimePreference = TimePreference.flexible
     @State private var selectedGroupSize = GroupSize.couple
@@ -109,7 +109,7 @@ struct PreferencesEditView: View {
                 GridItem(.flexible()),
                 GridItem(.flexible())
             ], spacing: 8) {
-                ForEach(ActivityCategory.allCases, id: \.self) { category in
+                ForEach(PreferenceActivityCategory.allCases, id: \.self) { category in
                     Button {
                         toggleCategory(category)
                     } label: {
@@ -257,7 +257,7 @@ struct PreferencesEditView: View {
         // For now, we'll use default values
     }
     
-    private func toggleCategory(_ category: ActivityCategory) {
+    private func toggleCategory(_ category: PreferenceActivityCategory) {
         if selectedCategories.contains(category) {
             selectedCategories.remove(category)
         } else {
@@ -317,7 +317,7 @@ struct PreferencesEditView: View {
 // MARK: - Supporting Views
 
 struct CategorySelectionCard: View {
-    let category: ActivityCategory
+    let category: PreferenceActivityCategory
     let isSelected: Bool
     
     var body: some View {
@@ -426,7 +426,7 @@ enum BudgetRange: String, CaseIterable, Codable {
     }
 }
 
-enum ActivityCategory: String, CaseIterable, Codable {
+enum PreferenceActivityCategory: String, CaseIterable, Codable {
     case dining = "dining"
     case outdoor = "outdoor"
     case cultural = "cultural"
@@ -532,7 +532,7 @@ enum GroupSize: String, CaseIterable, Codable {
 
 struct UserPreferencesRequest: Codable {
     let budgetRange: BudgetRange
-    let activityCategories: [ActivityCategory]
+    let activityCategories: [PreferenceActivityCategory]
     let location: GeoLocationPayload?
     let searchRadius: Double
     let timePreference: TimePreference

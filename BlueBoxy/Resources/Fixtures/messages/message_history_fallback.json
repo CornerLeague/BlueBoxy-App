@@ -1,0 +1,81 @@
+{
+  "messages": [
+    {
+      "id": "msg-001",
+      "content": "Hope your Monday is off to a great start! ✨",
+      "categoryId": "personal-development",
+      "categoryName": "Personal Development",
+      "generatedAt": "2024-10-19T10:30:00Z",
+      "savedAt": "2024-10-19T10:31:00Z",
+      "isFavorite": true,
+      "metadata": {
+        "wordCount": 9,
+        "tone": "encouraging",
+        "personalizationLevel": 0.8
+      }
+    },
+    {
+      "id": "msg-002", 
+      "content": "Thank you for the thoughtful conversation earlier. It really made my day! 🙏",
+      "categoryId": "gratitude",
+      "categoryName": "Gratitude & Appreciation",
+      "generatedAt": "2024-10-19T14:15:00Z",
+      "savedAt": "2024-10-19T14:16:00Z",
+      "isFavorite": false,
+      "metadata": {
+        "wordCount": 13,
+        "tone": "grateful",
+        "personalizationLevel": 0.9
+      }
+    },
+    {
+      "id": "msg-003",
+      "content": "Looking forward to our meeting tomorrow. I've prepared some exciting ideas to share! 💡",
+      "categoryId": "work-professional", 
+      "categoryName": "Work & Professional",
+      "generatedAt": "2024-10-18T16:45:00Z",
+      "savedAt": "2024-10-18T16:46:00Z",
+      "isFavorite": false,
+      "metadata": {
+        "wordCount": 14,
+        "tone": "professional",
+        "personalizationLevel": 0.7
+      }
+    },
+    {
+      "id": "msg-004",
+      "content": "Just wanted to check in and see how you're doing. Thinking of you! 💜",
+      "categoryId": "personal-development",
+      "categoryName": "Personal Development", 
+      "generatedAt": "2024-10-18T09:20:00Z",
+      "savedAt": "2024-10-18T09:21:00Z",
+      "isFavorite": true,
+      "metadata": {
+        "wordCount": 12,
+        "tone": "caring",
+        "personalizationLevel": 0.85
+      }
+    },
+    {
+      "id": "msg-005",
+      "content": "Congratulations on your recent achievement! You deserve all the success coming your way. 🎉",
+      "categoryId": "celebration",
+      "categoryName": "Celebration & Congratulations",
+      "generatedAt": "2024-10-17T13:30:00Z", 
+      "savedAt": "2024-10-17T13:31:00Z",
+      "isFavorite": false,
+      "metadata": {
+        "wordCount": 14,
+        "tone": "celebratory",
+        "personalizationLevel": 0.75
+      }
+    }
+  ],
+  "pagination": {
+    "totalCount": 5,
+    "currentPage": 1,
+    "totalPages": 1,
+    "hasMore": false
+  },
+  "generatedAt": "2024-10-19T18:00:00Z"
+}

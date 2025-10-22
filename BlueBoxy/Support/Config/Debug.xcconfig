@@ -1,8 +1,14 @@
 // Debug.xcconfig
 // Environment Configuration (Non-sensitive values only)
-BASE_URL = http://localhost:3001
+// Based on XcodeGen best practices for reliable variable resolution
 
-// Optional: use a distinct bundle id suffix for debug builds
+// Network Configuration - using components to avoid URL parsing issues
+API_HOST = 127.0.0.1
+API_PORT = 3001
+API_SCHEME = http
+API_HOST_FALLBACK = 192.168.1.41
+
+// Bundle Configuration
 PRODUCT_BUNDLE_IDENTIFIER = ai.blueboxy.BlueBoxy.dev
 
 // iOS Deployment Target

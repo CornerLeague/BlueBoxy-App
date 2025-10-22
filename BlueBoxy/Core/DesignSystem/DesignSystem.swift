@@ -12,30 +12,32 @@ enum DesignSystem {
     
     // MARK: - Colors
     enum Colors {
-        // Base Colors (from Assets.xcassets or define dynamically)
-        static let background = Color("Background") // add in Assets or define dynamically
-        static let foreground = Color("Foreground")
+        // Available Colors from Assets.xcassets
         static let primary = Color("Primary")
-        static let accent = Color("Accent")
-        static let success = Color("Success")
-        static let warning = Color("Warning")
-        static let error = Color("Error")
+        static let accent = Color("AccentColor")
         
-        // Semantic Colors
-        static let cardBackground = Color("CardBackground")
-        static let border = Color("Border")
-        static let muted = Color("Muted")
-        static let mutedForeground = Color("MutedForeground")
+        // System Color Fallbacks (used when asset colors don't exist)
+        static let background = Color(.systemBackground)
+        static let foreground = Color(.label)
+        static let success = Color.green
+        static let warning = Color.orange
+        static let error = Color.red
         
-        // System Colors (fallbacks if Assets don't exist)
+        // Semantic Colors using system colors
+        static let cardBackground = Color(.secondarySystemBackground)
+        static let border = Color(.separator)
+        static let muted = Color(.systemGray)
+        static let mutedForeground = Color(.secondaryLabel)
+        
+        // System Colors
         static let systemBackground = Color(.systemBackground)
         static let systemForeground = Color(.label)
         static let systemSecondary = Color(.secondaryLabel)
         static let systemTertiary = Color(.tertiaryLabel)
         
         // Status Colors
-        static let destructive = Color("Destructive")
-        static let info = Color("Info")
+        static let destructive = Color.red
+        static let info = Color.blue
     }
     
     // MARK: - Border Radius

@@ -25,6 +25,7 @@ final class AuthViewModel: ObservableObject {
     internal let apiClient: APIClient
     internal let sessionStore: SessionStore
     internal var cancellables = Set<AnyCancellable>()
+    private let onboardingService = OnboardingService()
     
     // MARK: - Additional Properties
     
@@ -33,6 +34,11 @@ final class AuthViewModel: ObservableObject {
     // MARK: - Initialization
     
     init(apiClient: APIClient = .shared, sessionStore: SessionStore = .shared) {
+        // Validate API configuration at startup
+        #if DEBUG
+        APIConfiguration.validateConfiguration()
+        #endif
+        
         self.apiClient = apiClient
         self.sessionStore = sessionStore
         
@@ -56,6 +62,8 @@ final class AuthViewModel: ObservableObject {
     func register(email: String, password: String, name: String? = nil, 
                  partnerName: String? = nil, relationshipDuration: String? = nil, 
                  partnerAge: Int? = nil) async {
+        print("📝 [AuthViewModel] Starting registration for: \(email)")
+        print("📝 [AuthViewModel] Base URL: \(APIConfiguration.baseURL)")
         registrationState = .loading()
         
         do {
@@ -78,7 +86,13 @@ final class AuthViewModel: ObservableObject {
             registrationState = .loaded(response.user)
             
         } catch {
+            print("❌ [AuthViewModel] Registration failed with error: \(error)")
+            if let urlError = error as? URLError {
+                print("❌ [AuthViewModel] URLError code: \(urlError.code)")
+                print("❌ [AuthViewModel] URLError description: \(urlError.localizedDescription)")
+            }
             let networkError = ErrorMapper.map(error)
+            print("❌ [AuthViewModel] Mapped to NetworkError: \(networkError)")
             registrationState = .failed(networkError)
             handleAuthError(networkError)
         }
@@ -216,6 +230,11 @@ final class AuthViewModel: ObservableObject {
         // Update view model state
         self.user = user
         self.isAuthenticated = true
+        
+        // Submit any pending onboarding data after successful authentication
+        Task {
+            await onboardingService.submitPendingOnboardingData()
+        }
         
         // Post appropriate notification for navigation
         DispatchQueue.main.async {

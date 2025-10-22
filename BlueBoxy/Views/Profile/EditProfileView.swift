@@ -2,7 +2,7 @@ import SwiftUI
 import PhotosUI
 
 struct EditProfileView: View {
-    @EnvironmentObject var authService: AuthService
+    @EnvironmentObject var authViewModel: AuthViewModel
     @Environment(\.dismiss) private var dismiss
     
     // Form fields
@@ -195,7 +195,7 @@ struct EditProfileView: View {
     
     private var personalitySection: some View {
         Section("Personality Assessment") {
-            if let user = authService.currentUser, let personalityType = user.personalityType {
+            if let user = authViewModel.user, let personalityType = user.personalityType {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Current Type")
@@ -241,7 +241,7 @@ struct EditProfileView: View {
     // MARK: - Helper Methods
     
     private func loadUserData() {
-        guard let user = authService.currentUser else { return }
+        guard let user = authViewModel.user else { return }
         
         name = user.name
         partnerName = user.partnerName ?? ""
@@ -309,8 +309,11 @@ struct EditProfileView: View {
                 location: nil
             )
             
-            // Update profile through AuthService
-            try await authService.updateProfile(updateRequest)
+            // Update profile through API
+            let _: Empty = try await APIClient.shared.request(.userProfileUpdate(updateRequest))
+            
+            // Refresh user data in auth view model
+            await authViewModel.refreshUser()
             
             // Upload profile image if changed
             if let profileImage = profileImage {
@@ -341,5 +344,5 @@ struct UserUpdateRequest: Codable {
 
 #Preview {
     EditProfileView()
-        .environmentObject(AuthService())
+        .environmentObject(AuthViewModel())
 }

@@ -108,6 +108,17 @@ struct EnhancedGeneratedMessage: Codable, Identifiable {
         }
     }
     
+    // Direct initializer
+    init(id: String, content: String, category: String, personalityMatch: String, tone: String, estimatedImpact: ImpactLevel, generatedAt: Date? = nil) {
+        self.id = id
+        self.content = content
+        self.category = category
+        self.personalityMatch = personalityMatch
+        self.tone = tone
+        self.estimatedImpact = estimatedImpact
+        self.generatedAt = generatedAt ?? Date()
+    }
+    
     // Convenience initializer from existing MessageItem
     init(from messageItem: MessageItem) {
         self.id = messageItem.id
@@ -124,7 +135,7 @@ struct EnhancedGeneratedMessage: Codable, Identifiable {
         default: self.estimatedImpact = .medium
         }
         
-        self.generatedAt = Date()
+        self.generatedAt = messageItem.createdAt ?? Date()
     }
 }
 

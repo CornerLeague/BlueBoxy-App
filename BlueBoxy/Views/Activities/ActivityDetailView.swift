@@ -3,7 +3,7 @@ import MapKit
 
 struct ActivityDetailView: View {
     let activity: Activity
-    @ObservedObject var viewModel: ActivitiesViewModel
+    @ObservedObject var viewModel: EnhancedActivitiesViewModel
     @Environment(\.presentationMode) var presentationMode
     @State private var showingShareSheet = false
     @State private var showingMap = false
@@ -197,7 +197,7 @@ struct ActivityDetailView: View {
             GridItem(.flexible())
         ], spacing: 16) {
             // Duration
-            if let duration = activity.estimatedDuration {
+            if let duration = activity.duration {
                 StatCard(
                     icon: "clock",
                     title: "Duration",
@@ -207,20 +207,20 @@ struct ActivityDetailView: View {
             }
             
             // Price
-            if let price = activity.estimatedPrice {
+            if let cost = activity.estimatedCost {
                 StatCard(
                     icon: "dollarsign.circle",
                     title: "Price",
-                    value: price == 0 ? "Free" : "$\(Int(price))",
+                    value: cost,
                     color: .green
                 )
             }
             
-            // Difficulty (if available)
+            // Difficulty (placeholder)
             StatCard(
                 icon: "gauge",
                 title: "Difficulty",
-                value: activity.difficulty ?? "Easy",
+                value: "Easy", // TODO: Add difficulty property to Activity model
                 color: .orange
             )
         }
@@ -342,7 +342,7 @@ struct ActivityDetailView: View {
             
             VStack(spacing: 12) {
                 // Best time
-                if let bestTime = activity.bestTimeToVisit {
+                if let bestTime = activity.bestTimeOfDay {
                     DetailRow(
                         icon: "calendar",
                         title: "Best Time",
@@ -351,7 +351,7 @@ struct ActivityDetailView: View {
                 }
                 
                 // Group size
-                if let groupSize = activity.idealGroupSize {
+                if let groupSize = activity.groupSize {
                     DetailRow(
                         icon: "person.2.fill",
                         title: "Group Size",
@@ -359,14 +359,13 @@ struct ActivityDetailView: View {
                     )
                 }
                 
-                // Requirements
-                if let requirements = activity.requirements {
-                    DetailRow(
-                        icon: "checkmark.circle",
-                        title: "Requirements",
-                        value: requirements
-                    )
-                }
+                // Requirements (placeholder)
+                // TODO: Add requirements property to Activity model
+                DetailRow(
+                    icon: "checkmark.circle",
+                    title: "Requirements",
+                    value: "No special requirements"
+                )
             }
         }
     }
@@ -563,6 +562,6 @@ extension Activity {
             personalityMatch: "Perfect for quality time together and meaningful conversations",
             imageUrl: nil
         ),
-        viewModel: ActivitiesViewModel()
+        viewModel: EnhancedActivitiesViewModel()
     )
 }

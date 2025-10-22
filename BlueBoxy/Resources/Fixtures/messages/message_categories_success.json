@@ -1,0 +1,61 @@
+{
+  "success": true,
+  "categories": [
+    {
+      "id": "appreciation",
+      "name": "Appreciation",
+      "description": "Express gratitude and recognition for your partner",
+      "emoji": "❤️",
+      "tags": ["warm", "grateful", "loving"]
+    },
+    {
+      "id": "encouragement",
+      "name": "Encouragement",
+      "description": "Motivate and support your partner",
+      "emoji": "👍",
+      "tags": ["supportive", "uplifting", "confident"]
+    },
+    {
+      "id": "romantic",
+      "name": "Romantic",
+      "description": "Sweet and loving messages for your partner",
+      "emoji": "💕",
+      "tags": ["romantic", "sweet", "intimate"]
+    },
+    {
+      "id": "apology",
+      "name": "Apology",
+      "description": "Thoughtful apologies to make things right",
+      "emoji": "💔",
+      "tags": ["sincere", "humble", "caring"]
+    },
+    {
+      "id": "goodmorning",
+      "name": "Good Morning",
+      "description": "Start the day with a loving message",
+      "emoji": "☀️",
+      "tags": ["cheerful", "loving", "energetic"]
+    },
+    {
+      "id": "goodnight",
+      "name": "Good Night",
+      "description": "End the day with sweet dreams",
+      "emoji": "🌙",
+      "tags": ["gentle", "loving", "peaceful"]
+    },
+    {
+      "id": "checkin",
+      "name": "Check-in",
+      "description": "See how your partner is doing",
+      "emoji": "💬",
+      "tags": ["caring", "casual", "supportive"]
+    },
+    {
+      "id": "planning",
+      "name": "Plans & Ideas",
+      "description": "Suggest activities and make plans together",
+      "emoji": "📅",
+      "tags": ["excited", "casual", "inviting"]
+    }
+  ]
+}

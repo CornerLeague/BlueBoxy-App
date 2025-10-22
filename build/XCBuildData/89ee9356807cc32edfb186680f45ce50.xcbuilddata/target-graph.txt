@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-Target 'BlueBoxy' in project 'BlueBoxy' (no dependencies)

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 #if canImport(CoreLocation)
 import CoreLocation
 #endif
@@ -96,7 +97,7 @@ struct UpdatePreferencesRequest: Encodable {
     let preferences: [String: JSONValue]
 }
 
-// MARK: - Recommendations (Grok / OpenAI)
+// MARK: - Recommendations (OpenAI)
 
 struct LocationBasedPostRequest: Encodable {
     let location: GeoLocationPayload
@@ -207,7 +208,38 @@ struct CreateEventRequest: Encodable {
     }
 }
 
-// MARK: - Messages
+// MARK: - Location Encoding Support
+
+// Helper to make CLLocationCoordinate2D encodable
+struct EncodableLocationCoordinate: Codable {
+    let latitude: Double
+    let longitude: Double
+    
+    init(_ coordinate: CLLocationCoordinate2D) {
+        self.latitude = coordinate.latitude
+        self.longitude = coordinate.longitude
+    }
+}
+
+// MARK: - Activity Request Models
+
+struct ActivityRefinementRequest: Encodable {
+    let originalCriteria: ActivitySearchCriteria
+    let userFeedback: String
+    let previousRecommendations: [Int] // Activity IDs
+    let preferredCategories: [String]?
+    let excludeCategories: [String]?
+    
+    enum CodingKeys: String, CodingKey {
+        case originalCriteria = "original_criteria"
+        case userFeedback = "user_feedback"
+        case previousRecommendations = "previous_recommendations"
+        case preferredCategories = "preferred_categories"
+        case excludeCategories = "exclude_categories"
+    }
+}
+
+// MARK: - Messaging Request Models
 
 enum TimeOfDay: String, Codable, CaseIterable {
     case morning, afternoon, evening, night
@@ -408,6 +440,14 @@ extension GeoLocationPayload {
     var isValid: Bool {
         return latitude >= -90 && latitude <= 90 &&
                longitude >= -180 && longitude <= 180
+    }
+    
+    /// Converts to dictionary format for local storage
+    func toDictionary() -> [String: Double] {
+        return [
+            "latitude": latitude,
+            "longitude": longitude
+        ]
     }
     
     /// Creates a location payload from CLLocationCoordinate2D (if using CoreLocation)

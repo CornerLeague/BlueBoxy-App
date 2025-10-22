@@ -74,11 +74,24 @@ final class EnhancedMessagingService: EnhancedMessagingServiceProtocol {
     @Published var favoriteCategories: [MessageCategoryType] = []
     @Published var recentGenerationHistory: [MessageGenerationRecord] = []
     
+    // MARK: - Computed Properties
+    
+    /// Get today's recent messages from RecentMessagesManager
+    var todaysRecentMessages: [RecentMessage] {
+        recentMessagesManager.getRecentMessages()
+    }
+    
+    /// Get count of today's generated messages
+    var todayMessagesCount: Int {
+        recentMessagesManager.todayMessagesCount
+    }
+    
     // MARK: - Dependencies
     
     private let messagingNetworkClient: MessagingNetworkClient
     private let categoryManager: MessageCategoryManager
     private let storageService: MessageStorageServiceProtocol?
+    private let recentMessagesManager: RecentMessagesManager
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Configuration
@@ -92,11 +105,13 @@ final class EnhancedMessagingService: EnhancedMessagingServiceProtocol {
     init(
         messagingNetworkClient: MessagingNetworkClient,
         categoryManager: MessageCategoryManager = .shared,
-        storageService: MessageStorageServiceProtocol? = nil
+        storageService: MessageStorageServiceProtocol? = nil,
+        recentMessagesManager: RecentMessagesManager = .shared
     ) {
         self.messagingNetworkClient = messagingNetworkClient
         self.categoryManager = categoryManager
         self.storageService = storageService
+        self.recentMessagesManager = recentMessagesManager
         
         setupInitialState()
         observeNetworkClient()
@@ -106,21 +121,25 @@ final class EnhancedMessagingService: EnhancedMessagingServiceProtocol {
     // MARK: - Data Loading
     
     func loadCategories(forceRefresh: Bool = false) async {
+        print("🔄 LoadCategories called with forceRefresh: \(forceRefresh)")
         categoriesState = .loading(message: "Loading message categories...")
         
         do {
             let categories = try await messagingNetworkClient.fetchMessageCategories(forceRefresh: forceRefresh)
+            print("✅ Categories loaded successfully: \(categories.count) categories")
             categoriesState = .loaded(categories)
             
             // Set default category if none selected
             if selectedCategory == nil, let firstCategory = categories.first {
                 selectedCategory = firstCategory.type
+                print("📌 Selected default category: \(firstCategory.type.rawValue)")
             }
             
             // Update favorite categories based on usage patterns
             updateFavoriteCategories(from: categories)
             
         } catch {
+            print("❌ Categories loading failed: \(error.localizedDescription)")
             categoriesState = .failed(NetworkError.from(error))
         }
     }
@@ -175,6 +194,11 @@ final class EnhancedMessagingService: EnhancedMessagingServiceProtocol {
             
             generationState = .loaded(response)
             lastGeneratedMessages = response.messages
+            
+            // Save generated messages to recent messages storage
+            for message in response.messages {
+                recentMessagesManager.addRecentMessage(message)
+            }
             
             // Record this generation for analytics and suggestions
             recordGeneration(category: category, user: user, response: response)

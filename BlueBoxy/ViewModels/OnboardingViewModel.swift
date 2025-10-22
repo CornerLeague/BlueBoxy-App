@@ -27,6 +27,7 @@ final class OnboardingViewModel: ObservableObject {
     // MARK: - Dependencies
     
     private let apiClient: APIClient
+    private let onboardingService: OnboardingService
     private let locationManager = CLLocationManager()
     private var cancellables = Set<AnyCancellable>()
     
@@ -37,8 +38,9 @@ final class OnboardingViewModel: ObservableObject {
     
     // MARK: - Initialization
     
-    init(apiClient: APIClient = APIClient.shared) {
+    init(apiClient: APIClient = APIClient.shared, onboardingService: OnboardingService? = nil) {
         self.apiClient = apiClient
+        self.onboardingService = onboardingService ?? OnboardingService(apiClient: apiClient)
         setupLocationManager()
     }
     
@@ -118,18 +120,20 @@ final class OnboardingViewModel: ObservableObject {
         isLoading = true
         
         do {
-            // Save personal info locally and optionally to backend
+            // Save personal info locally for persistence
             UserDefaults.standard.set(onboardingData.name, forKey: "onboarding.name")
             UserDefaults.standard.set(onboardingData.partnerName, forKey: "onboarding.partnerName")
             UserDefaults.standard.set(onboardingData.relationshipDuration, forKey: "onboarding.relationshipDuration")
             UserDefaults.standard.set(onboardingData.partnerAge, forKey: "onboarding.partnerAge")
             
-            // Simulate API call delay
-            try await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
+            // Submit personal info to backend immediately
+            try await onboardingService.updateUserProfile(from: onboardingData)
             
             print("✅ Personal info saved successfully")
         } catch {
             print("❌ Failed to save personal info: \(error)")
+            // Note: We continue with onboarding even if backend submission fails
+            // Data will be re-submitted during final completion
         }
         
         isLoading = false
@@ -248,6 +252,15 @@ final class OnboardingViewModel: ObservableObject {
         ] as [String: Any]
         
         UserDefaults.standard.set(assessmentData, forKey: "onboarding.assessment")
+        
+        // Submit assessment results to backend
+        do {
+            try await onboardingService.submitAssessment(from: onboardingData)
+            print("✅ Assessment results submitted to backend")
+        } catch {
+            print("❌ Failed to submit assessment results: \(error)")
+            // Continue with onboarding - will retry during final completion
+        }
     }
     
     // MARK: - Preferences Step
@@ -263,12 +276,13 @@ final class OnboardingViewModel: ObservableObject {
             // Save preferences locally
             UserDefaults.standard.set(onboardingData.preferences, forKey: "onboarding.preferences")
             
-            // Simulate API call
-            try await Task.sleep(nanoseconds: 500_000_000)
+            // Submit preferences to backend
+            try await onboardingService.savePreferences(from: onboardingData)
             
             print("✅ Preferences saved successfully")
         } catch {
             print("❌ Failed to save preferences: \(error)")
+            // Continue with onboarding - will retry during final completion
         }
         
         isLoading = false
@@ -347,7 +361,16 @@ final class OnboardingViewModel: ObservableObject {
         isLoading = true
         
         do {
-            // Save all onboarding data
+            // Validate onboarding data before submission
+            try onboardingData.validateForSubmission()
+            
+            // Print data summary for logging
+            print(onboardingData.generateSummary())
+            
+            // Submit all onboarding data to backend
+            try await onboardingService.submitOnboardingData(onboardingData)
+            
+            // Save completion data locally
             let completionData = [
                 "name": onboardingData.name,
                 "partnerName": onboardingData.partnerName,
@@ -362,9 +385,6 @@ final class OnboardingViewModel: ObservableObject {
             UserDefaults.standard.set(completionData, forKey: "onboarding.completed")
             UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
             
-            // Simulate final API call to backend
-            try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
-            
             print("🎉 Onboarding completed successfully!")
             
             // Track completion analytics
@@ -372,6 +392,9 @@ final class OnboardingViewModel: ObservableObject {
             
         } catch {
             print("❌ Failed to complete onboarding: \(error)")
+            // Note: We still mark onboarding as completed locally to avoid blocking the user
+            // They can update their profile later if needed
+            UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
         }
         
         isLoading = false

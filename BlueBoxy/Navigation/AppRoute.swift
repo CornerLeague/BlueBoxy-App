@@ -245,7 +245,7 @@ extension AppRoute {
         switch self {
         case .main(let mainRoute):
             switch mainRoute {
-            case .dashboard, .messages(.list), .calendar(.main), .profile(nil):
+            case .dashboard, .messages(.list), .activities(.list), .calendar(.main), .profile(nil):
                 return true
             default:
                 return false

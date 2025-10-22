@@ -604,7 +604,7 @@ struct RecommendationDetailView: View {
     private func getRating() -> Double? {
         switch recommendation {
         case .aiPowered(let activity): return activity.rating
-        case .grok(let rec): return rec.rating
+        case .grok: return nil // GrokActivityRecommendation doesn't have rating
         case .simple: return nil
         }
     }
@@ -612,7 +612,7 @@ struct RecommendationDetailView: View {
     private func getLocationInfo() -> String? {
         switch recommendation {
         case .aiPowered(let activity): return activity.location
-        case .grok(let rec): return rec.address
+        case .grok(let rec): return rec.location
         case .simple: return nil
         }
     }
@@ -620,11 +620,7 @@ struct RecommendationDetailView: View {
     private func getDistance() -> String? {
         switch recommendation {
         case .aiPowered: return nil
-        case .grok(let rec): 
-            if let distance = rec.distance {
-                return "\(String(format: "%.1f", distance)) mi"
-            }
-            return nil
+        case .grok: return nil // GrokActivityRecommendation doesn't have distance
         case .simple: return nil
         }
     }
@@ -636,7 +632,7 @@ struct RecommendationDetailView: View {
                 return price == 0 ? "Free" : "$\(Int(price))"
             }
             return nil
-        case .grok(let rec): return rec.price
+        case .grok(let rec): return rec.estimatedCost
         case .simple: return nil
         }
     }
@@ -644,7 +640,7 @@ struct RecommendationDetailView: View {
     private func getDuration() -> String {
         switch recommendation {
         case .aiPowered(let activity): return activity.estimatedDuration ?? "2-3 hours"
-        case .grok: return "Varies"
+        case .grok(let rec): return rec.duration ?? "2-3 hours"
         case .simple: return "1-2 hours"
         }
     }
@@ -672,7 +668,7 @@ struct RecommendationDetailView: View {
     private func getTags() -> [String]? {
         switch recommendation {
         case .aiPowered: return nil
-        case .grok(let rec): return rec.specialties
+        case .grok(let rec): return rec.tips
         case .simple: return nil
         }
     }
@@ -718,7 +714,7 @@ struct RecommendationDetailView: View {
     private func getId() -> String {
         switch recommendation {
         case .aiPowered(let activity): return String(activity.id)
-        case .grok(let rec): return rec.id
+        case .grok(let rec): return rec.name // GrokActivityRecommendation doesn't have id, use name
         case .simple(let rec): return rec.id ?? rec.title
         }
     }
@@ -855,7 +851,7 @@ struct RecommendationMapView: View {
     private func getLocationText() -> String? {
         switch recommendation {
         case .aiPowered(let activity): return activity.location
-        case .grok(let rec): return rec.address
+        case .grok(let rec): return rec.location
         case .simple: return nil
         }
     }

@@ -14,6 +14,7 @@ enum JSONValue: Codable {
     case bool(Bool)
     case int(Int)
     case double(Double)
+    case number(Double) // Alias for double to support different numeric types
     case string(String)
     case array([JSONValue])
     case object([String: JSONValue])
@@ -37,6 +38,7 @@ enum JSONValue: Codable {
         case .bool(let v): try c.encode(v)
         case .int(let v): try c.encode(v)
         case .double(let v): try c.encode(v)
+        case .number(let v): try c.encode(v)
         case .string(let v): try c.encode(v)
         case .array(let a): try c.encode(a)
         case .object(let o): try c.encode(o)
@@ -137,39 +139,30 @@ struct LocationBasedGETResponse: Decodable {
     let activities: [LocationBasedActivityGET]
 }
 
-// Grok (X.ai) recommendation item
-struct GrokActivityRecommendation: Codable {
-    let id: String
-    let name: String
-    let description: String
-    let category: String
-    let rating: Double?
-    let distance: Double?
-    let price: String?
-    let address: String?
-    let phone: String?
-    let website: String?
-    let specialties: [String]?
-    let atmosphere: String?
-    let estimatedCost: String?
-    let recommendedTime: String?
-    let personalityMatch: String?
-}
+// POST /api/recommendations/location-based (AI-based)
+// OpenAI activity recommendations
+typealias AILocationPostResponse = AILocationBasedResponse
+typealias GrokLocationPostResponse = AILocationBasedResponse // Backward compatibility
 
-// POST /api/recommendations/location-based (Grok)
-struct GrokLocationPostResponse: Codable {
+struct AILocationBasedResponse: Codable {
     let success: Bool
-    var recommendations: [GrokActivityRecommendation] // Made mutable
+    var recommendations: [Activity] // Made mutable
     let canGenerateMore: Bool
     let generationsRemaining: Int
     let category: String
     let radius: Int
 }
 
-// POST /api/recommendations/drinks (Grok)
-struct GrokDrinksResponse: Decodable {
+// Backward compatibility alias for Grok
+typealias GrokActivityRecommendation = Activity
+
+// POST /api/recommendations/drinks (AI-based)
+typealias AIDrinksResponse = AIActivityDrinksResponse
+typealias GrokDrinksResponse = AIActivityDrinksResponse // Backward compatibility
+
+struct AIActivityDrinksResponse: Decodable {
     let success: Bool
-    let recommendations: [String: [GrokActivityRecommendation]]
+    let recommendations: [String: [Activity]]
     let canGenerateMore: Bool
     let generationsRemaining: Int
 }
